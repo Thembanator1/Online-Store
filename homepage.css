@@ -133,6 +133,31 @@ body {
   box-shadow: 0 5px 25px rgb(1 1 1 / 5%);
 }
 
+select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 330px;
+  position: absolute;
+  top: 31.5%;
+  left: 14.5%;
+  transform: translate(-50%, -50%);
+  
+}
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 500px;
+
+  position: absolute;
+  top: 31.5%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+
+}
+
+
 .slider .slide .info h2{
   font-size: 2em;
   font-weight: 800;
