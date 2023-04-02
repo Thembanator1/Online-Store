@@ -1,6 +1,6 @@
 function sendMail() {
     var params = {
-      name: document.getElementById("Username").value,
+      name: document.getElementById("Email").value,
       email: "testbranch99@gmail.com",
       message: "qwertyuiop",
     };
