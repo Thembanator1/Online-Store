@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+
+
+</head>
+<body>
+  
+  <div id="out-box">
+    <form id="form1">
+      <!-- form elements -->
+      <h1>Shipping Details</h1>
+      <form>
+      <input type="text" name="" placeholder="Full Name" id="fname">
+      <input type="text" name="" placeholder="Email" id="mail">
+      <input type="text" name="" placeholder="Street Address" id="street">
+      <input type="text" name="" placeholder="Type of Building (e.g. Apartment/Suite)" id="building">
+      <input type="text" name="" placeholder="City" id="city">
+      <input type="text" name="" placeholder="Province and Zip Code" id="province">
+    
+      </form>
+    </form>
+
+    <form id="form2" class = "hide">
+      <!-- form elements -->
+      <h1>Billing & Payment</h1>
+      <form>
+      <input type="password" name="" placeholder="Card Number" id="cardN">
+      <input type="text" name="" placeholder="Exp date" id="expD">
+      </form>
+    </form>
+  
+
+    <div id="confirmation" class="hide">
+      <!-- div elements -->
+      <div style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.5; color: #333333;">
+        <h1>Thank you for your order!</h1>
+        <p>Great choice! We've received your order and we're preparing it for shipment.</p>
+        <p>Here's a summary of your order: [Order Summary]</p>
+        <p>We'll send you a confirmation email shortly with all the details of your purchase, including your order number, shipping address, and estimated delivery date. (Please approve the online payment on your mobile banking platform)</p>
+        <p>If you have any questions or concerns, please don't hesitate to contact our customer support team. We're always here to help.</p>
+        <p>Thank you for choosing Runtime Shopping!</p>
+      </div>
+   </div>
+    
+
+    <button id="next-button" onclick="nextView()">Next</button>
+    <button id="prev-button" onclick="prevView()">Prev</button>
+
+  </div>
+  
+
+  <div class="products">
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+      <tr> <!--- another row-->
+        <td>
+          <div class="cart-info">
+            <img src="./img/cart/lenovo.webp">
+            <div>
+              <p>Lenovo 8gb i5 1.6GHz Windows 11 Pro</p><!--product name-->
+              <small>Price: R12 500</small>
+              <br>
+              <a href="">Remove</a>
+            </div>
+          </div>
+        </td>
+        <td><input type="number" value="1"></td>
+        <td>R12 500</td>
+      </tr>
+      <tr> <!--- another row-->
+        <td>
+          <div class="cart-info">
+            <img src="./img/cart/LEDs.webp">
+            <div>
+              <p>12V LED light strip 5M</p><!--product name-->
+              <small>Price: R150</small>
+              <br>
+              <a href="">Remove</a>
+            </div>
+          </div>
+        </td>
+        <td><input type="number" value="1"></td>
+        <td>R150.00</td>
+      </tr>
+
+    </table>
+  </div>
+   <!--second table-->
+    <div class="total-price">
+      <table>
+        <tr>
+          <td>Subtotal</td>
+          <td>R12 650</td>
+        </tr>
+        <tr>
+          <td>Delivery</td>
+          <td>R44.99</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>R12 694.99</td>
+        </tr>
+      </table>
+    </div>
+
+  
+<script src="checkout.js"></script> 
+
+</body>
+</html>
