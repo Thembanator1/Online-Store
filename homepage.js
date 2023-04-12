@@ -78,3 +78,9 @@ clearInterval(playSlider);
 slider.addEventListener("mouseout", () => {
 repeater();
 });
+
+  var cartLink = document.getElementById("cartLink");
+  cartLink.onclick = function() {
+    window.location.href = "/cart.html";
+    alert("cart");
+  };
