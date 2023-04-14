@@ -17,8 +17,8 @@
       <h1>Shipping Details</h1>
       <form>
       <div class="nextTo">
-        <input type="text" placeholder="First Name"  style="margin-right: 10px;">
-        <input type="text" name="" placeholder="Last Name">
+        <input type="text" id="firstName" placeholder="First Name"  style="margin-right: 10px;">
+        <input type="text" id="lastName" name="" placeholder="Last Name">
       </div>
         
       <div>
@@ -51,7 +51,7 @@
       <input type="password" name="" placeholder="Card Number" id="cardN">
       <div class="nextTo">
         <input type="text" name="" placeholder="Exp date" id="expD"  style="margin-right: 10px;">
-        <input type="text" placeholder="CVV">
+        <input type="text" id="cvv" placeholder="CVV">
       </div>
       </form>
     </form>
@@ -79,7 +79,8 @@
   
 
 
-  
+  	<!-- Link to the Firebase JavaScript library and to a custom JavaScript file for handling form submission -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 <script src="checkout.js"></script> 
 
 </body>

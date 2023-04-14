@@ -12,7 +12,7 @@ const firebaseConfig = {
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
 // get reference to the Firebase database
-var contactFormDB = firebase.database().ref("onlinestore");
+var contactFormDB = firebase.database().ref("Users");
 
 // add an event listener to the "validate" button on the form
 document.querySelector("#validate").addEventListener("click", e => {
