@@ -84,32 +84,13 @@ var cvv = document.getElementById('cvv').value;
 // Check if all fields are filled
 if (firstName && lastName && country && email && streetAddress && buildingType && city && province && cardNumber && expDate && cvv) {
 
-  // Store values in an object
- /* var shippingDetails = {
-    firstName: firstName,
-    lastName: lastName,
-    country: country,
-    email: email,
-    streetAddress: streetAddress,
-    buildingType: buildingType,
-    city: city,
-    province: province,
-    cardNumber: cardNumber,
-    expDate: expDate,
-    cvv: cvv
-  };*/
-
-  // Push object to Firebase Realtime Database
- /* var ref = contactFormDB.ref('shipping-details');
-  ref.push(shippingDetails);*/
+  
   saveMessages(firstName , lastName , country , email ,streetAddress , buildingType , city , province , cardNumber , expDate , cvv);
 
 } else {
   alert('Please fill in all fields');
 }
 
-
-    
 }
 const saveMessages = (firstName , lastName , country , email ,streetAddress , buildingType , city , province , cardNumber , expDate , cvv) => {
     var newContactForm = contactFormDB.push();
@@ -132,50 +113,5 @@ const saveMessages = (firstName , lastName , country , email ,streetAddress , bu
     // redirect to login page
     window.location.assign("homepage.html");
     };
-/*
-// Get form elements
-var firstName = document.getElementById('firstName').value;
-var lastName = document.getElementById('lastName').value;
-var country = document.getElementById('country').value;
-var email = document.getElementById('mail').value;
-var streetAddress = document.getElementById('street').value;
-var buildingType = document.getElementById('building').value;
-var city = document.getElementById('city').value;
-var province = document.getElementById('province').value;
-var cardNumber = document.getElementById('cardN').value;
-var expDate = document.getElementById('expD').value;
-var cvv = document.getElementById('cvv').value;
-
-// Check if all fields are filled
-if (firstName && lastName && country && email && streetAddress && buildingType && city && province && cardNumber && expDate && cvv) {
-
-  // Store values in an object
-  var shippingDetails = {
-    firstName: firstName,
-    lastName: lastName,
-    country: country,
-    email: email,
-    streetAddress: streetAddress,
-    buildingType: buildingType,
-    city: city,
-    province: province,
-    cardNumber: cardNumber,
-    expDate: expDate,
-    cvv: cvv
-  };
-
-  // Push object to Firebase Realtime Database
-  var ref = firebase.database().ref('shipping-details');
-  ref.push(shippingDetails);
-} else {
-  alert('Please fill in all fields');
-}
-
-
-*/
-
-// var switchButton = document.getElementById("switch-button");
-// switchButton.addEventListener("click", toggleForm);
-
 
   

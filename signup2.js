@@ -15,12 +15,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // reference your database
 var contactFormDB = firebase.database().ref("Users");
-//var newUser=contactFormDB.ref("Users");
-// add event listener to the submit button
-// Get a reference to the Firebase Realtime Database
 
-
-// Reference the 'users' table
 
 document.querySelector("#validate").addEventListener("click", e => {
 e.preventDefault(); // prevent default form submission behavior
