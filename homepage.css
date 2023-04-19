@@ -281,6 +281,53 @@ input[type="text"] {
   color: #333;
   margin-bottom: 20px;
 }
+/* update css code for scrollview*/
+/* Global styles */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.gallery {
+  text-align: center;
+  margin: 2rem;
+}
+
+.scroll-view {
+  display: flex;
+  overflow-x: auto; /* use auto to only show scrollbar when needed */
+  margin: 2rem;
+  width: 100%; /* add width to take full available width */
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem; /* add some gap between images */
+}
+
+.image-container img {
+  width: 400px; /* increase image width */
+  height: auto; /* adjust height automatically */
+}
+
+.image-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem;
+  text-align: center;
+}
+
+.image-info h3 {
+  margin: 0;
+}
+
+.image-info p {
+  margin: 0;
+  color: #888;
+}
 
 
 
