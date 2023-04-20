@@ -78,3 +78,40 @@ clearInterval(playSlider);
 slider.addEventListener("mouseout", () => {
 repeater();
 });
+
+/**************************************
+ * Cart Button Script
+ *************************************/
+		var cartLink = document.getElementById("cartLink");
+		var modal = document.getElementById("myModal");
+		var close = document.getElementsByClassName("close")[0];
+
+		cartLink.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		close.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+
+
+        let sum = 0;
+        const rows = document.querySelectorAll('table tr');
+        for (let i = 1; i < rows.length; i++) { 
+            const subtotalStr = rows[i].querySelector('td:nth-child(3)').textContent;
+            const subtotalNum = parseFloat(subtotalStr.replace(/[^\d.-]+/g,""));
+            sum += subtotalNum;
+        }
+        const totalElem = document.getElementById('cart-total');
+        totalElem.textContent = `TOTAL: (${rows.length - 1} items)`;
+        const sumElem = document.getElementById('cart-sum');
+        sumElem.textContent += sum;
+        console.log(sum);
+
+
