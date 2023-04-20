@@ -16,47 +16,45 @@ const firebaseConfig = {
   // reference your database
   var imagesRef = firebase.database().ref("Products");
 
-// Listen for changes to the images in the database
-imagesRef.on('value', (snapshot) => {
-    // Clear the image container
-    const imageContainer = document.querySelector('.image-container');
-    imageContainer.innerHTML = '';
   
-    // Loop through the images in the snapshot and create image elements
-    snapshot.forEach((childSnapshot) => {
-      // Get the image data from the child snapshot
-      const imageData = childSnapshot.val();
-  
-      // Create an image element
-      const image = document.createElement('img');
-      image.setAttribute('src', imageData.picture);
-  
-      // Create a div to hold the image information
-      const imageInfo = document.createElement('div');
-      imageInfo.classList.add('image-info');
-  
-      // Create an h3 element for the name
-      const name = document.createElement('h3');
-      name.textContent = imageData.name;
-  
-      // Create a p element for the price
-      const price = document.createElement('p');
-      price.textContent = '$' + imageData.price.toFixed(2);
-  
-      // Add the name and price to the image info div
-      imageInfo.appendChild(name);
-      imageInfo.appendChild(price);
-  
-      // Create a div to hold the image and info
-      const imageContainerDiv = document.createElement('div');
-      imageContainerDiv.appendChild(image);
-      imageContainerDiv.appendChild(imageInfo);
-  
-      // Add the image and info to the image container
-      imageContainer.appendChild(imageContainerDiv);
-    });
+const productsList = document.querySelector(".image-container");
+
+  // Clear any existing product items from the list
+  productsList.innerHTML = "";
+
+  // Retrieve all product items from the Firebase Realtime Database
+  const productsRef = firebase.database().ref("Products");
+  productsRef.on("value", snapshot => {
+    const products = snapshot.val();
+    for (const [key, product] of Object.entries(products)) {
+      // Create a new list item for each product item
+      const listItem = document.createElement("div");
+      listItem.className = "product-item";
+
+      // Create an image element to display the product image
+      const image = document.createElement("img");
+      image.src = product.picture;
+      image.alt = product.name;
+      listItem.appendChild(image);
+
+      // Create a span element to display the product name
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "product-name";
+      nameSpan.textContent = product.name;
+      listItem.appendChild(nameSpan);
+
+      // Create a span element to display the product price
+      const priceSpan = document.createElement("span");
+      priceSpan.className = "product-price";
+      priceSpan.textContent = "$" + product.price;
+      listItem.appendChild(priceSpan);
+
+      // Add the list item to the products list
+      productsList.appendChild(listItem);
+    }
   });
-  
+
+
 const slider = document.querySelector(".slider");
 const nextBtn = document.querySelector(".next-btn");
 const prevBtn = document.querySelector(".prev-btn");
@@ -136,3 +134,47 @@ clearInterval(playSlider);
 slider.addEventListener("mouseout", () => {
 repeater();
 });
+
+/* 
+
+const productsList = document.getElementById("image-container");
+
+function displayProducts() {
+  // Clear any existing product items from the list
+  productsList.innerHTML = "";
+
+  // Retrieve all product items from the Firebase Realtime Database
+  const productsRef = firebase.database().ref("Products");
+  productsRef.on("value", snapshot => {
+    const products = snapshot.val();
+    for (const [key, product] of Object.entries(products)) {
+      // Create a new list item for each product item
+      const listItem = document.createElement("div");
+      listItem.className = "product-item";
+
+      // Create an image element to display the product image
+      const image = document.createElement("img");
+      image.src = product.picture;
+      image.alt = product.name;
+      listItem.appendChild(image);
+
+      // Create a span element to display the product name
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "product-name";
+      nameSpan.textContent = product.name;
+      listItem.appendChild(nameSpan);
+
+      // Create a span element to display the product price
+      const priceSpan = document.createElement("span");
+      priceSpan.className = "product-price";
+      priceSpan.textContent = "$" + product.price;
+      listItem.appendChild(priceSpan);
+
+      // Add the list item to the products list
+      productsList.appendChild(listItem);
+    }
+  });
+}
+
+
+*/
