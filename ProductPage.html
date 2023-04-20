@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Product Page</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-  <style>
+	<style  type="text/css" >
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -159,6 +159,11 @@ form textarea {
 form button {
 	margin-top: 10px;
 }
+#product-img {
+	width: 400px; /* increase image width */
+  height: auto; /* adjust height automatically */
+  /* add any additional styling you want here */
+}
 
   </style>
 </head>
@@ -209,12 +214,13 @@ form button {
 
 	<main>
 		<section>
-			<img src="product.jpg" alt="Product Image">
-			<h2>Product Description</h2>
-			<p>Hhey the product needs no description buy it to experience it,</p>
-			<h3>Price: RXX.XX</h3>
-			<button>Add to Cart</button>
-		</section>
+			<img id="product-img" alt="Product Image">
+			<h4>Description</h4>
+			<h2 id="product-desc">Product Description</h2>
+			<p id="product-price">Price: $ </p>
+			<button onclick="addToCart()"> Add to Cart</button>
+		  </section>
+		  
 
 		<section>
 			<h2>Reviews</h2>
@@ -242,7 +248,8 @@ form button {
 	<footer>
 		<p>&copy; 2023 Runtime Shopping inc.</p>
 	</footer>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<script src="product.js"></script>  
 	
 </body>
 </html>
