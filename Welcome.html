@@ -12,15 +12,15 @@
 		}
 		.login-box{
 			width: 320px;
-			height: 520px;
+			height: 420px;
 			background: rgba(0, 0, 0, 0.5);
 			color: #fff;
-			top: 52%;
+			top: 50%;
 			left: 50%;
 			position: absolute;
 			transform: translate(-50%,-50%);
 			box-sizing: border-box;
-			padding: 60px 30px;
+			padding: 70px 30px;
 		}
 		.avatar{
 			width: 100px;
@@ -36,7 +36,7 @@
 			padding-bottom:-10px; 
             padding-left:-10px; 
             padding-right:-10px; 
-            font-size: 22px;
+            font-size: 16px;
             text-align:center; 
         }
         .login-box p{
@@ -49,19 +49,6 @@
         .login-box input{
         	width: 100%;
         	margin-bottom:20px; 
-        }
-        .login-box input[type="text"], input[type="password"]
-        {
-        	border:none; 
-        	border-bottom:
-        	1px solid #fff; 
-        	background-color:
-        	transperant; 
-        	outline:none; 
-        	height:40px; 
-        	color:#000000; 
-        	font-size:
-        	16px;  
         }
         .login-box input[type="submit"]
         {
@@ -100,22 +87,19 @@
 </head>
 <body>
 
+
 <div class="login-box">
 <img src="logo-shop.png" class="avatar">
-<h1>Customer Signup</h1>
 <form>
-<input type="text" name="" placeholder="Enter Name" id="name">
-<input type="text" name="" placeholder="Enter Surname" id="surname">
-<input type="text" name="" placeholder="Enter Email" id="email">
-<input type="password" name="" placeholder="Enter Password" id="password">
-<input type="password" name="" placeholder="Confirm Password" id="confirmpassword">
-<input type="submit" name="" value="Sign in" id="validate">
-<a href="login.html">Already have an account?</a>
+<h2>Welcome To RunTime Shopping</h2><br>
+<h1>Are You Logging in as:</h1><br>
+<input type="submit" name="" value="customer" id="Customer">
+<h1>OR</h1><br>
+<input type="submit" name="" value="supplier" id="Supplier">
 </form>
 
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-<script src="signup2.js"></script>
+<script src="welcome2.js"></script>
 
 </body>
 </html>

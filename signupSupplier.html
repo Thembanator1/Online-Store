@@ -9,18 +9,18 @@
 			background: url(bg.jpg);
 			background-size: cover;
 			font-family: sans-serif;
+			overflow: scroll;
 		}
 		.login-box{
 			width: 320px;
-			height: 520px;
 			background: rgba(0, 0, 0, 0.5);
 			color: #fff;
-			top: 52%;
+			top: 50%;
 			left: 50%;
 			position: absolute;
-			transform: translate(-50%,-50%);
-			box-sizing: border-box;
-			padding: 60px 30px;
+			transform: translate(-50%,-200px);
+			box-sizing: content-box;
+			padding: 70px 30px;
 		}
 		.avatar{
 			width: 100px;
@@ -37,7 +37,17 @@
             padding-left:-10px; 
             padding-right:-10px; 
             font-size: 22px;
+			margin-bottom:10px;
             text-align:center; 
+        }
+		h2{
+			margin: 0;
+			padding-top:-10px;
+			padding-bottom:-10px; 
+            padding-left:-10px; 
+            padding-right:-10px; 
+            font-size: 16px;
+			margin-bottom:10px;
         }
         .login-box p{
         	margin-top:-10px; 
@@ -45,10 +55,10 @@
         	padding-left:-10px; 
         	padding-right:-10px; 
         	font-weight:bold; 
+			margin-bottom:100px;
         }
         .login-box input{
-        	width: 100%;
-        	margin-bottom:20px; 
+			margin-bottom:20px;
         }
         .login-box input[type="text"], input[type="password"]
         {
@@ -62,6 +72,7 @@
         	color:#000000; 
         	font-size:
         	16px;  
+			width: 100%; 
         }
         .login-box input[type="submit"]
         {
@@ -79,6 +90,8 @@
             border-radius:
             20px
             ;
+			width: 100%; 
+			margin-top:20px;
         }
         .login-box input[type="submit"]:hover
         {
@@ -89,6 +102,10 @@
            color:#000
            ;
        }
+	   .login-box input[type="radio"]
+	   {
+		margin-left:20px;
+	   }
        .login-box a{
        		color:#fff;
        		font-size:
@@ -102,20 +119,53 @@
 
 <div class="login-box">
 <img src="logo-shop.png" class="avatar">
-<h1>Customer Signup</h1>
 <form>
+<h1>Supplier Signup</h1>
 <input type="text" name="" placeholder="Enter Name" id="name">
 <input type="text" name="" placeholder="Enter Surname" id="surname">
 <input type="text" name="" placeholder="Enter Email" id="email">
-<input type="password" name="" placeholder="Enter Password" id="password">
+<input type="password" name="" placeholder="Create Password" id="password">
 <input type="password" name="" placeholder="Confirm Password" id="confirmpassword">
+
+<h1>Business Owner</h1>
+<input type="text" name="" placeholder="Enter Name" id="ownerName">
+<input type="text" name="" placeholder="Enter Surname" id="ownerSurname">
+<input type="text" name="" placeholder="Enter Email" id="ownerEmail">
+<input type="password" name="" placeholder="Create Password" id="password">
+<input type="password" name="" placeholder="Confirm Password" id="confirmPassword">
+
+<h1>Business Information</h1>
+<input type="text" name="" placeholder="Company Name" id="companyName">
+<input type="text" name="" placeholder="Website" id="website">
+<input type="text" name="" placeholder="Email" id="companyEmail">
+<input type="text" name="" placeholder="Phone Number" id="phoneName">
+<input type="text" name="" placeholder="Business Registeration Number" id="registerationNumber">
+
+<h2>Are you VAT registered?</h2>
+<input type="radio" id="VATyes" name="VAT" value="VATyes">
+<label for="VATyes">Yes</label><br>
+<input type="radio" id="VATno" name="VAT" value="VATno">
+<label for="VATno">No</label><br>
+
+<h2>Monthly Revenue</h2>
+<input type="radio" id="lessR20k" name="Revenue" value="lessR20k">
+<label for="lessR20k">Less than R20k</label><br>
+<input type="radio" id="R20k-R50k" name="Revenue" value="R20k-R50k">
+<label for="R20k-R50k">R20k-R50k</label><br>
+<input type="radio" id="R50k-R100k" name="Revenue" value="R50k-R100k">
+<label for="R50k-R100k">R50k-R100k</label><br>
+<input type="radio" id="R100k-R500k" name="Revenue" value="R100k-R500k">
+<label for="R100k-R500k">R100k-R500k</label><br>
+<input type="radio" id="moreR500k" name="Revenue" value="moreR500k">
+<label for="moreR500k">More than R500k</label><br>
+
 <input type="submit" name="" value="Sign in" id="validate">
-<a href="login.html">Already have an account?</a>
+<a href="loginSupplier.html">Already have an account?</a>
 </form>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-<script src="signup2.js"></script>
+<script src="signup2Supplier.js"></script>
 
 </body>
 </html>
