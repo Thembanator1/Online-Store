@@ -166,228 +166,51 @@ form button {
 }
 
   </style>
-  <style>
-	/* Styling for the modal window */
-	.modal {
-		display: none;
-		position: fixed;
-		z-index: 1;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		overflow: auto;
-		background-color: rgba(0,0,0,0.4);
-	}
-	
-	/* Styling for the modal content */
-	.modal-content {
-		background-color: white;
-		margin: 10% auto;
-		padding: 20px;
-		border: 1px solid #888;
-		width: 1400px;
-		height: 80%;
-		overflow: auto;
-	}
-	
-	/* Styling for the close button */
-	.close {
-		color: #aaa;
-		float: right;
-		font-size: 28px;
-		font-weight: bold;
-	}
-	
-	.close:hover,
-	.close:focus {
-		color: black;
-		text-decoration: none;
-		cursor: pointer;
-	}
-	
-	/*----Order Information-----*/
-	.products {
-		float: left;
-	}
-	.products + .total-price{
-		position: relative;
-	}
-
-	.cart-page{
-		margin: 80px auto;
-		width: 500px
-		}
-	table{
-		width : 80%;
-		border-collapse: collapse;
-		margin-bottom: 20px; /* add some space between the two tables */
-
-	}   
-	table + table {
-	/* style for second table */
-		position: relative;
-		top: 20px; /* move the second table 20px down from its normal position */
-	}
-	th{
-	text-align: left;
-	padding: 5px;
-	color: #fff;
-	background: #ff523b;
-	font-weight: normal;
-	}
-	th:nth-child(4) {
-		display: none;
-	}
-	td{
-	padding: 10px 5px;
-	}
-	td img{
-	width: 80px;
-	height: 80px;
-	margin-right: 10px;
-	}
-	td input{
-	width: 40px;
-	height: 30px;
-	padding: 5px;
-	}
-	td a{
-	color: #ff523b;
-	font-size: 12px;
-	}
-	.cart-info{
-	display: flex;
-	flex-wrap: wrap;
-	}
-	.total-price{
-	display: flex;
-	justify-content: left;
-	clear: both;
-	}
-	#totalPrice{
-	border-top: #ff523b 3px solid;
-	width: 100%;
-	max-width: 971px;
-	}
-
-	td:last-child{
-	text-align: left; /*items on last column will...*/
-	}
-	th:last-child{
-	text-align: left;/*header item on last column will...*/
-	}
-
-	#tag{
-	opacity: 0.5;
-	}
-
-
-	.cart-summary {
-background-color: #f5f5f5;
-border: 1px solid #ddd;
-border-radius: 5px;
-padding: 20px;
-text-align: center;
-margin-top: 20px;
-}
-
-.cart-summary h2 {
-font-size: 24px;
-margin-bottom: 10px;
-}
-
-.cart-summary h3 {
-color: #f00;
-font-size: 30px;
-margin-top: 10px;
-margin-bottom: 20px;
-}
-
-.cart-summary button {
-background-color: #f00;
-border: none;
-color: #fff;
-font-size: 16px;
-padding: 10px 20px;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
-
-.cart-summary button:hover {
-background-color: #c00;
-}
-
-</style>
 </head>
-<body>	
-	<!-- Modal window -->
-	<div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class = "close" > &times;</span>
-            
-                <table id = "cart-table">
-                    <tr>
-                      <th>Product</th>
-                      <th>Quantity</th>
-                      <th>Subtotal</th>
-                      <th>Actions</th> <!-- New column for product removal buttons -->
-                    </tr>
-                  </table>
-                  
+<body>
+	<div><!-- top-first navBar --->
+    <nav class="topnav">
 
-                <div class="cart-summary">
-                    <h2>Cart Summary</h2>
-                    <p id = "cart-total"></p>
-                    <h3 id = "cart-sum">R</h3>
-                    <button id="checkout">Proceed to Checkout</button>
-                </div>     
-          </div>
-	    </div>
-    
-    <div><!-- top-first navBar --->
-      <nav class="topnav">
-
-        <div class="logo">
-          <img src =  "./img/home/RunTime_logo.png"/>
-        </div>
-        
-        <ul class="nav-links">
-          
-          <div class="menu">
-            <li><a href="/">Home</a></li>
-            
-            <li><a href="/">About</a></li>
-            
-            <li><a href="/">Account</a></li>
-            
-            <li><a href="#" id="cartLink">Cart</a></li>
-          </div>
-        
-        </ul>
-      </nav>
-    </div>
-
-    <div> <!-- second navBar --->
-      <nav class="navbar"> 
-        <ul class="nav-links">
+      <div class="logo">
+        <img src =  "./img/home/RunTime_logo.png"/>
+      </div>
       
-          
-          <div class="menu">
-            <li><a href="/">Home</a></li>
-            
-            <li><a href="/">About</a></li>
-            
-            <li><a href="/">Pricing</a></li>
-            
-            <li><a href="/">Contact</a></li>
+      <ul class="nav-links">
         
-          </div>
-            
-        </ul>
-      </nav>
-    </div>
+        <div class="menu">
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/">About</a></li>
+          
+          <li><a href="/">Account</a></li>
+          
+          <li><a href="cart.html" id="cartLink">Cart</a></li>
+        </div>
+      
+      </ul>
+    
+    </nav>
+  </div>
+
+  <div> <!-- second navBar --->
+    <nav class="navbar"> 
+      <ul class="nav-links">
+    
+        
+        <div class="menu">
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/">About</a></li>
+          
+          <li><a href="/">Pricing</a></li>
+          
+          <li><a href="/">Contact</a></li>
+      
+        </div>
+          
+      </ul>
+    </nav>
+  </div>
 
 	<main>
 		<section>
@@ -395,7 +218,7 @@ background-color: #c00;
 			<h4>Description</h4>
 			<h2 id="product-desc">Product Description</h2>
 			<p id="product-price">Price: $ </p>
-			<button id = "add-to-cart"  onclick="addToCart()"> Add to Cart</button>
+			<button onclick="addToCart()"> Add to Cart</button>
 		  </section>
 		  
 
@@ -426,27 +249,7 @@ background-color: #c00;
 		<p>&copy; 2023 Runtime Shopping inc.</p>
 	</footer>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-	<script src="product.js"></script>
-	<!-- JavaScript to display and hide the modal window -->
-	<script>
-		var cartLink = document.getElementById("cartLink");
-		var modal = document.getElementById("myModal");
-		var close = document.getElementsByClassName("close")[0];
-
-		cartLink.onclick = function() {
-			modal.style.display = "block";
-		}
-
-		close.onclick = function() {
-			modal.style.display = "none";
-		}
-
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
+	<script src="product.js"></script>  
 	
 </body>
 </html>
