@@ -217,8 +217,9 @@ input[type="text"] {
   box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
 }
 
-.navigation-visibility .slide-icon.active{
+.navigation-visibility .slide-icon.active{ /*<!-- dots indicatating which slide/printAd we are on-->*/
   background: #4285F4;
+  z-index: 1;
 }
 
 @media (max-width: 900px){
