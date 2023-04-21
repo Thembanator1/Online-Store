@@ -12,7 +12,7 @@ const firebaseConfig = {
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
 // reference your database
-var contactFormDB = firebase.database().ref("onlinestoreSupplier");
+var contactFormDB = firebase.database().ref("Supplier");
 
 document.querySelector("#validate").addEventListener("click", e => {
     e.preventDefault();
@@ -25,13 +25,14 @@ document.querySelector("#validate").addEventListener("click", e => {
         snapshot.forEach(function(childSnapshot) {
             if (email==childSnapshot.val().email && password==childSnapshot.val().password){
                 state = "successful";
+                sessionStorage.setItem("user_email",email);
             }    
             else if (email==childSnapshot.val().email){
                 state = "Invalid password";
             }
         });
         if (state=="successful"){
-            window.location.assign("homepage.html");
+            window.location.assign("supplier_homepage.html");
         }
         else {
             alert(state);

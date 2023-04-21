@@ -35,6 +35,7 @@ document.querySelector("#validate").addEventListener("click", e => {
             // if so, set the state to "successful"
             if (email==childSnapshot.val().email && password==childSnapshot.val().password){
                 state = "successful";
+                sessionStorage.setItem("user_email",email);
             }    
             
             // if the email matches but the password does not, set the state to "Invalid password"
