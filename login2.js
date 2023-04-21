@@ -35,7 +35,7 @@ document.querySelector("#validate").addEventListener("click", e => {
             // if so, set the state to "successful"
             if (email==childSnapshot.val().email && password==childSnapshot.val().password){
                 state = "successful";
-                sessionStorage.setItem("user_email",email);
+             
             }    
             
             // if the email matches but the password does not, set the state to "Invalid password"
@@ -46,6 +46,9 @@ document.querySelector("#validate").addEventListener("click", e => {
 
         // after iterating over all the child snapshots, check the state and take appropriate action
         if (state=="successful"){
+          
+            localStorage.setItem('user_email',email);
+           
             window.location.assign("homepage.html"); // redirect to the homepage
         }
         else {
