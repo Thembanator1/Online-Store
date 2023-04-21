@@ -16,57 +16,103 @@ const firebaseConfig = {
   // reference your database
   var contactFormDB = firebase.database().ref("shipping-details");
 
-
-var next=document.getElementById("next-button");
-var prev=document.getElementById("prev-button");
-var done=document.getElementById("done");
-if(form1.style.display !== "none"){
-    prev.style.display="none";
-    done.style.display="none";
-}
-function nextView() {
-    var form1 = document.getElementById("form1");
-    var form2 = document.getElementById("form2");
-    var form3 = document.getElementById("confirmation");
-    if (form1.style.display !== "none") {
-        form1.style.display = "none";
-        form2.style.display = "block";
-        form3.style.display = "none";
-        prev.style.display="block";
-    } else if (form2.style.display !== "none") {
-        form1.style.display = "none";
-        form2.style.display = "none";
-        form3.style.display = "block";
-        next.style.display="none";
-        done.style.display="block";
+  
+  var next = document.getElementById("next-button");
+  var prev = document.getElementById("prev-button");
+  var done = document.getElementById("done");
+  var form1 = document.getElementById("form1");
+  var form2 = document.getElementById("form2");
+  var form3 = document.getElementById("confirmation");
+  var payments = document.getElementById("paymentOptions");
+  const cardOnDeliveryRadio = document.getElementById('cardOnDelivery');
+  // Initially, only form1 is displayed and other forms are hidden
+  form1.style.display = "block";
+  form2.style.display = "none";
+  form3.style.display = "none";
+  payments.style.display = "none";
+  prev.style.display = "none";
+  done.style.display = "none";
+  
+  function nextView() {
+    if (form1.style.display === "block") {
+      // If we're in form1, hide all other forms except payment options
+      form1.style.display = "none";
+      payments.style.display = "block";
+      next.style.display = "block";
+      prev.style.display = "block";
+      done.style.display = "none";
+    } else if (payments.style.display === "block") {
+        if (cardOnDeliveryRadio.checked) {
+            // user selected card on delivery, take them to form 3
+            // replace the following line with code that takes the user to form 3
+            // If we're in form2, hide all other forms except form3
+      form2.style.display = "none";
+      form3.style.display = "block";
+      next.style.display = "none";
+      prev.style.display = "block";
+      done.style.display = "block";
+      payments.style.display = "none";
+      localStorage.setItem('payments',"card");
+            console.log('Take user to form 3');
+          } else {
+            // user selected pay online, take them to form 2
+            // replace the following line with code that takes the user to form 2
+            // If we're in payment options, hide all other forms except form2
+      payments.style.display = "none";
+      form2.style.display = "block";
+      next.style.display = "block";
+      prev.style.display = "block";
+      done.style.display = "none";
+            console.log('Take user to form 2');
+          }
+ 
     } else {
-        form1.style.display = "none";
-        form2.style.display = "none";
-        form3.style.display = "block";
+      // If we're in form2, hide all other forms except form3
+      form2.style.display = "none";
+      form3.style.display = "block";
+      next.style.display = "none";
+      prev.style.display = "block";
+      done.style.display = "block";
     }
-}
+  }
+  
+  function prevView() {
+    if (form2.style.display === "block") {
+      // If we're in form2, hide all other forms except payment options
+      form2.style.display = "none";
+      payments.style.display = "block";
+      prev.style.display = "block";
+      next.style.display = "block";
+      done.style.display = "none";
+    } else if (form3.style.display === "block") {
+        const back=localStorage.getItem('payments');
+        if(back=="card"){
+            form3.style.display = "none";
+            form2.style.display = "none";
+            payments.style.display = "block";
+            prev.style.display = "block";
+            next.style.display = "block";
+            done.style.display = "none";
 
-function prevView() {
-    var form1 = document.getElementById("form1");
-    var form2 = document.getElementById("form2");
-    var form3 = document.getElementById("confirmation");
-    if (form3.style.display !== "none") {
-        form1.style.display = "none";
-        form2.style.display = "block";
-        form3.style.display = "none";
-        next.style.display="block";
-        done.style.display="none";
-    } else if (form2.style.display !== "none") {
-        form1.style.display = "block";
-        form2.style.display = "none";
-        form3.style.display = "none";
-        prev.style.display="none";
+        }else{
+      // If we're in form3, hide all other forms except form2
+      form3.style.display = "none";
+      form1.style.display='none';
+      form2.style.display = "block";
+      next.style.display = "block";
+      prev.style.display = "block";
+      done.style.display = "none";
+        }
     } else {
-        form1.style.display = "block";
-        form2.style.display = "none";
-        form3.style.display = "none";
+      // If we're in payment options, hide all other forms except form1
+      payments.style.display = "none";
+      form1.style.display = "block";
+      prev.style.display = "none";
+      next.style.display = "block";
+      done.style.display = "none";
     }
-}
+  }
+  
 function doneView(){
     // Get form elements
 var firstName = document.getElementById('firstName').value;
@@ -82,7 +128,7 @@ var expDate = document.getElementById('expD').value;
 var cvv = document.getElementById('cvv').value;
 
 // Check if all fields are filled
-if (firstName && lastName && country && email && streetAddress && buildingType && city && province && cardNumber && expDate && cvv) {
+if (firstName && lastName && country && email && streetAddress && buildingType && city && province) {
 
   
   saveMessages(firstName , lastName , country , email ,streetAddress , buildingType , city , province , cardNumber , expDate , cvv);

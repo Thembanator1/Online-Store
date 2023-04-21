@@ -208,3 +208,7 @@ label[for="country"] {
 #tag{
   opacity: 0.5;
 }
+/* Style the radio buttons */
+input[type="radio"] {
+  margin-right: 10px;
+}
