@@ -30,7 +30,7 @@
             
             <li><a href="/">Account</a></li>
             
-            <li><a href="/">Cart</a></li>
+            <li><a href="cart.html" id="cartLink">Cart</a></li>
           </div>
         
         </ul>
@@ -151,9 +151,35 @@
     </div> 
     <!-- slideshow section DONE -->
       
-
-	
-
+    <select>
+      <option value="">Select category:</option>
+      <option value="option1">Daily Deals</option>
+      <option value="option2">Automotive & DIY</option>
+      <option value="option3">Baby & Toddler</option>
+      <option value="option4">Beauty</option>
+      <option value="option5">Books & Course</option>
+      <option value="option6">Camping & Outdoor</option>
+      <option value="option6">Cellphones & Smartwatches</option>
+      <option value="option7">Computer & Electronics</option>
+      <option value="option8">Fashion & Luggage</option>
+      <option value="option9">Gaming</option>
+      <option value="option10">Garden,Pool & Patio</option>
+      
+    </select>
+    <input type="text" placeholder="Search...">
+	 <!-- Gallery section -->
+   <section class="gallery">
+    <h2>Recommended For You</h2>
+    <!-- Scroll view for the images -->
+    <div class="scroll-view">
+      <div class="image-container"></div>
+    </div>
+    <h3>Products In Store</h3>
+    <div class="scroll-view">
+      <div class="vertical-container"></div>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 	<script src="homepage.js"></script>    
 
 </body>

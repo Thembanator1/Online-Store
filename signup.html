@@ -96,26 +96,36 @@
        		font-weight:bold;
        		text-decoration:none;
        }
+	  
+
     </style>
 </head>
 <body>
+	
+	<!-- This div contains the signup form -->
+	<div class="login-box">
+		<img src="logo-shop.png" class="avatar">
+		<h1>Signup Here</h1>
+		<form>
+	
 
-<div class="login-box">
-<img src="logo-shop.png" class="avatar">
-<h1>Customer Signup</h1>
-<form>
-<input type="text" name="" placeholder="Enter Name" id="name">
-<input type="text" name="" placeholder="Enter Surname" id="surname">
-<input type="text" name="" placeholder="Enter Email" id="email">
-<input type="password" name="" placeholder="Enter Password" id="password">
-<input type="password" name="" placeholder="Confirm Password" id="confirmpassword">
-<input type="submit" name="" value="Sign in" id="validate">
-<a href="login.html">Already have an account?</a>
-</form>
-
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-<script src="signup2.js"></script>
-
-</body>
+			<!-- Input fields for the user's name, surname, email, password, and confirm password -->
+			<input type="text" name="" placeholder="Enter Name" id="name">
+			<input type="text" name="" placeholder="Enter Surname" id="surname">
+			<input type="text" name="" placeholder="Enter Email" id="email">
+			<input type="password" name="" placeholder="Enter Password" id="password">
+			<input type="password" name="" placeholder="Confirm Password" id="confirmpassword">
+			<!-- Submit button for the form -->
+			<input type="submit" name="" value="Sign in" id="validate">
+			<!-- Link to the login page for users who already have an account -->
+			<a href="login.html">Already have an account?</a>
+		</form>
+	</div>
+	
+	<!-- Link to the Firebase JavaScript library and to a custom JavaScript file for handling form submission -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<script src="signup2.js"></script>
+	
+	</body>
+	
 </html>

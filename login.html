@@ -98,22 +98,24 @@
        }
     </style>
 </head>
+<!-- The following code creates a login form with input fields for email and password -->
 <body>
-
-<div class="login-box">
-<img src="logo-shop.png" class="avatar">
-<h1>Customer Login</h1>
-<form>
-<input type="text" name="" placeholder="Enter Email" id="Email">
-<input type="password" name="" placeholder="Enter Password" id="Password">
-<input type="submit" name="" value="Login" id="validate">
-<a href="forgot.html">Lost your password?</a><br>
-<a href="signup.html">Don't have an account?</a>
-</form>
-
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-<script src="login2.js"></script>
-
-</body>
+	<div class="login-box">
+	<img src="logo-shop.png" class="avatar">
+	<h1>Login Here</h1>
+	<form>
+	<input type="text" name="" placeholder="Enter Email" id="Email">
+	<input type="password" name="" placeholder="Enter Password" id="Password">
+	<input type="submit" name="" value="Login" id="validate">
+	<!-- The following link provides an option for users who have lost their password -->
+	<a href="forgot.html">Lost your password?</a><br>
+	<!-- The following link provides an option for users who don't have an account yet -->
+	<a href="signup.html">Don't have an account?</a>
+	</form>
+	</div>
+	<!-- The following script tag includes the Firebase SDK library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<!-- The following script tag includes the javascript file for the login functionality -->
+	<script src="login2.js"></script>
+	</body>
 </html>
