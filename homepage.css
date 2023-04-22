@@ -298,7 +298,7 @@ body {
   flex-wrap: nowrap;
   gap: 1rem; /* add some gap between images */
 }
-.image-container img {
+.objectlist img {
   width: 400px; /* increase image width */
   height: auto; /* adjust height automatically */
 }
