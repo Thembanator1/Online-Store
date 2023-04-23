@@ -71,6 +71,6 @@ productRef.orderByChild('suppliers_email').equalTo(email).once('value', function
           imageContainer.appendChild(productDiv);
       });
   } else {
-      alert("Error: No data found for the given email");
+      alert(" No products in store found");
   }
 });

@@ -41,7 +41,7 @@ var firebaseConfig = {
       snapshot.ref.getDownloadURL().then(url => {
         
         link=url;
-        alert(link);
+        
         saveMessages(productName , productDescription , productPrice , productQuantity,link);
         //database.ref('images').push({url: url});
        

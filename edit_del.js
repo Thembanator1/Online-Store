@@ -45,7 +45,7 @@ firebase.initializeApp({
 
 
       var userRef = usersRef.child(Upname);
-      usersRef.orderByChild("name").equalTo(Upname).once("value", function(snapshot) {
+      usersRef.orderByChild("picture").equalTo(ImageUrl).once("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
           // Delete the child from the "Products" table
           childSnapshot.ref.update({
@@ -55,7 +55,7 @@ firebase.initializeApp({
             description: Updescription,
             picture: ImageUrl
           });
-          alert("sucessfully Updated Product Product");
+          alert("sucessfully Updated Product");
            });
          });
      
@@ -63,6 +63,8 @@ firebase.initializeApp({
     
     // Function to delete a user
     function deleteUser() {
+      var Upname = document.getElementById("name").value || localStorage.getItem("name") || "";
+  
       // Search for user's username in "Products" table and delete if found
       usersRef.orderByChild("name").equalTo(Upname).once("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
