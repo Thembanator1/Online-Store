@@ -17,7 +17,7 @@ const firebaseConfig = {
  // reference your database
  var id="none";
  localStorage.setItem('item_key', id);
-
+ 
 var imagesRef = firebase.database().ref("Products");
 
 const productsList = document.querySelector(".image-container");

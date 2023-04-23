@@ -18,7 +18,7 @@ var contactFormDB = firebase.database().ref("Cart");
 // Get a reference to the Firebase database
 const database = firebase.database();
 const id = localStorage.getItem('id');
-
+const user_email=localStorage.getItem('user_email');
 
 // Get a reference to the product node in the database
 const productRef = database.ref('Products/' + id);
@@ -59,7 +59,7 @@ var productName=productData.name;
   // Set the product price
   
   var productPrice= productData.price;
- var customer_email="abc123@gmail.com";
+ var customer_email=user_email;
   saveMessages(productId, productName, productPrice,description,productImage, customer_email  );
 });
     

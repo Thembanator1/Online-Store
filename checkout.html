@@ -13,7 +13,7 @@
   
   <div id="out-box">
     <form id="form1">
-      <!-- form elements -->
+      <!-- form elementss -->
       <h1>Shipping Details</h1>
       <form>
       <div class="nextTo">
@@ -44,20 +44,47 @@
       </form>
     </form>
 
-    <form id="form2" class = "hide">
-      <!-- form elements -->
+    <form id="form2" class="hide">
       <h1>Billing & Payment</h1>
       <form>
-      <input type="password" name="" placeholder="Card Number" id="cardN">
-      <div class="nextTo">
-        <input type="text" name="" placeholder="Exp date" id="expD"  style="margin-right: 10px;">
-        <input type="text" id="cvv" placeholder="CVV">
-      </div>
+        <input type="text" name="" placeholder="Card Number" id="cardN" >
+        <div class="nextTo">
+          <input type="text" name="" placeholder="Exp date" id="expD"  style="margin-right: 10px;">
+          <input type="text" id="cvv" placeholder="CVV" >
+        </div>
       </form>
+      <button id="pay-button">Pay</button>
+    
+      <div id="popup-container">
+        <div id="popup">
+          <span id="counter">3</span>
+        </div>
+      </div>
     </form>
-  
+    
+    
+
+<form id="paymentOptions">
+  <h2>How would you like to pay?</h2>
+  <div>
+    <input type="radio" id="cardOnDelivery" name="paymentMethod" value="cardOnDelivery" checked>
+    <label for="cardOnDelivery">
+      <img src="card_on_delivery.png" alt="Card on delivery">
+    </label>
+  </div>
+  <div>
+    <input type="radio" id="payOnline" name="paymentMethod" value="payOnline">
+    <label for="payOnline">
+      <img src="pay_online.png" alt="Pay online">
+    </label>
+  </div>  
+  <br>
+ 
+
+</form>
 
     <div id="confirmation" class="hide">
+
       <!-- div elements -->
       <div style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.5; color: #333333;">
         <h1>Thank you for your order!</h1>
