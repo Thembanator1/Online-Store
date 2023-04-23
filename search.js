@@ -28,31 +28,35 @@ const productsRef = firebase.database().ref("Products");
   var objectlist=document.getElementById("objectList");
   objectlist.innerHTML="";
   productsRef.once("value", function(snapshot){
-    var product=snapshot.exportVal();
-    for(let i in product){
-      console.log(product[i])
-      if(product[i].name.toLowerCase().indexOf(query)!=-1){
+    var product=snapshot.val();
+    for (var [key, product] of Object.entries(product)){
+      console.log(product)
+      if(product.name.toLowerCase().indexOf(query)!=-1){
         var objectDiv = document.createElement("div");
         objectDiv.className = "object";
         
         var objectImage = document.createElement("img");
-        objectImage.src = product[i].picture; // Assuming there's a URL property in the data
-        objectImage.alt = product[i].name;
-        objectImage.alt = product[i].price;
+        objectImage.src = product.picture; // Assuming there's a URL property in the data
+        objectImage.alt = product.name;
+        objectImage.alt = product.price;
         objectImage.className = "item-image";
         
-        objectImage.onclick = function () {
-          // Redirect to another HTML page when the image is clicked
-          window.location.href = "ProductPage.html?id=" + i;
-        };
+
         objectDiv.appendChild(objectImage);
         
         var objectName = document.createElement("p");
         var price=document.createElement("q");
-        objectName.innerHTML = product[i].name;
-        price.innerHTML=("$"+product[i].price);
+        objectName.innerHTML = product.name;
+        price.innerHTML=("$"+product.price);
         objectDiv.appendChild(objectName);
         objectDiv.appendChild(price);
+
+        objectDiv.addEventListener("click", () => {
+          localStorage.setItem('id',key);
+           // redirect to login page
+            window.location.assign("ProductPage.html");
+            // Print the key of the clicked item
+          });
         
         objectlist.appendChild(objectDiv);
       }
@@ -60,12 +64,3 @@ const productsRef = firebase.database().ref("Products");
 
   })
 }
-  
-
-
-
-  
-
- 
-  
- 

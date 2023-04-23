@@ -10,20 +10,31 @@
 </head>
 
 <body>
+<div>
+    <nav class="topnav">
+
+        <div class="logo">
+          <img src =  "./img/home/RunTime_logo.png"/>
+        </div>
+</div>
+
     <div>
-        <h1>Object Snapshots</h1>
+        <h1>SEARCH FOR PRODUCT </h1>
     </div>
+
 	
     <div>
-        <input type="search" id="searchInput" onkeyup="searchObjects()" placeholder="Search for object..."><br><br>
+        <input type="search" class="search-bar"id="searchInput" onkeyup="searchObjects()" placeholder="Search for object..."><br><br>
     </div>
-	
-	<div id="objectList">
-		<!-- Object snapshots will be displayed here -->
-	</div>
+	<div>
+        <div id="objectList">
+            <!-- Object snapshots will be displayed here -->
+        </div>
+
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-    <script src="./supplier_login.js"></script>
+    <script src="./search.js"></script>
     </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
     </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
 </body>
