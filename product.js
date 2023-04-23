@@ -38,80 +38,7 @@ productRef.once('value', (snapshot) => {
   // Set the product price
   const price = document.getElementById('product-price');
   price.textContent += ' ' + productData.price;
-});
-/*
-function addToCart() {
-  // Get a reference to the product node in the database
-
-  // Retrieve the product data from the database
-  productRef.once('value', (snapshot) => {
-    const productData = snapshot.val();
-
-    // Set the product ID, image source attribute, description, and price
-    const productId = id;
-    const productImage = productData.picture;
-    const productName = productData.name;
-    const description = productData.description;
-    const productPrice = productData.price;
-    const customer_email = "abc123@gmail.com";
-
-    // Save the product information to the database
-    saveMessages(productId, productName, productPrice, description, productImage, customer_email);
-
-    // Get a reference to the "Add to Cart" button
-    const addToCartButton = document.querySelector('#add-to-cart');
-
-    // Add an event listener to the "Add to Cart" button
-    addToCartButton.addEventListener('click', () => {
-      // Get a reference to the table element
-      const cartTable = document.querySelector('#cart-table');
-
-      // Create a new table row and cells
-      const newRow = document.createElement('tr');
-      const productCell = document.createElement('td');
-      const quantityCell = document.createElement('td');
-      const subtotalCell = document.createElement('td');
-      const actionsCell = document.createElement('td');
-
-      // Populate the cells with product information
-      productCell.innerHTML = `
-        <div class="cart-info">
-          <img src="${productImage}">
-          <div>
-            <p>${productName}</p>
-            <small>Price: ${productPrice}</small>
-          </div>
-        </div>
-      `;
-      quantityCell.innerHTML = '<input type="number" value="1">';
-      subtotalCell.textContent = productPrice;
-      actionsCell.innerHTML = '<button class="remove-product">Remove</button>';
-
-      // Append the cells to the new row
-      newRow.appendChild(productCell);
-      newRow.appendChild(quantityCell);
-      newRow.appendChild(subtotalCell);
-      newRow.appendChild(actionsCell);
-
-      // Append the new row to the table
-      cartTable.appendChild(newRow);
-
-      //calc sum/total
-      let sum = 0;
-        const rows = document.querySelectorAll('table tr');
-        for (let i = 1; i < rows.length; i++) { 
-            const subtotalStr = rows[i].querySelector('td:nth-child(3)').textContent;
-            const subtotalNum = parseFloat(subtotalStr.replace(/[^\d.-]+/g,""));
-            sum += subtotalNum;
-        }
-        const totalElem = document.getElementById('cart-total');
-        totalElem.textContent = `TOTAL: (${rows.length - 1} items)`;
-        const sumElem = document.getElementById('cart-sum');
-        sumElem.textContent += sum;
-        console.log(sum);
-    });
-  });
-}*/
+});//end of prodRef
 
 function addToCart() {
   // Get a reference to the product node in the database
@@ -144,7 +71,7 @@ function addToCart() {
       customer_email
     );
 
-    //++++++++++------ADDING to the CART by add to cart button---++++++++++++++//
+    //++++++++++------ADDING to the CART table on html by add to cart button---++++++++++++++//
     // Get a reference to the table element
     const cartTable = document.querySelector("#cart-table");
 
@@ -190,7 +117,6 @@ function addToCart() {
     totalElem.textContent = `TOTAL: (${rows.length - 1} items)`;
     const sumElem = document.getElementById('cart-sum');
     sumElem.textContent = sum;
-    console.log(sum);
   });
 }
 
