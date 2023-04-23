@@ -212,3 +212,35 @@ label[for="country"] {
 input[type="radio"] {
   margin-right: 10px;
 }
+#popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(22, 14, 14);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#counter {
+  font-size: 50px;
+  font-weight: bold;
+}
+#pay-button {
+  /* styling for next button */
+  position: right;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(800%);
+}
+

@@ -44,17 +44,24 @@
       </form>
     </form>
 
-    <form id="form2" class = "hide">
-      <!-- form elements -->
+    <form id="form2" class="hide">
       <h1>Billing & Payment</h1>
       <form>
-      <input type="password" name="" placeholder="Card Number" id="cardN">
-      <div class="nextTo">
-        <input type="text" name="" placeholder="Exp date" id="expD"  style="margin-right: 10px;">
-        <input type="text" id="cvv" placeholder="CVV">
-      </div>
+        <input type="text" name="" placeholder="Card Number" id="cardN" >
+        <div class="nextTo">
+          <input type="text" name="" placeholder="Exp date" id="expD"  style="margin-right: 10px;">
+          <input type="text" id="cvv" placeholder="CVV" >
+        </div>
       </form>
+      <button id="pay-button">Pay</button>
+    
+      <div id="popup-container">
+        <div id="popup">
+          <span id="counter">3</span>
+        </div>
+      </div>
     </form>
+    
     
 
 <form id="paymentOptions">
@@ -70,12 +77,14 @@
     <label for="payOnline">
       <img src="pay_online.png" alt="Pay online">
     </label>
-  </div>
+  </div>  
   <br>
-  
+ 
+
 </form>
 
     <div id="confirmation" class="hide">
+
       <!-- div elements -->
       <div style="font-family: Arial, sans-serif; font-size: 18px; line-height: 1.5; color: #333333;">
         <h1>Thank you for your order!</h1>
