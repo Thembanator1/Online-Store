@@ -30,6 +30,7 @@ var firebaseConfig = {
     var file = document.getElementById('image-upload').files[0];
     if (productName && productDescription && productPrice && productQuantity) {
     // Create a storage reference to the selected file
+    alert(file);
     var storageRef = storage.ref('images/' + file.name);
   
     // Upload the file to Firebase Storage
@@ -53,6 +54,7 @@ else {
     alert('Please fill in all the required fields.');
   }
   }
+  var email  = sessionStorage.getItem("user_email");
   // function to save user data to the database
 const saveMessages = (productName , productDescription , productPrice , productQuantity,link) => {
     var newContactForm = contactFormDB.push();
@@ -63,7 +65,7 @@ const saveMessages = (productName , productDescription , productPrice , productQ
         price: productPrice,
         category: productQuantity,
         picture :link,
-        suppliers_email:"supplier@gmail.com"
+        suppliers_email:email
     });
     
     
