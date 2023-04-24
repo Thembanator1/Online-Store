@@ -94,7 +94,7 @@ function addToCart() {
     `;
     quantityCell.innerHTML = '<input type="number" value="1">';
     subtotalCell.textContent = productPrice;
-    actionsCell.innerHTML = '<button class="remove-product">Remove</button>';
+    actionsCell.innerHTML = '<button id="remove-product">Remove</button>';
 
     // Append the cells to the new row
     newRow.appendChild(productCell);
