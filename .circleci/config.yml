@@ -9,18 +9,7 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-      - run:
-          name: Install dependencies
-          command: "npm install"
-      - run:
-          name: Run tests
-          command: "npm run test"
-      - run:
-          name: Coveralls GitHub Action
-          command: |
-            uses: coverallsapp/github-action@v1
-            with:
-              github-token: ${{ secrets.GITHUB_TOKEN }}
+      
 
 workflows:
   say-hello-workflow:
