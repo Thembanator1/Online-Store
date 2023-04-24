@@ -3,17 +3,18 @@ version: 2.1
 jobs:
   say-hello:
     docker:
-      - image: cimg/base:stable
+      - image: node:14
     steps:
       - checkout
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
       - run:
-          name: Install dependencies and run tests
-          command: |
-            npm install
-            npm run test
+          name: Install dependencies
+          command: "npm install"
+      - run:
+          name: Run tests
+          command: "npm run test"
       - run:
           name: Coveralls GitHub Action
           command: |
