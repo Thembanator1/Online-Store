@@ -17,7 +17,7 @@ const firebaseConfig = {
  // reference your database
  var id="none";
  localStorage.setItem('item_key', id);
- 
+
 var imagesRef = firebase.database().ref("Products");
 
 const productsList = document.querySelector(".image-container");
@@ -226,3 +226,89 @@ clearInterval(playSlider);
 slider.addEventListener("mouseout", () => {
 repeater();
 });
+
+const customer_email = localStorage.getItem('user_email');
+// Get a reference to the product node in the database
+const database = firebase.database();
+const cartRef = database.ref('Cart');
+
+// Retrieve the product data from the database
+cartRef.once("value", (snapshot) => {
+const cartData = snapshot.val();
+for (const productId in cartData) {
+  const cartItem = cartData[productId];
+  // Display the cart item on the cart page
+  //console.log(cartItem)
+  if(cartItem.customer_email == customer_email){
+  console.log(cartItem)
+  // Set the image source attribute
+  const productId = cartItem.product_id;
+  const productImage = cartItem.product_image;
+
+  // Set the product description
+  const description = cartItem.description;
+  const productName = cartItem.product_name;
+
+  // Set the product price
+  const productPrice = cartItem.product_price;
+  //const customer_email = "abc123@gmail.com";
+
+  /*saveMessages(
+    productId,
+    productName,
+    productPrice,
+    description,
+    productImage,
+    customer_email
+  );*/
+
+  //++++++++++------ADDING to the CART table on html by add to cart button---++++++++++++++//
+  // Get a reference to the table element
+  const cartTable = document.querySelector("#cart-table");
+
+  // Create a new table row and cells
+  const newRow = document.createElement("tr");
+  const productCell = document.createElement("td");
+  const quantityCell = document.createElement("td");
+  const subtotalCell = document.createElement("td");
+  const actionsCell = document.createElement("td");
+
+  // Populate the cells with product information
+  productCell.innerHTML = `
+    <div class="cart-info">
+    <img src="${productImage}">
+    <div>
+      <p>${productName}</p>
+      <small>Price: ${productPrice}</small>
+    </div>
+    </div>
+  `;
+  quantityCell.innerHTML = '<input type="number" value="1">';
+  subtotalCell.textContent = productPrice;
+  actionsCell.innerHTML = '<button class="remove-product">Remove</button>';
+
+  // Append the cells to the new row
+  newRow.appendChild(productCell);
+  newRow.appendChild(quantityCell);
+  newRow.appendChild(subtotalCell);
+  newRow.appendChild(actionsCell);
+
+  // Append the new row to the table
+  cartTable.appendChild(newRow);
+
+  // Calculate and update the total price
+  let sum = 0;
+  const rows = document.querySelectorAll('table tr');
+  for (let i = 1; i < rows.length; i++) { 
+    const subtotalStr = rows[i].querySelector('td:nth-child(3)').textContent;
+    const subtotalNum = parseFloat(subtotalStr.replace(/[^\d.-]+/g,""));
+    sum += subtotalNum;
+  }
+  const totalElem = document.getElementById('cart-total');
+  totalElem.textContent = `TOTAL: (${rows.length - 1} items)`;
+  const sumElem = document.getElementById('cart-sum');
+  sumElem.textContent = "R " + sum;
+  }
+}
+
+});//end of cartRef
