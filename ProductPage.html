@@ -166,51 +166,228 @@ form button {
 }
 
   </style>
+  <style>
+	/* Styling for the modal window */
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(0,0,0,0.4);
+	}
+	
+	/* Styling for the modal content */
+	.modal-content {
+		background-color: white;
+		margin: 10% auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 1400px;
+		height: 80%;
+		overflow: auto;
+	}
+	
+	/* Styling for the close button */
+	.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+	
+	.close:hover,
+	.close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	
+	/*----Order Information-----*/
+	.products {
+		float: left;
+	}
+	.products + .total-price{
+		position: relative;
+	}
+
+	.cart-page{
+		margin: 80px auto;
+		width: 500px
+		}
+	table{
+		width : 80%;
+		border-collapse: collapse;
+		margin-bottom: 20px; /* add some space between the two tables */
+
+	}   
+	table + table {
+	/* style for second table */
+		position: relative;
+		top: 20px; /* move the second table 20px down from its normal position */
+	}
+	th{
+	text-align: left;
+	padding: 5px;
+	color: #fff;
+	background: #ff523b;
+	font-weight: normal;
+	}
+	th:nth-child(4) {
+		display: none;
+	}
+	td{
+	padding: 10px 5px;
+	}
+	td img{
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+	}
+	td input{
+	width: 40px;
+	height: 30px;
+	padding: 5px;
+	}
+	td a{
+	color: #ff523b;
+	font-size: 12px;
+	}
+	.cart-info{
+	display: flex;
+	flex-wrap: wrap;
+	}
+	.total-price{
+	display: flex;
+	justify-content: left;
+	clear: both;
+	}
+	#totalPrice{
+	border-top: #ff523b 3px solid;
+	width: 100%;
+	max-width: 971px;
+	}
+
+	td:last-child{
+	text-align: left; /*items on last column will...*/
+	}
+	th:last-child{
+	text-align: left;/*header item on last column will...*/
+	}
+
+	#tag{
+	opacity: 0.5;
+	}
+
+
+	.cart-summary {
+background-color: #f5f5f5;
+border: 1px solid #ddd;
+border-radius: 5px;
+padding: 20px;
+text-align: center;
+margin-top: 20px;
+}
+
+.cart-summary h2 {
+font-size: 24px;
+margin-bottom: 10px;
+}
+
+.cart-summary h3 {
+color: #f00;
+font-size: 30px;
+margin-top: 10px;
+margin-bottom: 20px;
+}
+
+.cart-summary button {
+background-color: #f00;
+border: none;
+color: #fff;
+font-size: 16px;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.cart-summary button:hover {
+background-color: #c00;
+}
+
+</style>
 </head>
-<body>
-	<div><!-- top-first navBar --->
-    <nav class="topnav">
+<body>	
+	<!-- Modal window -->
+	<div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class = "close" > &times;</span>
+            
+                <table id = "cart-table">
+                    <tr>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Subtotal</th>
+                      <th>Actions</th> <!-- New column for product removal buttons -->
+                    </tr>
+                  </table>
+                  
 
-      <div class="logo">
-        <img src =  "./img/home/RunTime_logo.png"/>
-      </div>
-      
-      <ul class="nav-links">
-        
-        <div class="menu">
-          <li><a href="/">Home</a></li>
-          
-          <li><a href="/">About</a></li>
-          
-          <li><a href="/">Account</a></li>
-          
-          <li><a href="cart.html" id="cartLink">Cart</a></li>
-        </div>
-      
-      </ul>
+                <div class="cart-summary">
+                    <h2>Cart Summary</h2>
+                    <p id = "cart-total"></p>
+                    <h3 id = "cart-sum"></h3>
+                    <button id="checkout">Proceed to Checkout</button>
+                </div>     
+          </div>
+	    </div>
     
-    </nav>
-  </div>
+    <div><!-- top-first navBar --->
+      <nav class="topnav">
 
-  <div> <!-- second navBar --->
-    <nav class="navbar"> 
-      <ul class="nav-links">
-    
-        
-        <div class="menu">
-          <li><a href="/">Home</a></li>
-          
-          <li><a href="/">About</a></li>
-          
-          <li><a href="/">Pricing</a></li>
-          
-          <li><a href="/">Contact</a></li>
-      
+        <div class="logo">
+          <img src =  "./img/home/RunTime_logo.png"/>
         </div>
+        
+        <ul class="nav-links">
           
-      </ul>
-    </nav>
-  </div>
+          <div class="menu">
+            <li><a href="/">Home</a></li>
+            
+            <li><a href="/">About</a></li>
+            
+            <li><a href="/">Account</a></li>
+            
+            <li><a href="#" id="cartLink">Cart</a></li>
+          </div>
+        
+        </ul>
+      </nav>
+    </div>
+
+    <div> <!-- second navBar --->
+      <nav class="navbar"> 
+        <ul class="nav-links">
+      
+          
+          <div class="menu">
+            <li><a href="/">Home</a></li>
+            
+            <li><a href="/">About</a></li>
+            
+            <li><a href="/">Pricing</a></li>
+            
+            <li><a href="/">Contact</a></li>
+        
+          </div>
+            
+        </ul>
+      </nav>
+    </div>
 
 	<main>
 		<section>
@@ -218,7 +395,7 @@ form button {
 			<h4>Description</h4>
 			<h2 id="product-desc">Product Description</h2>
 			<p id="product-price">Price: $ </p>
-			<button onclick="addToCart()"> Add to Cart</button>
+			<button id = "add-to-cart"  onclick="addToCart()"> Add to Cart</button>
 		  </section>
 		  
 
@@ -249,7 +426,121 @@ form button {
 		<p>&copy; 2023 Runtime Shopping inc.</p>
 	</footer>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-	<script src="product.js"></script>  
+	<script src="product.js"></script>
+	<!-- JavaScript to display and hide the modal window -->
+	<script>
+		var cartLink = document.getElementById("cartLink");
+		var modal = document.getElementById("myModal");
+		var close = document.getElementsByClassName("close")[0];
+
+		cartLink.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		close.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+
+			//checkout button
+		var button = document.getElementById("checkout");
+		button.addEventListener("click", function(event) {
+		window.location.assign("checkout.html");
+		});
+	</script>
+	
+	<script>//Cart script
+
+		const customer_email = localStorage.getItem('user_email');
+		// Get a reference to the product node in the database
+		const cartRef = database.ref('Cart');
+
+		// Retrieve the product data from the database
+		cartRef.once("value", (snapshot) => {
+		const cartData = snapshot.val();
+		for (const productId in cartData) {
+			const cartItem = cartData[productId];
+			// Display the cart item on the cart page
+			//console.log(cartItem)
+			if(cartItem.customer_email == customer_email){
+			console.log(cartItem)
+			// Set the image source attribute
+			const productId = cartItem.product_id;
+			const productImage = cartItem.product_image;
+
+			// Set the product description
+			const description = cartItem.description;
+			const productName = cartItem.product_name;
+
+			// Set the product price
+			const productPrice = cartItem.product_price;
+			//const customer_email = "abc123@gmail.com";
+
+			/*saveMessages(
+				productId,
+				productName,
+				productPrice,
+				description,
+				productImage,
+				customer_email
+			);*/
+
+			//++++++++++------ADDING to the CART table on html by add to cart button---++++++++++++++//
+			// Get a reference to the table element
+			const cartTable = document.querySelector("#cart-table");
+
+			// Create a new table row and cells
+			const newRow = document.createElement("tr");
+			const productCell = document.createElement("td");
+			const quantityCell = document.createElement("td");
+			const subtotalCell = document.createElement("td");
+			const actionsCell = document.createElement("td");
+
+			// Populate the cells with product information
+			productCell.innerHTML = `
+				<div class="cart-info">
+				<img src="${productImage}">
+				<div>
+					<p>${productName}</p>
+					<small>Price: ${productPrice}</small>
+				</div>
+				</div>
+			`;
+			quantityCell.innerHTML = '<input type="number" value="1">';
+			subtotalCell.textContent = productPrice;
+			actionsCell.innerHTML = '<button class="remove-product">Remove</button>';
+
+			// Append the cells to the new row
+			newRow.appendChild(productCell);
+			newRow.appendChild(quantityCell);
+			newRow.appendChild(subtotalCell);
+			newRow.appendChild(actionsCell);
+
+			// Append the new row to the table
+			cartTable.appendChild(newRow);
+
+			// Calculate and update the total price
+			let sum = 0;
+			const rows = document.querySelectorAll('table tr');
+			for (let i = 1; i < rows.length; i++) { 
+				const subtotalStr = rows[i].querySelector('td:nth-child(3)').textContent;
+				const subtotalNum = parseFloat(subtotalStr.replace(/[^\d.-]+/g,""));
+				sum += subtotalNum;
+			}
+			const totalElem = document.getElementById('cart-total');
+			totalElem.textContent = `TOTAL: (${rows.length - 1} items)`;
+			const sumElem = document.getElementById('cart-sum');
+			sumElem.textContent = "R " + sum;
+			}
+		}
+		
+		});//end of cartRef
+	</script>
 	
 </body>
 </html>

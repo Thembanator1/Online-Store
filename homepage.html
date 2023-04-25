@@ -346,7 +346,7 @@
       <option value="option10">Garden,Pool & Patio</option>
       
     </select>
-    <input type="text" placeholder="Search...">
+    <input type="button" value="Search" onclick="window.location.href='search.html';">
 	 <!-- Gallery section -->
    <section class="gallery">
     <h2>Recommended For You</h2>
@@ -397,5 +397,11 @@
 
 
 	</script>
+  <script>
+    var button = document.getElementById("checkout");
+    button.addEventListener("click", function(event) {
+      window.location.assign("checkout.html");
+    });
+  </script>
 </body>
 </html>

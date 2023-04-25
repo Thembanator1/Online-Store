@@ -144,15 +144,15 @@ select {
   transform: translate(-50%, -50%);
   
 }
-input[type="text"] {
+input[type="button"] {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  width: 500px;
+  width: 70px;
 
   position: absolute;
   top: 31.5%;
-  left: 57%;
+  left: 30%;
   transform: translate(-50%, -50%);
 
 }
@@ -217,8 +217,9 @@ input[type="text"] {
   box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
 }
 
-.navigation-visibility .slide-icon.active{
+.navigation-visibility .slide-icon.active{ /*<!-- dots indicatating which slide/printAd we are on-->*/
   background: #4285F4;
+  z-index: 1;
 }
 
 @media (max-width: 900px){
@@ -298,7 +299,7 @@ body {
   flex-wrap: nowrap;
   gap: 1rem; /* add some gap between images */
 }
-.image-container img {
+.objectlist img {
   width: 400px; /* increase image width */
   height: auto; /* adjust height automatically */
 }
