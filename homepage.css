@@ -144,15 +144,15 @@ select {
   transform: translate(-50%, -50%);
   
 }
-input[type="text"] {
+input[type="button"] {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  width: 500px;
+  width: 70px;
 
   position: absolute;
   top: 31.5%;
-  left: 57%;
+  left: 30%;
   transform: translate(-50%, -50%);
 
 }
@@ -299,7 +299,7 @@ body {
   flex-wrap: nowrap;
   gap: 1rem; /* add some gap between images */
 }
-.image-container img {
+.objectlist img {
   width: 400px; /* increase image width */
   height: auto; /* adjust height automatically */
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Messages | Firebase</title>
+    <link rel="stylesheet" href="./search.css">
+</head>
+
+<body>
+<div>
+    <nav class="topnav">
+
+        <div class="logo">
+          <img src =  "./img/home/RunTime_logo.png"/>
+        </div>
+</div>
+
+    <div>
+        <h1>SEARCH FOR PRODUCT </h1>
+    </div>
+
+	
+    <div>
+        <input type="search" class="search-bar"id="searchInput" onkeyup="searchObjects()" placeholder="Search for object..."><br><br>
+    </div>
+	<div>
+        <div id="objectList">
+            <!-- Object snapshots will be displayed here -->
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./search.js"></script>
+    </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
+    </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
+</body>
+
+</html>
