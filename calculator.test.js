@@ -1,5 +1,7 @@
 const { add, subtract, multiply } = require('./calculator');
-
+const add =require('./add');
+const subtract =require('./subtract');
+const multiply =require('./multiply');
 describe('add', () => {
   test('adds 1 + 2 to equal 3', () => {
     expect(add(1, 2)).toBe(3);
