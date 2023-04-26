@@ -1,4 +1,3 @@
-const { add, subtract, multiply } = require('./calculator');
 const add =require('./add');
 const subtract =require('./subtract');
 const multiply =require('./multiply');
