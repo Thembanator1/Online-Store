@@ -1,17 +1,10 @@
-function calculator(num1, operator, num2) {
-    switch (operator) {
-      case "+":
-        return num1 + num2;
-      case "-":
-        return num1 - num2;
-      case "*":
-        return num1 * num2;
-      case "/":
-        if (num2 === 0) {
-          return "Cannot divide by zero";
-        }
-        return num1 / num2;
-      default:
-        return "Invalid operator";
-    }
+function add(num1, num2) {
+    return num1 + num2;
   }
+  function subtract(num1, num2) {
+    return num1 - num2;
+  }
+  function multiply(num1, num2) {
+    return num1 * num2;
+  }
+      
