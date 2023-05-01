@@ -65,12 +65,12 @@ productsRef.once("value", snapshot => {
     infoDiv.appendChild(priceSpan);
 
     // Add an event listener to the list item
-//     listItem.addEventListener("click", () => {
-//         localStorage.setItem('id',key);
-//                // redirect to login page
-// window.location.assign("ProductPage.html");
+  listItem.addEventListener("click", () => {
+     localStorage.setItem('id',key);
+           // redirect to login page
+   window.location.assign("ProductPage.html");
 //       // Print the key of the clicked item
-//     });
+   });
 
     // Add the list item to the products list
     productsList.appendChild(listItem);
