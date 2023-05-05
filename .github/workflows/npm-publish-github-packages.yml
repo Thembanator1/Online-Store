@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: echo "Build successful"
       - name: Add badge
-        uses: Thembanator1/github-actions-badge@v1.0.1
+        uses: jacobtomlinson/github-actions-badge@v1.0.1
         with:
           style: plastic
           status: success
