@@ -15,10 +15,10 @@ var firebaseConfig = {
   var user=localStorage.getItem('user_email');
   // Get a reference to the reviews in the Firebase database
   var reviewsRef = firebase.database().ref('Reviews');
-  var id =localStorage.getItem('review_id');
-  // Get a reference to the database node you want to update
-  // Reference to users in the database
-  var usersRef = firebase.database().ref("Reviews");
+ var id =localStorage.getItem('review_id');
+// Get a reference to the database node you want to update
+// Reference to users in the database
+var usersRef = firebase.database().ref("Reviews");
   
   // Get a reference to the scroll view
 var scrollView = document.querySelector('.scroll-view');
@@ -36,8 +36,8 @@ reviewsRef.on('child_added', function(snapshot) {
     var product_name=" ";
     var pro_img=" ";
     console.log(review.product_id);
-    var products=firebase.database().ref('Products/' + review.product_id);
-    products.once('value', (snapshot) => {
+    var products=firebase.database().ref('Products/' + "-NTdxbInhERFMXN8FkJv" );
+    products.on('value', (snapshot) => {
       localStorage.setItem("review_id",id_r);
       const productData = snapshot.val();
       product_name=productData.name;
@@ -163,7 +163,10 @@ function editReview(){
 // Function to delete a user
 function deleteUser() {
    
-
+  var id =localStorage.getItem('review_id');
+  // Get a reference to the database node you want to update
+  // Reference to users in the database
+  var usersRef = firebase.database().ref("Reviews");
   // Search for user's username in "Products" table and delete if found
   usersRef.orderByChild("product_id").equalTo(id).once("value", function(snapshot) {
 snapshot.forEach(function(childSnapshot) {
