@@ -37,7 +37,8 @@ firebase.initializeApp({
       var Updescription =document.getElementById('description').value || localStorage.getItem("description") ||  "";
     
       // checking if category was updated
-      var Upcategory = document.getElementById('category').value || localStorage.getItem("category") || "";
+      const select = document.querySelector('select');
+      var Upcategory = select.value || localStorage.getItem("category") || "";
 
 
 
