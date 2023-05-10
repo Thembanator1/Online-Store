@@ -15,7 +15,10 @@ var firebaseConfig = {
   var user=localStorage.getItem('user_email');
   // Get a reference to the reviews in the Firebase database
   var reviewsRef = firebase.database().ref('Reviews');
- 
+  var id =localStorage.getItem('review_id');
+  // Get a reference to the database node you want to update
+  // Reference to users in the database
+  var usersRef = firebase.database().ref("Reviews");
   
   // Get a reference to the scroll view
 var scrollView = document.querySelector('.scroll-view');
