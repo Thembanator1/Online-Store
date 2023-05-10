@@ -22,7 +22,7 @@ var n_stars=0;
 
 rating.addEventListener('click', function(e) {
   if (e.target.type === 'radio') {
-    alert(`You clicked on ${e.target.value} stars!`);
+    
     n_stars=e.target.value;
   }
 });
