@@ -12,9 +12,10 @@ var firebaseConfig = {
   };
   
   firebase.initializeApp(firebaseConfig);
-  
+  var user=localStorage.getItem('user_email');
   // Get a reference to the reviews in the Firebase database
   var reviewsRef = firebase.database().ref('Reviews');
+ 
   
   // Get a reference to the scroll view
   var scrollView = document.querySelector('.scroll-view');
@@ -23,10 +24,11 @@ var firebaseConfig = {
   reviewsRef.on('child_added', function(snapshot) {
     // Get the review data from the snapshot
     var review = snapshot.val();
+    if(user==review.customer_email){
     var product_name=" ";
     var pro_img=" ";
     console.log(review.product_id);
-    var products=firebase.database().ref('Products/' + '-NTdxbInhERFMXN8FkJv');
+    var products=firebase.database().ref('Products/' + review.product_id);
     products.once('value', (snapshot) => {
        
         const productData = snapshot.val();
@@ -42,7 +44,7 @@ var firebaseConfig = {
     var productImage = document.createElement('img');
     productImage.className = 'product-image';
     productImage.src = pro_img;
-    productImage.alt = "good";
+    productImage.alt = review.title;
   
     // Create a new product info element
     var productInfo = document.createElement('div');
@@ -76,6 +78,7 @@ var firebaseConfig = {
     scrollView.appendChild(productBox);
        
     });
+  }
    
   });
 
