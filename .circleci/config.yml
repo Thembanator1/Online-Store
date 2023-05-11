@@ -4,17 +4,16 @@ orbs:
   node: circleci/node@5.1.0
   codecov: codecov/codecov@3.0.0
   
-
 jobs:
-  install-node-example:
+  build:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/node:7.10-browsers
+        environment:
+          CHROME_BIN: "/usr/bin/google-chrome"
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: '16.13'
-      - run: node --
+      - run: npm install
+      - run: npm test
   example-job:
     docker:
       # replace with your preferred image
@@ -30,8 +29,6 @@ workflows:
   example-workflow:
     jobs:
       - example-job
-  build-and-test:
-    jobs:
-      - install-node-example
+  
   
 
