@@ -21,7 +21,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - codecov/upload:
-          token: d6bf52c7-73cf-4796-847c-75e56793f9ba 
+          token: CODECOV_TOKEN 
           validate_url: true 
           flags: unittests , integration 
           url: https://app.codecov.io/gh/Thembanator1/Online-Store/new 
