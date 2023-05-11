@@ -1,34 +1,30 @@
-version: 2.1
-
-orbs:
-  node: circleci/node@5.1.0
-  codecov: codecov/codecov@3.0.0
-  
+version: 2
 jobs:
   build:
+    working_directory: ~/code
     docker:
-      - image: circleci/node:7.10-browsers
-        environment:
-          CHROME_BIN: "/usr/bin/google-chrome"
+      - image: circleci/android:api-30
+    environment:
+      JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - run: npm install
-      - run: npm test
-  example-job:
-    docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
-    steps:
-      - codecov/upload:
-          token: CODECOV_TOKEN 
-          validate_url: true 
-          flags: unittests , integration 
-          url: https://app.codecov.io/gh/Thembanator1/Online-Store/new 
-
-workflows:
-  example-workflow:
-    jobs:
-      - example-job
-  
-  
-
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+      - run:
+          name: chmod permissions
+          command: chmod +x ./gradlew
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+      - run:
+          name: Run Tests
+          command: ./gradlew lint test
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+      - store_test_results:
+          path: app/build/test-results
