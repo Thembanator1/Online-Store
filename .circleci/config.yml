@@ -30,7 +30,5 @@ workflows:
   example-workflow:
     jobs:
       - example-job
-  test_my_app:
-    jobs:
-      - install-node-example
+  
 
