@@ -3,6 +3,8 @@ Software Design project
 [![Coverage Status](https://img.shields.io/coveralls/github/Thembanator1/online-store/main)](https://coveralls.io/github/Thembanator1/online-store?branch=main)
 [![Build Status](https://img.shields.io/badge/build-passing-pink.svg)](https://github.com/Thembanator1/online-store/actions)
 [![codecov](https://codecov.io/gh/Thembanator1/Online-Store/branch/main/graph/badge.svg?)](https://codecov.io/gh/Thembanator1/Online-Store)
+[![CircleCI](https://circleci.com/gh/Thembanator1/Online-Store.svg?style=svg)](https://circleci.com/gh/Thembanator1/Online-Store)
+
 
 
 
