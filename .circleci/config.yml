@@ -30,5 +30,8 @@ workflows:
   example-workflow:
     jobs:
       - example-job
+  build-and-test:
+    jobs:
+      - install-node-example
   
 
