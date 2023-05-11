@@ -12,14 +12,15 @@ var firebaseConfig = {
   };
   
   firebase.initializeApp(firebaseConfig);
-var id =localStorage.getItem('review_id');
+
 // Get a reference to the database node you want to update
 // Reference to users in the database
 var usersRef = firebase.database().ref("Reviews");
 const rating = document.querySelector('.rating');
 // Get the review title and description values from the input fields
 var n_stars=0;
-
+var id =localStorage.getItem("r_id");
+    
 rating.addEventListener('click', function(e) {
   if (e.target.type === 'radio') {
     

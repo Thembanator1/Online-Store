@@ -36,7 +36,7 @@ reviewsRef.on('child_added', function(snapshot) {
     var product_name=" ";
     var pro_img=" ";
     console.log(review.product_id);
-    var products=firebase.database().ref('Products/' + "-NTdxbInhERFMXN8FkJv" );
+    var products=firebase.database().ref('Products/' + id_r );
     products.on('value', (snapshot) => {
       localStorage.setItem("review_id",id_r);
       const productData = snapshot.val();
@@ -48,7 +48,7 @@ reviewsRef.on('child_added', function(snapshot) {
       // Add an event listener to the product box element to retrieve the snapshot key when clicked
       productBox.addEventListener('click', function() {
         console.log(snapshot.key);
-        
+        localStorage.setItem("r_id",snapshot.key);
        // Get a reference to the product box and popup elements
       var productBox = document.querySelector('.product1-box');
       
@@ -157,6 +157,7 @@ function close_btn(){
 
 }
 function editReview(){
+  
   window.location.assign("editReview.html");
 
 }

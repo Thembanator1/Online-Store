@@ -24,7 +24,6 @@ firebase.initializeApp({
     var ImageUrl = localStorage.getItem("image");
   
    
-    
     // Upload the file to Firebase Storage
     function editUser() {
        // checking if name is updated
