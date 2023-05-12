@@ -1,2 +1,4 @@
+codecov:
+  token:${{secrets.CODECOv_TOKEN}}
 ignore:
   - "*/tests/*"
