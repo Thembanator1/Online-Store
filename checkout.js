@@ -141,20 +141,11 @@ var cvv = document.getElementById('cvv').value;
     }
   }
   
-function doneView(){
+  function doneView(){
+    alert("Thank you for shopping with us, be sure to come back again!!")
+    window.location.assign("homepage.html");
+  }
   
-
-// Check if all fields are filled
-if (firstName && lastName && country && email && streetAddress && buildingType && city && province) {
-
-  
-  saveMessages(firstName , lastName , country , email ,streetAddress , buildingType , city , province , cardNumber , expDate , cvv);
-
-} else {
-  alert('Please fill in all fields');
-}
-
-}
 const saveMessages = (firstName , lastName , country , email ,streetAddress , buildingType , city , province , cardNumber , expDate , cvv) => {
     var newContactForm = contactFormDB.push();
     // set data to be saved
