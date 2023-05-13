@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<title>
+    Orders details
+</title>
+<head>
+    <div><!-- top-first navBar --->
+        <nav class="topnav">
+  
+          <div class="logo">
+            <img src =  "./img/home/RunTime_logo.png"/>
+          </div>
+          
+          <ul class="nav-links">
+            
+            <div class="menu">
+              <li><a href="/">Home</a></li>
+              
+              <li><a href="/">About</a></li>
+              
+              <li><a href="account.html" id="account">Account</a></li>
+              
+              <li><a href="#" id="cartLink">Cart</a></li>
+            </div>
+          
+          </ul>
+        </nav>
+      </div>
+</head>
+
+<body>
+    <main>
+		<section>
+			<img id="product-img" alt="Product Image">
+		  </section>
+		  
+
+		<section>
+			<h2>Order Details</h2>
+			<ul>
+				<li>
+					<h3>Product  Name</h3>
+					<p id="product-name">Wits Flowers</p>
+				</li>
+				<li>
+					<h3>Product Price</h3>
+					<p id="product-price">R25 000</p>
+				</li>
+                <li>
+					<h3>Date of Purchase</h3>
+					<p id="product-date">14/05/2023</p>
+				</li>
+                <li>
+					<h3>Payment Type</h3>
+					<p id="product-pay-type">Card payment</p>
+				</li>
+                <li>
+					<h3>Product Description</h3>
+					<p id="product-desc">Fast phone</p>
+				</li>
+                <li>
+					<h3>Product Quantity</h3>
+					<p id="product-quantity"> 10</p>
+				</li>
+                <li>
+					<h3>Product Delivery Type</h3>
+					<p id="product-delivery"> Shipping</p>
+				</li>
+			</ul>
+			<form>
+                <button><a href="reviews.html">Add a review</a></button>
+				
+			</form>
+		</section>
+	</main>
+    <script src="order_details.js"></script>
+</body>
+
+</html>
+
+
+<style>
+    /* TOP-NAVBAR STYLING STARTS */
+  
+    .topnav {
+  
+  display: flex;
+  
+  align-items: center;
+  
+  justify-content: space-between;
+  
+  padding: 20px;
+  border-bottom: #000000;
+  
+  background-color: rgb(255, 255, 255);
+  
+  color: #000000;
+  
+  }
+  /* LOGO */ 
+  img{
+    height: 115px;
+    width: 300px;
+    padding: 0px;
+  }
+  .menu {
+  
+  display: flex;
+  
+  gap: 1em;
+  
+  font-size: 18px;
+  
+  }
+  
+  .menu li:hover {
+  
+  background-color: #4c9e9e;
+  
+  border-radius: 5px;
+  
+  transition: 0.3s ease;
+  
+  }
+  
+  .menu li {
+  
+  padding: 5px 14px;
+  
+  }
+
+  main {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+}
+
+section {
+	flex: 1;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+section:last-child {
+	margin-right: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+h1, h2, h3 {
+	margin-top: 0;
+}
+
+button {
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #666;
+}
+
+form {
+	margin-top: 20px;
+}
+
+form label, form input, form textarea {
+	display: block;
+	margin-bottom: 10px;
+}
+
+form textarea {
+	height: 100px;
+}
+
+form button {
+	margin-top: 10px;
+}
+#product-img {
+	width: 400px; /* increase image width */
+  height: auto; /* adjust height automatically */
+  /* add any additional styling you want here */
+}
+
+  </style>
