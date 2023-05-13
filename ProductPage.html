@@ -281,7 +281,19 @@ form button {
 	#tag{
 	opacity: 0.5;
 	}
-
+	#reviewsContainer{
+		height: 200px;
+		overflow-y: auto; /* Enable vertical scrolling */
+  		scrollbar-width: none; /* Set the width of the scrollbar */
+  		scrollbar-color:black;
+		
+	}
+	#ratingContainer{
+		display: flex;
+	}
+	.starsrating a{
+		font-size: 24px;
+	}
 
 	.cart-summary {
 background-color: #f5f5f5;
@@ -320,6 +332,34 @@ background-color: #c00;
 }
 
 </style>
+<style>
+.stars{
+	display: flex;
+}
+.stars a{
+	opacity : 50%;
+	cursor: pointer;
+	padding: 3px;
+}
+.stars:hover a{
+	opacity: 100%;
+}
+.stars a:hover{
+	opacity:100;
+}
+.stars a:hover ~a{
+	opacity: 50%;
+}
+.stars a.active{
+	opacity: 100%;
+}
+
+.stars.disabled{
+	pointer-events: none;
+}
+
+</style>
+
 </head>
 <body>	
 	<!-- Modal window -->
@@ -401,24 +441,48 @@ background-color: #c00;
 
 		<section>
 			<h2>Reviews</h2>
-			<ul>
-				<li>
-					<h3>Reviewer Name</h3>
-					<p>Product sucks! waste of money dont buy.</p>
-				</li>
-				<li>
-					<h3>Reviewer Name</h3>
-					<p>Never thought I needed it till I bought it, love the portable design this is a must have!!</p>
-				</li>
-			</ul>
-			<form>
-				<h2>Add a Review</h2>
-				<label for="name">Name:</label>
-				<input type="text" id="name" name="name"><br>
-				<label for="review">Review:</label>
-				<textarea id="review" name="review"></textarea><br>
-				<button type="submit">Submit</button>
-			</form>
+			<div id="reviewsContainer"></div>
+			<h7>Average Rating:</h7>
+			<div id ="ratingContainer"></div>
+			<p>out of 5 ⭐</p>
+			<div>
+				<!-- Button to open the review dialog -->
+				<button id="write-review-btn" >Write a Review</button>
+			  </div>
+			  
+			  <!-- Review dialog -->
+			  <div id="review-dialog" class="modal">
+				<div class="modal-content">
+				  <span class="close">&times;</span>
+				  <h2>Write a Review</h2>
+				  <form>
+					<label for="name">Review Title:</label>
+					<input type="text" id="Review Title" name="Review Title" placeholder="Good, bad ,excellent..."><br>
+			  
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" placeholder="will auto fill if logged in" readonly><br>
+					
+					<label for="date">Date:</label>
+					<input type="text" id="date" name="date" readonly><br>
+
+					<label for="rating">Rating:</label>
+					<div class="stars">
+						<a>⭐</a>
+						<a>⭐</a>
+						<a>⭐</a>
+						<a>⭐</a>
+						<a>⭐</a>
+					</div>
+			  
+					<label for="review">Review:</label>
+					<textarea id="review" name="review"></textarea><br>
+			  
+					<button type="submit">Submit</button>
+				  </form>
+				</div>
+			  </div>
+		  
+			</div>
 		</section>
 	</main>
 
@@ -470,7 +534,7 @@ background-color: #c00;
 			// Display the cart item on the cart page
 			//console.log(cartItem)
 			if(cartItem.customer_email == customer_email){
-			console.log(cartItem)
+			//console.log(cartItem)
 			// Set the image source attribute
 			const productId = cartItem.product_id;
 			const productImage = cartItem.product_image;
@@ -543,6 +607,119 @@ background-color: #c00;
 		
 		});//end of cartRef
 	</script>
+	  <script>
+		const ids = localStorage.getItem('id');
+		//  Get the write review button element
+		const writeReviewBtn = document.getElementById("write-review-btn");
+	  
+		// Get the dialog element
+		const dialog = document.getElementById("review-dialog");
+	  
+		// Get the close button element inside the dialog
+		const closeBtn = dialog.querySelector(".close");
+	
+		// Get the current date and format it as yyyy-mm-dd
+		const currentDate = new Date().toISOString().slice(0, 10);
+
+		// Set the value of the date input to the current date
+		 const date=document.getElementById("date").value = currentDate;
+		//set email value to user email by default
+
+		const emailreview=document.getElementById("email").value=user;
+
+
+		 // Get the submit button element inside the dialog
+		 const submitBtn = dialog.querySelector("button[type='submit']");
+
+		// Add a click event listener to the write review button
+		writeReviewBtn.addEventListener("click", () => {
+		  // Display the dialog
+		  dialog.style.display = "block";
+		});
+	  
+		// Add a click event listener to the close button inside the dialog
+		closeBtn.addEventListener("click", () => {
+		  // Hide the dialog
+		  dialog.style.display = "none";
+		});
+		
+		const supplir_emailRef = firebase.database().ref('Products/' + ids + '/suppliers_email');
+		let ratings=0;
+		
+		var contactFormDB1 = firebase.database().ref('Reviews');
+		const starWrapper=document.querySelector(".stars");
+		const stars=document.querySelectorAll(".stars a");
+		stars.forEach((star, clickedIdx) => {
+  		star.addEventListener("click", () => {
+    	starWrapper.classList.add("disabled");
+    	stars.forEach((otherStar, otherIdx) => {
+      	if (otherIdx <= clickedIdx) {
+        	otherStar.classList.add("active");
+      	}
+    	});
+		 rating=clickedIdx+1;
+		supplir_emailRef.once('value')
+  		.then(snapshot => {
+    	supplierEmail = snapshot.val();
+		submitBtn.addEventListener("click", (event) => {
+    	event.preventDefault(); // prevent default form submission behavior
+		
+		// Get the values of all fields
+		const reviewTitle = document.getElementById("Review Title").value;
+		const customerEmail = emailreview;
+		const reviewDate = date;
+		const numStars = rating;
+		const reviewText = document.getElementById("review").value;
+		const se=supplierEmail;
+		const product= ids; // set product id value
+		console.log(ids);//produdct id
+		console.log(se);//supplier email
+		console.log(rating)//num stars
+		console.log(customerEmail)//user email
+		console.log(reviewTitle)//review title
+		console.log(reviewText)// review textbox
+		console.log(reviewDate)//date
+		// Push the data to Firebase
+		if (!reviewTitle || !numStars || !reviewText) {
+ 				 alert("Please fill in all the required fields.");
+				} else if (numStars === 0) {
+  			alert("Please select a rating.");
+			} else {
+  // Push the data to Firebase
+ 		 pushMessages(customerEmail, reviewDate, numStars, reviewText, reviewTitle, se, product);
+		}
+		// Reset the form fields
+		document.getElementById("Review Title").value = "";
+		emailreview.value = user;
+		date.value = currentDate;
+		stars.forEach((star) => {
+		star.classList.remove("active");
+		});
+		starWrapper.classList.remove("disabled");
+		rating = 0;
+		document.getElementById("review").value = "";
+
+		// Hide the dialog
+		dialog.style.display = "none";
+	});
+			})
+			});
+		});
+			// Add a click event listener to the submit button inside the dialog
+
+		const pushMessages = (emailreview, date, rating, reviewText, reviewTitle, supplierEmail, product) => {
+		const newContactForm = contactFormDB1.push();
+		newContactForm.set({
+			customer_email: emailreview,
+			date: date,
+			num_of_stars: rating,
+			product_id: product,
+			review: reviewText,
+			review_title: reviewTitle,
+			supplier_email: supplierEmail
+		});
+		};
+	  </script>
 	
 </body>
 </html>
