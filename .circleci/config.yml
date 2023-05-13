@@ -1,34 +1,21 @@
 version: 2.1
-
 orbs:
-  node: circleci/node@5.1.0
-  codecov: codecov/codecov@3.0.0
-  
+  codecov: codecov/codecov@3
 
 jobs:
-  install-node-example:
+  build:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:current
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: '16.13'
-      - run: node --
-  example-job:
-    docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
-    steps:
-      - codecov/upload:
-          token: CODECOV_TOKEN 
-          validate_url: true 
-          flags: unittests , integration 
-          url: https://app.codecov.io/gh/Thembanator1/Online-Store/new 
+      - run:
+          name: Install dependencies
+          command: npm install
+      
+      - codecov/upload
 
-workflows:
-  example-workflow:
+workflow:
+  version: 2.1
+  build-test:
     jobs:
-      - example-job
-  
-
+      - build

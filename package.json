@@ -1,7 +1,7 @@
 {
-  "name": "@codecov/example-javascript",
+  "name": "@codecov/Online-Store",
   "version": "0.0.1",
-  "description": "Codecov Example Javascript",
+  "description": "Codecov On online store",
   "scripts": {
     "test": "jest"
   },
