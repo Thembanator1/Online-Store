@@ -15,7 +15,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // reference your database
 // reference your database
-var id="none";
+const id = localStorage.getItem('id');
 localStorage.setItem('item_key', id);
 
 var imagesRef = firebase.database().ref("Products");
@@ -35,14 +35,17 @@ const productsRef = firebase.database().ref("Products");
         var objectDiv = document.createElement("div");
         objectDiv.className = "object";
         
+        var objectListItem = document.createElement("li");
+objectListItem.className = "item";
+
         var objectImage = document.createElement("img");
         objectImage.src = product.picture; // Assuming there's a URL property in the data
         objectImage.alt = product.name;
         objectImage.alt = product.price;
         objectImage.className = "item-image";
         
-
-        objectDiv.appendChild(objectImage);
+        objectListItem.appendChild(objectImage);
+objectDiv.appendChild(objectListItem);
         
         var objectName = document.createElement("p");
         var price=document.createElement("q");
@@ -51,12 +54,10 @@ const productsRef = firebase.database().ref("Products");
         objectDiv.appendChild(objectName);
         objectDiv.appendChild(price);
 
-        objectDiv.addEventListener("click", () => {
-          localStorage.setItem('id',key);
-           // redirect to login page
-            window.location.assign("ProductPage.html");
-            // Print the key of the clicked item
-          });
+        objectListItem.addEventListener("click", function() {
+          localStorage.setItem("id", key);
+          window.location.assign("ProductPage.html");
+        });
         
         objectlist.appendChild(objectDiv);
       }

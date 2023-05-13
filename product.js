@@ -13,12 +13,94 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // get reference to the Firebase database
 var contactFormDB = firebase.database().ref("Cart");
+var user = localStorage.getItem('user_email');
+var reviewsRef = firebase.database().ref('Reviews');
 
+reviewsRef.once('value', (snapshot) => {
+  const reviewsnode = snapshot.val();
+  const reviewsContainer = document.getElementById("reviewsContainer");
+  reviewsContainer.innerHTML = "";
+  let totalStars = 0;
+  let numReviews = 0;
+  for (const key in reviewsnode) {
+    if(id==reviewsnode[key].product_id){
+    const review = reviewsnode[key].review;
+    const reviewTitle = reviewsnode[key].review_title;
+    const customerEmail = reviewsnode[key].customer_email;
+    const reviewDate = reviewsnode[key].date;
+    const numStars = reviewsnode[key].num_of_stars;
+    console.log(review);
+    console.log(reviewTitle);
+    console.log(reviewDate);
+    console.log(customerEmail);
+    console.log(numStars);
+    totalStars += numStars;
+    numReviews++;
+    const reviewDiv = document.createElement("div");
+    reviewDiv.classList.add("review");
+
+    const title = document.createElement("h3");
+    title.textContent = reviewTitle;
+
+    const stars = document.createElement("div");
+    stars.classList.add("stars");
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement("i");
+      star.classList.add("fa", "fa-star");
+      stars.appendChild(star);
+    }
+
+    const email = document.createElement("p");
+    email.textContent = customerEmail;
+
+    const date = document.createElement("p");
+    date.textContent = reviewDate;
+
+    const comment = document.createElement("p");
+    comment.textContent = review;
+
+    reviewDiv.appendChild(title);
+    reviewDiv.appendChild(stars);
+    reviewDiv.appendChild(email);
+    reviewDiv.appendChild(date);
+    reviewDiv.appendChild(comment);
+
+    reviewsContainer.appendChild(reviewDiv);
+  
+    if (numReviews > 0) {
+      const averageRating = Math.round((totalStars / numReviews) * 2) / 2;
+      console.log(averageRating);
+      const ratingStars = document.createElement("div");
+      ratingStars.classList.add("starsrating");
+      for (let i = 0; i < Math.floor(averageRating); i++) {
+        const star = document.createElement("a");
+        star.textContent = "⭐";
+        ratingStars.appendChild(star);
+      }
+      if (averageRating % 1 !== 0) {
+        const halfStar = document.createElement("a");
+        halfStar.textContent = "⭐";
+        halfStar.style = "clip-path: polygon(0% 0%, 50% 0%, 50% 50%, 0% 50%)";
+        ratingStars.appendChild(halfStar);
+      }
+      const ratingContainer = document.getElementById("ratingContainer");
+      ratingContainer.innerHTML = "";
+      ratingContainer.appendChild(ratingStars);
+    } else {
+      const noReviews = document.createElement("p");
+      noReviews.textContent = "No reviews for this product yet.";
+      const ratingContainer = document.getElementById("ratingContainer");
+      ratingContainer.innerHTML = "";
+      ratingContainer.appendChild(noReviews);
+    }
+
+    }
+  }
+});
 
 // Get a reference to the Firebase database
 const database = firebase.database();
 const id = localStorage.getItem('id');
-
 
 // Get a reference to the product node in the database
 const productRef = database.ref('Products/' + id);
