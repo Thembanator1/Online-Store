@@ -17,7 +17,6 @@ var user = localStorage.getItem('user_email');
 var reviewsRef = firebase.database().ref('Reviews');
 var ids=localStorage.getItem("shipping");
 const supplir_emailRef = firebase.database().ref('Shipping/' + ids + '/supplier_email');
-
 var imageUrl  = localStorage.getItem("image");
 var nname = localStorage.getItem("name");
 var price = localStorage.getItem("price");
