@@ -445,10 +445,7 @@ background-color: #c00;
 			<h7>Average Rating:</h7>
 			<div id ="ratingContainer"></div>
 			<p>out of 5 ⭐</p>
-			<div>
-				<!-- Button to open the review dialog -->
-				<button id="write-review-btn" >Write a Review</button>
-			  </div>
+
 			  
 			  <!-- Review dialog -->
 			  <div id="review-dialog" class="modal">
@@ -680,9 +677,9 @@ background-color: #c00;
 		console.log(reviewText)// review textbox
 		console.log(reviewDate)//date
 		// Push the data to Firebase
-		if (!reviewTitle || !numStars || !reviewText) {
+		if (!reviewTitle || !reviewText) {
  				 alert("Please fill in all the required fields.");
-				} else if (numStars === 0) {
+				} else if (numStars == 0) {
   			alert("Please select a rating.");
 			} else {
   // Push the data to Firebase
