@@ -159,11 +159,11 @@
   
             <label for="rating">Rating:</label>
             <div class="stars">
-              <a>⭐</a>
-              <a>⭐</a>
-              <a>⭐</a>
-              <a>⭐</a>
-              <a>⭐</a>
+              <a>★</a>
+              <a>★</a>
+              <a>★</a>
+              <a>★</a>
+              <a>★</a>
             </div>
           
             <label for="review">Review:</label>
@@ -253,14 +253,22 @@
 		console.log(reviewText)// review textbox
 		console.log(reviewDate)//date
 		// Push the data to Firebase
-	  if (!reviewTitle || !numStars || !reviewText) {
-    alert("Please fill in all the required fields.");
-  } else if (numStars === 0) {
-    alert("Please select a rating.");
-  } else {
-    // Push the data to Firebase
-    pushMessages(customerEmail, reviewDate, numStars, reviewText, reviewTitle, se, product);
-  }
+    if (reviewTitle &&  reviewText && rating !==0) {
+      pushMessages(customerEmail,
+                reviewDate,
+                numStars,
+                reviewText,
+                reviewTitle,
+                se,
+                product
+              );
+              alert("Your review has been successfully submitted.");
+    }
+          else {
+             
+             alert("Please fill in all required fields"); // Show notification
+              
+            }
 
 		// Reset the form fields
 		document.getElementById("Review Title").value = "";

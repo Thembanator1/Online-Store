@@ -45,8 +45,8 @@ reviewsRef.once('value', (snapshot) => {
     const stars = document.createElement("div");
     stars.classList.add("stars");
     for (let i = 0; i < numStars; i++) {
-      const star = document.createElement("i");
-      star.classList.add("fa", "fa-star");
+      const star = document.createElement("span");
+      star.textContent = "★";
       stars.appendChild(star);
     }
 
@@ -62,8 +62,8 @@ reviewsRef.once('value', (snapshot) => {
     reviewDiv.appendChild(title);
     reviewDiv.appendChild(stars);
     reviewDiv.appendChild(email);
-    reviewDiv.appendChild(date);
     reviewDiv.appendChild(comment);
+    reviewDiv.appendChild(date);
 
     reviewsContainer.appendChild(reviewDiv);
   
@@ -74,13 +74,13 @@ reviewsRef.once('value', (snapshot) => {
       ratingStars.classList.add("starsrating");
       for (let i = 0; i < Math.floor(averageRating); i++) {
         const star = document.createElement("a");
-        star.textContent = "⭐";
+        star.textContent = "★";
         ratingStars.appendChild(star);
       }
       if (averageRating % 1 !== 0) {
         const halfStar = document.createElement("a");
-        halfStar.textContent = "⭐";
-        halfStar.style = "clip-path: polygon(0% 0%, 50% 0%, 50% 50%, 0% 50%)";
+        halfStar.textContent = "★";
+        halfStar.style = "clip-path: polygon(0% 0%, 60% 0%, 60% 60%, 0% 60%)";
         ratingStars.appendChild(halfStar);
       }
       const ratingContainer = document.getElementById("ratingContainer");
