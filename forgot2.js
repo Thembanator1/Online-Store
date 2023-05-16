@@ -22,7 +22,12 @@ document.querySelector("#third").addEventListener("click", e => {
     // get the email and password values from the form 
     //var email = "irene@gmail.com";
     var password = document.getElementById("Password").value;
-    reset(password);
+    if (password.length<6){
+        alert("Password must be at least 6 characters in length");
+    }
+    else {
+        reset(password);
+    }
 });
 
 function reset(password){

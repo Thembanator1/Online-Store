@@ -18,11 +18,11 @@ var contactFormDB = firebase.database().ref("Users");
 
 // add an event listener to the "validate" button on the form
 function start(){
-  //alert("start");
+  console.log("start");
   
   // get the email and password values from the form 
   //var prev_email = "irene@gmail.com";
-  var prev_email = localStorage.getItem("user_email");
+  prev_email = localStorage.getItem("user_email");
   getDetails(prev_email);
 }
 
@@ -33,7 +33,7 @@ var prev_password;
 
 function getDetails(email){
 
-  //alert("getDetails");
+  console.log("getDetails");
   // attach a listener to the Firebase database reference
   // this listener will be called whenever the value of the database changes
   // it will iterate over all the child snapshots of the "onlinestore" node
@@ -59,7 +59,7 @@ document.querySelector("#validate").addEventListener("click", e => {
 });
 
 function edits(email, old_name, old_surname, old_password){
-  //alert("edits");
+  console.log("edits");
   
   var name = changes(old_name, document.getElementById("Name").value);
   var surname = changes(old_surname, document.getElementById("Surname").value);
@@ -87,14 +87,13 @@ function changes(old_value, new_value){
 
 
 function updateDetails(email, name, surname, password){
-  //alert("updateDetails");
+  console.log("updateDetails");
   contactFormDB.orderByChild("email").equalTo(email).once("value", function (snapshot) {        
       snapshot.forEach(function(childSnapshot) {
           childSnapshot.ref.update({
               name: name,
-              email: email,
               surname: surname,
-              password:password
+              password: password
           });
       });
       alert("update successful")
