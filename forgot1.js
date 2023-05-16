@@ -35,3 +35,30 @@ function varify(c_code){
         window.location.assign("forgot2.html");
     }
 }
+
+
+function time(){
+    var sta = new Date().getTime();
+    var end = new Date().getTime();
+    while (end-sta<1000*40){
+        end = new Date().getTime();
+    }
+    sendM(localStorage.getItem('code_email'), localStorage.getItem('user_code'));
+}
+
+
+function sendM(email, code) {
+    console.log("sendM");
+	Email.send({
+		Host : "smtp.elasticemail.com",
+        Username : "testbranch99@gmail.com",
+        Password : "F57BDAE11C4776079DA63B3D98A7D0EDFDB3",
+        To : email,
+        From : "testbranch99@gmail.com",
+        Subject : "This is the subject",
+        Body : "Your reset code is " + code
+    })
+	.then(function (message) {
+    console.log(message);
+	});
+}
