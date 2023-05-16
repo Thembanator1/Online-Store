@@ -116,12 +116,13 @@
     </style>
 </head>
 <body>
-
+<!-- This div contains the signup form --> 
 <div class="login-box">
 <img src="logo-shop.png" class="avatar">
 <form>
 <h1>Supplier Signup</h1><br>
 
+<!-- Input fields for the business owner details -->
 <h1>Business Owner</h1>
 <input type="text" name="" placeholder="Enter Name" id="name">
 <input type="text" name="" placeholder="Enter Surname" id="surname">
@@ -129,19 +130,18 @@
 <input type="password" name="" placeholder="Create Password" id="password">
 <input type="password" name="" placeholder="Confirm Password" id="confirmpassword">
 
+<!-- Input fields for the business details -->
 <h1>Business Information</h1>
 <input type="text" name="" placeholder="Company Name" id="companyName">
 <input type="text" name="" placeholder="Website(optional)" id="website">
 <input type="text" name="" placeholder="Email" id="companyEmail">
 <input type="text" name="" placeholder="Business Phone Number" id="phoneNumber">
 <input type="text" name="" placeholder="Business Registeration Number" id="registerationNumber">
-
 <h2>Are you VAT registered?</h2>
 <input type="radio" id="VATyes" name="VAT" value="VATyes">
 <label for="VATyes">Yes</label><br>
 <input type="radio" id="VATno" name="VAT" value="VATno">
 <label for="VATno">No</label><br>
-
 <h2>Monthly Revenue</h2>
 <input type="radio" id="lessR20k" name="Revenue" value="lessR20k">
 <label for="lessR20k">Less than R20k</label><br>
@@ -154,12 +154,16 @@
 <input type="radio" id="moreR500k" name="Revenue" value="moreR500k">
 <label for="moreR500k">More than R500k</label><br>
 
+<!-- Submit button for the form -->
 <input type="submit" name="" value="Sign in" id="validate">
+<!-- Link to the login page for users who already have an account -->
 <a href="loginSupplier.html">Already have an account?</a>
 </form>
 
 </div>
+<!-- Link to the Firebase JavaScript library and to a custom JavaScript file for handling form submission -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<!-- The following script tag includes the javascript file for the login functionality -->
 <script src="signup2Supplier.js"></script>
 
 </body>

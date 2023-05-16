@@ -38,6 +38,7 @@
             padding-right:-10px; 
             font-size: 22px;
             text-align:center; 
+			margin-bottom: 20px; 
         }
         .login-box p{
         	margin-top:-10px; 
@@ -91,32 +92,31 @@
        }
        .login-box a{
        		color:#fff;
-       		font-size:
+       		font-size: 
        		14px;
        		font-weight:bold;
        		text-decoration:none;
+			margin-bottom: 20px;
        }
+	   .form--hidden {
+		    display: none;
+	   }
     </style>
 </head>
 <!-- The following code creates a login form with input fields for email and password -->
 <body>
 	<div class="login-box">
 	<img src="logo-shop.png" class="avatar">
-	<h1>Login Here</h1>
+	<h1>Reset Password</h1>
 	<form>
-	<input type="text" name="" placeholder="Enter Email" id="Email">
-	<input type="password" name="" placeholder="Enter Password" id="Password">
-	<!-- Submit button for the form -->
-	<input type="submit" name="" value="Login" id="validate">
-	<!-- The following link provides an option for users who have lost their password -->
-	<a href="forgot.html">Lost your password?</a><br>
-	<!-- The following link provides an option for users who don't have an account yet --> 
-	<a href="signup.html">Don't have an account?</a>
+	<a>Enter your new account password:</a>
+	<input type="password" name="" placeholder="Enter new Password" id="Password">
+	<input type="submit" name="" value="save" id="third">
 	</form>
 	</div>
 	<!-- The following script tag includes the Firebase SDK library -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 	<!-- The following script tag includes the javascript file for the login functionality -->
-	<script src="login2.js"></script>
+	<script src="forgot2.js"></script>
 	</body>
 </html>

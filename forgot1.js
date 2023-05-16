@@ -15,25 +15,23 @@ firebase.initializeApp(firebaseConfig);
 var contactFormDB = firebase.database().ref("Users");
 
 // add an event listener to the "validate" button on the form
-document.querySelector("#third").addEventListener("click", e => {
+document.querySelector("#second").addEventListener("click", e => {
     e.preventDefault();
     //alert("start");
     
     // get the email and password values from the form 
     //var email = "irene@gmail.com";
-    var password = document.getElementById("Password").value;
-    reset(password);
+    var c_code = document.getElementById("Code").value;
+    varify(c_code);
 });
 
-function reset(password){
-    //alert("updateDetails");
-    contactFormDB.orderByChild("email").equalTo( localStorage.getItem('code_email') ).once("value", function (snapshot) {        
-        snapshot.forEach(function(childSnapshot) {
-            childSnapshot.ref.update({
-                password: password
-            });
-        });
-        alert("Password Reset Successful")
-        window.location.assign("login.html");
-    });
+function varify(c_code){
+    //alert("sendMail");
+
+    if (localStorage.getItem('user_code')!=c_code){
+        alert("incorrect code");
+    } 
+    else {
+        window.location.assign("forgot2.html");
+    }
 }
