@@ -43,60 +43,14 @@ function getDetails(email){
           prev_surname = childSnapshot.val().surname;
           prev_password = childSnapshot.val().password;
       });
-      document.getElementById("Name").value = prev_name;
-      document.getElementById("Surname").value = prev_surname;
-      document.getElementById("Password").value = prev_password;
+      document.getElementById("Name").innerHTML = prev_name;
+      document.getElementById("Surname").innerHTML = prev_surname;
+      document.getElementById("Email").innerHTML = email;
   });
 } 
 
 document.querySelector("#validate").addEventListener("click", e => {
   e.preventDefault();
-  var email = prev_email;
-  var old_name = prev_name;
-  var old_surname = prev_surname;
-  var old_password = prev_password;
-  edits(email, old_name, old_surname, old_password);
+  window.location.assign("edit_profile.html");
 });
-
-function edits(email, old_name, old_surname, old_password){
-  console.log("edits");
-  
-  var name = changes(old_name, document.getElementById("Name").value);
-  var surname = changes(old_surname, document.getElementById("Surname").value);
-  var new_password = changes(old_password, document.getElementById("Password").value);
-  var confirm_password = document.getElementById("old_Password").value;
-  
-  if (new_password.length<6){
-      alert("new password must be at least 6 characters in length");
-  }
-  else if (old_password!=confirm_password){
-      alert("Password does not match");
-  }
-  else {
-      updateDetails(email, name, surname, new_password);
-  }
-}
-
-function changes(old_value, new_value){
-  if (new_value==""){
-      new_value = old_value;
-  }
-  return new_value;
-}
-
-
-
-function updateDetails(email, name, surname, password){
-  console.log("updateDetails");
-  contactFormDB.orderByChild("email").equalTo(email).once("value", function (snapshot) {        
-      snapshot.forEach(function(childSnapshot) {
-          childSnapshot.ref.update({
-              name: name,
-              surname: surname,
-              password: password
-          });
-      });
-      alert("update successful")
-  });
-}
 
