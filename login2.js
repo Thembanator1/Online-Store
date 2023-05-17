@@ -35,6 +35,9 @@ document.querySelector("#validate").addEventListener("click", e => {
             // if so, set the state to "successful"
             if (email==childSnapshot.val().email && password==childSnapshot.val().password){
                 state = "successful";
+                RECIPIENT_EMAIL = email;
+                localStorage.setItem('RECIPIENT_EMAIL', RECIPIENT_EMAIL);
+                
              
             }    
             

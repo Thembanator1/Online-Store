@@ -54,6 +54,11 @@
     </style>
     <link rel="stylesheet" href="payment.css">
     <link rel="stylesheet" href="delivery.css">
+    <script 
+    src="https://integratepayments.transactiongateway.com/token/Collect.js" 
+    data-tokenization-key="75gRbc-e6mxC2-eNz38z-kxB2e6" 
+    data-variant="inline">
+    </script>
 </head>
 <body>
     <div class="header">
@@ -160,8 +165,11 @@
           <span class="total-price">R 519</span>
         </div>
         
-        <button id="card-pay" onclick="gotoPay()">
+        <!-- <button id="card-pay" onclick="gotoPay()">
             PAY WITH CARD
+          </button> -->
+          <button id="card-pay" onclick="window.location.href='http://127.0.0.1:5000/'">
+            Go to Payment
           </button>
         <button id="toConfirmation" onclick="gotoConfirmation()">
           Proceed
