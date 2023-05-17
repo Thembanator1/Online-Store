@@ -474,7 +474,9 @@ background-color: #c00;
 			
 			<div id ="ratingContainer"></div>
 			<p>  out of 5 ★</p>
-
+			
+				<button id="write-review-btn" >Write a review</button>
+			
 			  
 			  <!-- Review dialog -->
 			  <div id="review-dialog" class="modal">
@@ -660,7 +662,7 @@ background-color: #c00;
 		// Add a click event listener to the write review button
 		writeReviewBtn.addEventListener("click", () => {
 		  // Display the dialog
-		  dialog.style.display = "block";
+		  window.location.assign("orders.html");
 		});
 	  
 		// Add a click event listener to the close button inside the dialog
