@@ -19,6 +19,7 @@ var contactFormDB = firebase.database().ref("Supplier");
 
 document.querySelector("#validate").addEventListener("click", e => {
 e.preventDefault(); // prevent default form submission behavior
+
 // get user input values
 var name = document.getElementById("name").value;
 var surname = document.getElementById("surname").value;
@@ -51,6 +52,7 @@ else if (R100){Revenue = "R100k-R500k";}
 else if (R500){Revenue = "more than R500k";}
 
 var regexp = /^(([^<>()\.,;:\s@"]+(.[^<>()\.,;:\s@"]+)*)|(".+"))@(([0−9]1,3[˙0−9]1,3[˙0−9]1,3[˙0−9]1,3[0−9]1,3 [˙​ 0−9]1,3 [˙​ 0−9]1,3 [˙​ 0−9]1,3)|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+
 // validate user input
 if (name==""){
 alert("enter name");

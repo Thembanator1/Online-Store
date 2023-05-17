@@ -18,7 +18,7 @@ var contactFormDB = firebase.database().ref("Users");
 document.querySelector("#validate").addEventListener("click", e => {
     e.preventDefault();
     
-    // get the email and password values from the form
+    // get the email and password values from the form 
     var email = document.getElementById("Email").value;
     var password = document.getElementById("Password").value;
 
