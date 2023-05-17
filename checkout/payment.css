@@ -11,11 +11,11 @@
 .payment-option:hover {
     border-color: #007bff;
 }
-.left-content {
+/*left-content {
     float: left;
-    width: calc(100% - 860px); /* Adjust the width as needed */
-    margin-right: 20px; /* Add margin to separate the left and right content */
-  }
+    /*width: calc(100% - 860px); /* Adjust the width as needed */
+    /*margin-right: 20px; /* Add margin to separate the left and right content */
+  /*}*/
 
 .payment-options{/*========The Options Container*/
     margin-top: 12%;
@@ -60,7 +60,7 @@
 /*Where we pay for real, the confidential part*/
 
 form {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;

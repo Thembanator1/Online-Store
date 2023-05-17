@@ -544,7 +544,7 @@ background-color: #c00;
 			//checkout button
 		var button = document.getElementById("checkout");
 		button.addEventListener("click", function(event) {
-		window.location.assign("checkout.html");
+			window.location.assign("./checkout/delivery.html");
 		});
 	</script>
 	
@@ -634,6 +634,10 @@ background-color: #c00;
 		}
 		
 		});//end of cartRef
+
+		function addToCart(){
+			window.alert("Item added to cart successfully!");
+		}
 	</script>
 	  <script>
 		const ids = localStorage.getItem('id');
