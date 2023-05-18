@@ -21,16 +21,17 @@ var database = firebase.database();
 // Function to upload image to Firebase Storage
 
 //var email  = localStorage.getItem("user_email");
-var email = "yeses";
-var column = document.getElementById('table1');
+var email = localStorage.getItem("user_email");
 
-contactFormDB.orderByChild('supplier_email').equalTo(email).once('value', function(snapshot) {
+
+contactFormDB.orderByChild('customer_email').equalTo(email).once('value', function(snapshot) {
     var data = snapshot.val();
     if (data) {
         
         // Loop through retrieved data and display it in the result div
         var imageContainer = document.getElementById('table1');
-        imageContainer.innerHTML = '';
+       var  column2 = document.getElementById('table2');
+     
         
         // Add CSS styles to the imageContainer element
         imageContainer.style.overflowY = "scroll"; // Make it scrollable
@@ -47,31 +48,36 @@ contactFormDB.orderByChild('supplier_email').equalTo(email).once('value', functi
             var ddate = childSnapshot.val().date;
             var deliv = childSnapshot.val().Delivery_Method;
             var paym = childSnapshot.val().Payment_Method;
+            var status = childSnapshot.val().status;
 
-            console.log("look at",childSnapshot.key);
+            // console.log("look at",childSnapshot.key);
            
             // Create a new div element for the product
             var productDiv = document.createElement('table');
-        
             productDiv.style.border ='collapse';
-            productDiv.style.width = '100%';
-             
+            productDiv.style.width = '90%';
+            
+
+        
+            
             // Create a new row element for the product
             var productRow = document.createElement('tr');
-            
+            productRow.style.display = 'flex';
+            productRow.style.gap = '350px';
             // Create a new table data element for the image
             var productImage = document.createElement('td');
             var imageElement = document.createElement('img');
             imageElement.src = imageURL;
+            imageElement.style.width = '200px';
             imageElement.alt = "A description of the image";
             productImage.appendChild(imageElement);
             
             // Create a new table data element for the name
             var productName = document.createElement('td');
-            var nameElement = document.createElement('label');
+            nameElement = document.createElement('label');
             nameElement.style.fontFamily = "Arial";
             nameElement.style.fontSize = "18px";
-            nameElement.innerText = "Product Name :" + name;
+            nameElement.innerText =  name;
             productName.appendChild(nameElement);
             
             // Create a new table data element for the price
@@ -79,7 +85,7 @@ contactFormDB.orderByChild('supplier_email').equalTo(email).once('value', functi
             var priceElement = document.createElement('label');
             priceElement.style.fontFamily = "Arial";
             priceElement.style.fontSize = "18px";
-            priceElement.innerText = "Product Price: R" + price;
+            priceElement.innerText =  price;
             productPrice.appendChild(priceElement);
   
             productRow.appendChild(productImage);
@@ -87,6 +93,7 @@ contactFormDB.orderByChild('supplier_email').equalTo(email).once('value', functi
             productRow.appendChild(productPrice);
 
             productDiv.appendChild(productRow);
+          
 
             
             // Add event listener to the product div
@@ -105,7 +112,18 @@ contactFormDB.orderByChild('supplier_email').equalTo(email).once('value', functi
             });
             
             // Add the product div to the container
-            imageContainer.appendChild(productDiv);
+            var check ="open";
+            if (check===status){
+              
+              imageContainer.appendChild(productDiv);
+            
+          }   
+            else{
+
+            column2.appendChild(productDiv);
+           
+            }
+
         });
     } else {
         alert("No products in store found");
