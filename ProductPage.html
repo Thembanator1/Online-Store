@@ -474,7 +474,9 @@ background-color: #c00;
 			
 			<div id ="ratingContainer"></div>
 			<p>  out of 5 ★</p>
-
+			
+				<button id="write-review-btn" >Write a review</button>
+			
 			  
 			  <!-- Review dialog -->
 			  <div id="review-dialog" class="modal">
@@ -542,7 +544,7 @@ background-color: #c00;
 			//checkout button
 		var button = document.getElementById("checkout");
 		button.addEventListener("click", function(event) {
-		window.location.assign("checkout.html");
+			window.location.assign("./checkout/delivery.html");
 		});
 	</script>
 	
@@ -632,6 +634,10 @@ background-color: #c00;
 		}
 		
 		});//end of cartRef
+
+		function addToCart(){
+			window.alert("Item added to cart successfully!");
+		}
 	</script>
 	  <script>
 		const ids = localStorage.getItem('id');
@@ -660,7 +666,7 @@ background-color: #c00;
 		// Add a click event listener to the write review button
 		writeReviewBtn.addEventListener("click", () => {
 		  // Display the dialog
-		  dialog.style.display = "block";
+		  window.location.assign("orders.html");
 		});
 	  
 		// Add a click event listener to the close button inside the dialog
