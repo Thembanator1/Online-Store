@@ -68,7 +68,7 @@ reviewsRef.once('value', (snapshot) => {
     reviewsContainer.appendChild(reviewDiv);
   
     if (numReviews > 0) {
-      const averageRating = Math.round((totalStars / numReviews) * 2) / 2;
+      const averageRating = Math.min(5, Math.max(0, Math.round((totalStars / numReviews) * 2) / 2));
       console.log(averageRating);
       const ratingStars = document.createElement("div");
       ratingStars.classList.add("starsrating");

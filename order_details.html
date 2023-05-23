@@ -183,7 +183,6 @@
 	<script src="order_details.js"></script>
   <script>
     const product_local=localStorage.getItem("id");
-    console.log(product_local);
 		//  Get the write review button element
 		const writeReviewBtn = document.getElementById("write-review-btn");
 	  
@@ -202,7 +201,7 @@
 
 		const emailreview=document.getElementById("email").value=user;
 
-
+    console.log(i);
 		 // Get the submit button element inside the dialog
 		 const submitBtn = dialog.querySelector("button[type='submit']");
 
@@ -247,7 +246,7 @@
     const pname=nname;
 		const product=product_local; // set product id value
 		console.log(nname);
-    console.log(ids);//produdct id
+    console.log(product_local);//produdct id
 		console.log(se);//supplier email
 		console.log(rating)//num stars
 		console.log(customerEmail)//user email
