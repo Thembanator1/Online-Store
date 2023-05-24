@@ -167,7 +167,100 @@
       }
 
   </style>
+ <style>
+  body{
+      background-color: #f5f5f5b6;
+  }
 
+  .top-nav,
+  .header {
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+  }
+  .header{
+      background-color:  rgb(199, 51, 51);
+  }
+
+  .logo {
+      float: left;
+      max-width: 375px;
+      height: 100px;
+     
+  }
+   
+  .nav-links {
+      margin-left: auto;
+      margin-right: 1%;
+  }
+  .nav-links a {
+      color: #4400ff;
+  }
+  .menu {  
+      display: flex; 
+      gap: 1em;   
+      font-size: 18px;   
+     
+  }
+      
+  .menu li:hover { 
+      background-color: #4c9e9e;
+      border-radius: 5px;  
+      transition: 0.3s ease;  
+  }
+      
+  .menu li {   
+      padding: 3px 10px;  
+  }
+  
+
+
+  .search-container {
+      width: 975px;
+      margin: 0 auto;
+      display: flex;
+      /*margin: 25px 0px 25px 0px;*/
+      padding: 20px;
+  }
+
+  .search-container input[type="text"] {
+      flex: 1;
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+  }
+
+  .search-container button[type="submit"] {
+      width: 8%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 0px 15px 15px 0px
+  }
+
+  .left-element{
+      display: flex;
+      float:left;
+      align-items: center;
+  }
+
+  #select {
+      margin-right: 10px; /* Adjust the margin as needed */
+      order: -1; /* Moves the dropdown to the left */
+      width:175px;
+      border-radius: 15px 0px 0px 15px
+  }
+  #objectList {
+  display: inline-block;
+  width: 48%;
+  margin-right: 2%;
+  vertical-align: top;
+}
+
+</style>
   </head>
 
   <body>
@@ -195,48 +288,44 @@
       </div>
   </div>
     
-    <div><!-- top-first navBar --->
-      <nav class="topnav">
+  <div class="top-nav">
+    <img class="logo" src="../img/RunTime Shopping4x.png" alt="Logo">
 
-        <div class="logo">
-          <img src =  "./img/home/RunTime_logo.png"/>
+    <ul class="nav-links">
+        <div class="menu">
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/">About</a></li>
+          
+          <li><a href="account.html">Account</a></li>
+          
+          <li><a href="#" id="cartLink">Cart</a></li>
         </div>
-        
-        <ul class="nav-links">
-          
-          <div class="menu">
-            <li><a href="/">Home</a></li>
-            
-            <li><a href="/">About</a></li>
-            
-            <li><a href="account.html">Account</a></li>
-            
-            <li><a href="#" id="cartLink">Cart</a></li>
-          </div>
-        
-        </ul>
-      </nav>
-    </div>
+    </ul>
+</div>
 
-    <div> <!-- second navBar --->
-      <nav class="navbar"> 
-        <ul class="nav-links">
-      
-          
-          <div class="menu">
-            <li><a href="/">Home</a></li>
-            
-            <li><a href="/">About</a></li>
-            
-            <li><a href="/">Pricing</a></li>
-            
-            <li><a href="/">Contact</a></li>
-        
-          </div>
-            
-        </ul>
-      </nav>
+<div class="header">
+    
+    <div class="search-container">
+        <select id = "select">
+            <option value="">Select category:</option>
+            <option value="option1">Daily Deals</option>
+            <option value="option2">Automotive & DIY</option>
+            <option value="option3">Baby & Toddler</option>
+            <option value="option4">Beauty</option>
+            <option value="option5">Books & Course</option>
+            <option value="option6">Camping & Outdoor</option>
+            <option value="option6">Cellphones & Smartwatches</option>
+            <option value="option7">Computer & Electronics</option>
+            <option value="option8">Fashion & Luggage</option>
+            <option value="option9">Gaming</option>
+            <option value="option10">Garden,Pool & Patio</option>  
+        </select>
+        <input type="text" onkeyup="searchObjects()" placeholder="Search for products, brands...">
+        <button type="submit">Search</button>
     </div>
+</div>
+
     
     <!-- The PrintAds Slideshow background --->
     <div class="slider">
@@ -290,12 +379,7 @@
           </a>
         </div>
       
-        <div class="card">
-          <a href="#">
-            <img src="./img/home/cDresses.jpg" alt="Category Name 4">
-            <h3>Dresses</h3>
-          </a>
-        </div>
+        
       </div>
       
       <div class="card-row"> <!-- second row-->
@@ -320,33 +404,26 @@
           </a>
         </div>
       
-        <div class="card">
-          <a href="#">
-            <img src="./img/home/cSmartwatches.jpg" alt="Category Name 8">
-            <h3>Shop Smatwatches</h3>
-          </a>
-        </div>
+        
       </div>
 
-    </div> 
+    </div>       
+    <!-- <div class="card-row"> 
+      <div class="card">
+        <a href="#">
+          <img src="./img/home/cSmartwatches.jpg" alt="Category Name 8">
+          <h3>Shop Smatwatches</h3>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+          <img src="./img/home/cDresses.jpg" alt="Category Name 4">
+          <h3>Dresses</h3>
+        </a>
+      </div>
+    </div> -->
     <!-- slideshow section DONE -->
       
-    <select>
-      <option value="">Select category:</option>
-      <option value="option1">Daily Deals</option>
-      <option value="option2">Automotive & DIY</option>
-      <option value="option3">Baby & Toddler</option>
-      <option value="option4">Beauty</option>
-      <option value="option5">Books & Course</option>
-      <option value="option6">Camping & Outdoor</option>
-      <option value="option6">Cellphones & Smartwatches</option>
-      <option value="option7">Computer & Electronics</option>
-      <option value="option8">Fashion & Luggage</option>
-      <option value="option9">Gaming</option>
-      <option value="option10">Garden,Pool & Patio</option>
-      
-    </select>
-    <input type="button" value="Search" onclick="window.location.href='search.html';">
 	 <!-- Gallery section -->
    <section class="gallery">
     <h2>Recommended For You</h2>
@@ -403,5 +480,9 @@
       window.location.assign("./checkout/delivery.html");
     });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+  <script src="./search.js"></script>
+  </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
+  </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
 </body>
 </html>
