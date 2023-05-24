@@ -1,7 +1,9 @@
 name: codecov
 on:
   push:
-    branches: [main]
+    branches: 
+    - main
+    - unit_tests
   pull_request:
     branches: [main]
 
