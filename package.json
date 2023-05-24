@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "description": "Codecov On online store",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "codecov": "^3.8.3",
     "jest": "^29.5.0"
   }
+
 }
