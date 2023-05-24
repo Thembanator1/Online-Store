@@ -67,6 +67,7 @@ productsRef.once("value", snapshot => {
     // Add an event listener to the list item
   listItem.addEventListener("click", () => {
      localStorage.setItem('id',key);
+     localStorage.setItem("category",product.category);
            // redirect to login page
    window.location.assign("ProductPage.html");
 //       // Print the key of the clicked item
@@ -179,6 +180,7 @@ productsRef.on('value', snapshot => {
     // Add an event listener to the list item
     listItem.addEventListener("click", () => {
       localStorage.setItem('id',key);
+      localStorage.setItem("category",product.category);
        // redirect to login page
 window.location.assign("ProductPage.html");
         // Print the key of the clicked item
