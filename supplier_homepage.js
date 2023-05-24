@@ -59,7 +59,7 @@ else {
   }
   var email  = sessionStorage.getItem("user_email");
   // function to save user data to the database
-const saveMessages = (productName , productDescription , productPrice , productQuantity,link) => {
+const saveMessages = (productName , productDescription , productPrice , productCategory,link) => {
     var newContactForm = contactFormDB.push();
     // set data to be saved
     newContactForm.set({
