@@ -33,7 +33,7 @@ var firebaseConfig = {
     var file = document.getElementById('image-upload').files[0];
     if (productName && productDescription && productPrice && productCategory) {
     // Create a storage reference to the selected file
-    alert(file);
+   
     var storageRef = storage.ref('images/' + file.name);
   
     // Upload the file to Firebase Storage
