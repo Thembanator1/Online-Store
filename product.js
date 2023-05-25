@@ -15,6 +15,76 @@ firebase.initializeApp(firebaseConfig);
 var contactFormDB = firebase.database().ref("Cart");
 var user = localStorage.getItem('user_email');
 var reviewsRef = firebase.database().ref('Reviews');
+const id = localStorage.getItem('id');
+const categories=localStorage.getItem('category');
+
+var imagesRef = firebase.database().ref("Products");
+
+const productsList = document.querySelector(".image-container");
+
+// Clear any existing product items from the list
+productsList.innerHTML = "";
+
+// Retrieve all product items from the Firebase Realtime Database
+const productsRef = firebase.database().ref("Products");
+productsRef.once("value", snapshot => {
+  const products = snapshot.val();
+
+  // Shuffle the products randomly using Fisher-Yates algorithm
+  const shuffledProducts = Object.entries(products);
+  for (let i = shuffledProducts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledProducts[i], shuffledProducts[j]] = [shuffledProducts[j], shuffledProducts[i]];
+  }
+
+  // Loop through only 60% of the shuffled products
+const numProducts = Math.floor(shuffledProducts.length * 1);
+for (const [key, product] of shuffledProducts.slice(0, numProducts)) {
+  // Check if the product belongs to the "Cellphones & Smartwatches" category
+  if (product.category === categories && key!==id ) {
+    // Create a new list item for each product item
+    const listItem = document.createElement("div");
+    listItem.className = "product-item";
+
+    // Create an image element to display the product image
+    const image = document.createElement("img");
+    image.src = product.picture;
+    image.alt = product.name;
+    listItem.appendChild(image);
+
+    // Create a div element to hold the product name and price
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "product-info";
+    listItem.appendChild(infoDiv);
+
+    // Create a span element to display the product name
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "product-name";
+    nameSpan.textContent = product.name;
+    infoDiv.appendChild(nameSpan);
+
+    // Create a span element to display the product price
+    const priceSpan = document.createElement("span");
+    priceSpan.className = "product-price";
+    priceSpan.textContent = "$" + product.price;
+    infoDiv.appendChild(priceSpan);
+
+    // Add an event listener to the list item
+    listItem.addEventListener("click", () => {
+      localStorage.setItem('id', key);
+      localStorage.setItem("category",product.category);
+      // Redirect to login page
+      window.location.assign("ProductPage.html");
+      // Print the key of the clicked item
+    });
+
+    // Add the list item to the products list
+    productsList.appendChild(listItem);
+  }
+}
+
+});
+
 
 reviewsRef.once('value', (snapshot) => {
   const reviewsnode = snapshot.val();
@@ -68,7 +138,7 @@ reviewsRef.once('value', (snapshot) => {
     reviewsContainer.appendChild(reviewDiv);
   
     if (numReviews > 0) {
-      const averageRating = Math.round((totalStars / numReviews) * 2) / 2;
+      const averageRating = Math.min(5, Math.max(0, Math.round((totalStars / numReviews) * 2) / 2));
       console.log(averageRating);
       const ratingStars = document.createElement("div");
       ratingStars.classList.add("starsrating");
@@ -100,7 +170,7 @@ reviewsRef.once('value', (snapshot) => {
 
 // Get a reference to the Firebase database
 const database = firebase.database();
-const id = localStorage.getItem('id');
+
 
 // Get a reference to the product node in the database
 const productRef = database.ref('Products/' + id);

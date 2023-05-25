@@ -24,13 +24,16 @@ var firebaseConfig = {
   var productName = document.getElementById('product-name').value;
   var productDescription = document.getElementById('product-description').value;
   var productPrice = document.getElementById('product-price').value;
-  var productQuantity = document.getElementById('product-quantity').value;
+  const select = document.querySelector('select');
+  var productCategory = select.value;
+
+ //var productQuantity = document.getElementById('product-category').value;
   var link="none";
     // Get the selected file from the input element
     var file = document.getElementById('image-upload').files[0];
-    if (productName && productDescription && productPrice && productQuantity) {
+    if (productName && productDescription && productPrice && productCategory) {
     // Create a storage reference to the selected file
-    alert(file);
+   
     var storageRef = storage.ref('images/' + file.name);
   
     // Upload the file to Firebase Storage
@@ -42,7 +45,7 @@ var firebaseConfig = {
         
         link=url;
         
-        saveMessages(productName , productDescription , productPrice , productQuantity,link);
+        saveMessages(productName , productDescription , productPrice , productCategory,link);
         //database.ref('images').push({url: url});
        
       });
@@ -56,14 +59,14 @@ else {
   }
   var email  = sessionStorage.getItem("user_email");
   // function to save user data to the database
-const saveMessages = (productName , productDescription , productPrice , productQuantity,link) => {
+const saveMessages = (productName , productDescription , productPrice , productCategory,link) => {
     var newContactForm = contactFormDB.push();
     // set data to be saved
     newContactForm.set({
         name: productName,
         description: productDescription,
         price: productPrice,
-        category: productQuantity,
+        category: productCategory,
         picture :link,
         suppliers_email:email
     });
