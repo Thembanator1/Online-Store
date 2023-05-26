@@ -5,6 +5,7 @@ Software Design project
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Thembanator1/Online-Store/tree/main.svg?style=svg&circle-token=1da0cb0f6f3033f259497861f8db309a217aa93d)](https://dl.circleci.com/status-badge/redirect/gh/Thembanator1/Online-Store/tree/main)
 [![codecov](https://codecov.io/gh/Thembanator1/Online-Store/branch/main/graph/badge.svg?token=d6bf52c7-73cf-4796-847c-75e56793f9ba)](https://codecov.io/gh/Thembanator1/Online-Store)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/62f17fb9-5dcd-4539-8685-39d0be8f15c0/deploy-status)](https://app.netlify.com/sites/runtimeshopping/deploys)
 
 
 Among other features, users should 
