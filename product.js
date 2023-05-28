@@ -37,7 +37,7 @@ productsRef.once("value", snapshot => {
     [shuffledProducts[i], shuffledProducts[j]] = [shuffledProducts[j], shuffledProducts[i]];
   }
 
-  // Loop through only 60% of the shuffled products
+  // Loop through only 100% of the shuffled products
 const numProducts = Math.floor(shuffledProducts.length * 1);
 for (const [key, product] of shuffledProducts.slice(0, numProducts)) {
   // Check if the product belongs to the "Cellphones & Smartwatches" category

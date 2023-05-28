@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Reviews - Takealot</title>
+    <style type="text/css">
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #171313;
+      }
+
+      header {
+        background-color: #df0e0e;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .back-arrow {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #fff;
+        border-left: none;
+        border-bottom: none;
+        transform: rotate(-135deg);
+        margin-right: 10px;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin: 0;
+        color: #fff;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #df0e0e;
+      }
+
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #cdb9b9;
+      }
+
+      .filter {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .year {
+        font-size: 18px;
+        margin-right: 5px;
+        color: #777;
+      }
+
+      .change-year {
+        font-size: 18px;
+        color: #0077c2;
+        text-decoration: none;
+        border-bottom: 1px solid #0077c2;
+        padding-bottom: 3px;
+        margin-left: 10px;
+        transition: border-bottom-color 0.3s ease;
+      }
+
+      .change-year:hover {
+        border-bottom-color: #005580;
+      }
+
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        display: none;
+      }
+
+      .popup ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .popup li {
+        margin-bottom: 10px;
+      }
+
+      .popup a {
+        color: #0077c2;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s ease;
+      }
+
+      .popup a:hover {
+        color: #005580;
+      }
+
+      /* Scrollable container styles */
+  .scroll-view {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  
+  /* Box styles */
+  .product-box {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color:#171313;
+  }
+  
+  .product-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    background-color: #ccc;
+  }
+  
+  .product-info {
+    flex-grow: 1;
+  }
+  
+  .product-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .product-rating {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #f1c40f;
+  }
+  
+  .product-status {
+    font-size: 14px;
+    color: #2ecc71;
+  }
+  /* Popup styles */
+.popup1 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.popup-content {
+  background-color: #0c0808;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+/* Box styles */
+.product1-box {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color:#171313;
+}
+
+.product1-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+  background-color: #ccc;
+}
+
+.product1-info {
+  flex-grow: 1;
+}
+
+.product1-name {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.product1-rating {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #f1c40f;
+}
+
+.product1-status {
+  font-size: 14px;
+  color: #2ecc71;
+}
+.product1-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #0c0808;
+  margin-bottom: 20px;
+}
+
+.product1-rating-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #f1c40f;
+  margin-bottom: 10px;
+}
+
+.product1-rating-stars {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #f1c40f;
+}
+
+.product1-rating-label {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2ecc71;
+}
+
+.product1-review {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.product1-published {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.product1-buttons {
+  display: flex;
+}
+
+.product1-button1 {
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.product1-button2 {
+  background-color: #f1c40f;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="account.html" class="back-arrow"></a>
+      <h1>Product Reviews</h1>
+    </header>
+    <main>
+      <h2>Review History</h2>
+      <h3>Filter By: <span class="year">2023</span><a href="#" class="change-year">Change</a></h3>
+      <div class="filter">
+        <!-- Year options and popup code goes here -->
+      </div>
+    </main>
+    <div class="popup">
+      <ul>
+        <li><a href="#">2023</a></li>
+        <li><a href="#">2022</a></li>
+        <li><a href="#">2021</a></li>
+        <li><a href="#">2020</a></li>
+        <li><a href="#">2019</a></li>
+        <li><a href="#">2018</a></li>
+        <li><a href="#">2017</a></li>
+        <li><a href="#">2016</a></li>
+      </ul>
+    </div>
+
+    <!-- Scrollable container with product boxes -->
+<div class="scroll-view">
+    <!-- Product box -->
+    <div class="product-box" style="display: none">
+     
+      <img class="product-image" src="https://assets.swappie.com/iphone11promaxhopea.jpg" alt="Description of the image">
+      <div class="product-info">
+        <div class="product-name">Product 1</div>
+        <div class="product-rating">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <div class="product-status">Status: Great</div>
+      </div>
+    </div>
+  
+  </div>  
+  <div class="popup1" style="display: none" >
+    <div class="close-btn" onclick="close_btn()">&times;</div>
+    <div class="popup-content">
+      <div class="product1-box">
+        <img class="product1-image" src="https://assets.swappie.com/iphone11promaxhopea.jpg" alt="Description of the image">
+        <div class="product1-info">
+          <div class="product1-name">Product 1</div>
+          <div class="product1-rating">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+          <div class="product1-status">Status: Great</div>
+        </div>
+      </div>
+    </div>
+    <div class="product1-header">
+      <div class="product1-rating-header">Overall rating</div>
+      <div class="product1-rating-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+      <div class="product1-rating-label">Excellent</div>
+      <div class="product1-review">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec nulla at mauris ultrices auctor. Etiam pellentesque tristique neque, ac vehicula nisi porta eu. Sed sit amet blandit dolor.</div>
+      <div class="product1-published">Published: May 10, 2023</div>
+      <div class="product1-buttons">
+        <div class="product1-button1" onclick="editReview()">Edit Review</div>
+        <div class="product1-button2" onclick="deleteUser()">Delete Review</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="review.js"></script>
+  </body>
+</html>

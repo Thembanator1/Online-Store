@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<style type="text/css">
+        /* 2nd NavBar */
+        .navbar {
+        
+        display: flex;
+        
+        align-items: center;
+        
+        justify-content: space-between;
+        
+        padding: 20px;
+        border-bottom: #000000;
+        
+        background-color: rgb(255, 0, 0);
+        
+        color: #000000;
+        
+        }
+        
+        /* Menu listing is the same on both navs */
+        .nav-links a {
+        
+        color: #4400ff;
+        
+        }
+        .menu {
+        
+        display: flex;
+        
+        gap: 1em;
+        
+        font-size: 18px;
+        
+        }
+        
+        .menu li:hover {
+        
+        background-color: #4c9e9e;
+        
+        border-radius: 5px;
+        
+        transition: 0.3s ease;
+        
+        }
+        
+        .menu li {
+        
+        padding: 5px 14px;
+        
+        }
+        
+        input {
+          margin-bottom: 15px;
+          margin-top: 20px;
+        }
+
+        input[type="submit"]{
+          background-color: rgb(114, 112, 109);
+          color: #fff;
+          border: none;
+          padding: 5px 20px;
+          cursor: pointer;
+        }
+
+        a {
+          font-size: 20px;
+        }
+        b {
+          font-size: 30px;
+          margin-left: 15px;
+        }
+        
+        </style>
+            <div> <!-- second navBar --->
+                <nav class="navbar"> 
+                  <ul class="nav-links">
+                    <div class="menu">
+                      <li><a href="homepage.html">Home</a></li>
+                      <li><a href="/">Cart</a></li>
+                    </div>
+                      
+                  </ul>
+                </nav>
+              </div>
+          
+            <title>My Account</title>
+</head>
+<!-- The following code creates a login form with input fields for email and password -->
+<body onload="start()">
+	<div> 
+	<h1>Edit Personal Details</h1>
+	<form>
+
+    <a>Email:</a><br>
+    <b id="Email"></b><br>
+
+    <a>Name:</a><br>
+	  <b id="Name"></b><br>
+
+    <a>Surname:</a><br>
+	  <b id="Surname"></b><br>
+
+	<!-- Submit button for the form -->
+	<input type="submit" name="" value="Edit Profile" id="validate">
+	</form>
+	</div>
+	<!-- The following script tag includes the Firebase SDK library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<!-- The following script tag includes the javascript file for the login functionality -->
+	<script src="personal_details.js"></script>
+	</body>
+</html>
