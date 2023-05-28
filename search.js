@@ -22,54 +22,53 @@ var imagesRef = firebase.database().ref("Products");
 // Retrieve all product items from the Firebase Realtime Database
 const productsRef = firebase.database().ref("Products");
  // document.getElementById("Onlinestore").addEventListener("submit", submitForm)r query="";
+ var categoriesRef = firebase.database().ref("Products").orderByChild("category");
 
- function searchObjects() {
-  query = document.getElementById("searchInput").value.toLowerCase();
-  var objectlist = document.getElementById("objectList");
-  objectlist.innerHTML = "";
+
+function searchObjects() {
+  var query = document.getElementById("searchInput").value.toLowerCase();
+  var objectList = document.querySelector(".object-list");
+  objectList.innerHTML = "";
   productsRef.once("value", function(snapshot) {
     var products = snapshot.val();
+    console.log(products);
     var count = 0;
     var objectDiv = null;
     for (var [key, product] of Object.entries(products)) {
-      if (product.name.toLowerCase().indexOf(query) !== -1) {
+      if (query === "" || product.name.toLowerCase().indexOf(query) !== -1) {
         if (count % 2 === 0) {
           objectDiv = document.createElement("div");
           objectDiv.className = "object";
-          objectlist.appendChild(objectDiv);
+          objectList.appendChild(objectDiv);
         }
 
-        var objectListItem = document.createElement("li");
+        var objectListItem = document.createElement("div");
         objectListItem.className = "item";
 
         var objectImageContainer = document.createElement("div");
         objectImageContainer.className = "item-image-container";
 
-        
         var objectImage = document.createElement("img");
         objectImage.src = product.picture; // Assuming there's a URL property in the data
         objectImage.alt = product.name;
         objectImage.className = "item-image";
         objectImageContainer.appendChild(objectImage);
 
-        var objectName = document.createElement("p");
-        var price = document.createElement("q");
-        objectName.innerHTML = product.name;
-        price.innerHTML = "R" + product.price;
+        var objectDetails = document.createElement("div");
+        objectDetails.className = "item-details";
 
-        objectListItem.addEventListener(
-          "click",
-          (function(key) {
-            return function() {
-              localStorage.setItem("id", key);
-              window.location.assign("ProductPage.html");
-            };
-          })(key)
-        );
+        var objectName = document.createElement("p");
+        var price = document.createElement("p");
+        objectName.className = "item-name";
+        price.className = "item-price";
+        objectName.innerHTML = product.name;
+        price.innerHTML = "$" + product.price;
+
+        objectDetails.appendChild(objectName);
+        objectDetails.appendChild(price);
 
         objectListItem.appendChild(objectImageContainer);
-        objectListItem.appendChild(objectName);
-        objectListItem.appendChild(price);
+        objectListItem.appendChild(objectDetails);
         objectDiv.appendChild(objectListItem);
 
         count++;
@@ -77,3 +76,124 @@ const productsRef = firebase.database().ref("Products");
     }
   });
 }
+
+function filterProducts(category) {
+  // Retrieve all product items from the Firebase Realtime Database
+  productsRef.once("value", function(snapshot) {
+    var products = snapshot.val();
+    var filteredProducts = [];
+
+    // Iterate over the products to filter by category
+    for (var key in products) {
+      if (products[key].category === category) {
+        filteredProducts.push(products[key]);
+      }
+    }
+
+    // Display the filtered products
+    displayFilteredProducts(filteredProducts);
+  });
+}
+
+function displayFilteredProducts(products) {
+  var objectList = document.querySelector(".object-list");
+  objectList.innerHTML = "";
+  
+  // Iterate over the filtered products to create and append the HTML elements
+  products.forEach(function(product) {
+    var objectDiv = document.createElement("div");
+    objectDiv.className = "object";
+    objectList.appendChild(objectDiv);
+
+    var objectImageContainer = document.createElement("div");
+    objectImageContainer.className = "item-image-container";
+
+    var objectImage = document.createElement("img");
+    objectImage.src = product.picture; // Assuming there's a URL property in the data
+    objectImage.alt = product.name;
+    objectImage.className = "item-image";
+    objectImageContainer.appendChild(objectImage);
+
+    var objectDetails = document.createElement("div");
+    objectDetails.className = "item-details";
+
+    var objectName = document.createElement("p");
+    var price = document.createElement("p");
+    objectName.className = "item-name";
+    price.className = "item-price";
+    objectName.innerHTML = product.name;
+    price.innerHTML = "$" + product.price;
+
+    objectDetails.appendChild(objectName);
+    objectDetails.appendChild(price);
+
+    objectDiv.appendChild(objectImageContainer);
+    objectDiv.appendChild(objectDetails);
+  });
+}
+
+
+
+
+// Call the populateCategories function to populate the dropdown initially
+populateCategories();
+
+
+// Function to fetch and populate categories in the dropdown menu
+function populateCategories() {
+  var categoryDropdown = document.getElementById("categoryDropdown");
+
+  // Fetch categories from the database
+  categoriesRef.once("value", function(snapshot) {
+    var products = snapshot.val();
+
+    // Create an array to store unique categories
+    var categories = [];
+
+    // Iterate over the products to collect unique categories
+    for (var key in products) {
+      var category = products[key].category;
+      if (category && !categories.includes(category)) {
+        categories.push(category);
+      }
+    }
+
+    // Create an option for each category and append it to the dropdown
+    categories.forEach(function(category) {
+      var option = document.createElement("a");
+      option.textContent = category;
+      option.setAttribute("onclick", "filterProducts('" + category + "')");
+      categoryDropdown.appendChild(option);
+    });
+  });
+}
+function toggleDropdown() {
+  var dropdownContent = document.getElementById("categoryDropdown");
+  var doneFilteringButton = document.getElementById("doneFilteringButton");
+
+  dropdownContent.classList.toggle("show");
+
+  // Check if the dropdown is currently shown
+  if (dropdownContent.classList.contains("show")) {
+    doneFilteringButton.style.display = "block";
+  } else {
+    doneFilteringButton.style.display = "none";
+  }
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches(".dropbtn")) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var dropdown = dropdowns[i];
+      if (dropdown.classList.contains("show")) {
+        dropdown.classList.remove("show");
+      }
+    }
+  }
+};
+function refreshPage() {
+  location.reload();
+}
+// Call the populateCategories function to populate the dropdown initially

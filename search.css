@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-*{ /*page general properties */
+* {
   margin: 10px;
   padding: 0px;
   box-sizing: border-box;
@@ -8,57 +8,130 @@
 }
 
 body {
-    background-color: rgb(251, 1, 1);
-  }
+  background-color: rgb(255, 255, 255);
+}
 
-  .object img {
-    width: 300px;
-    height: auto;
-    border: 5px;
-    border-radius: 60px;
-    transition: all 0.3s ease-in-out;
-  }
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo img {
+  height: 65px;
+  width: 300px;
+  padding: 0px;
   
-  .object img:hover {
-    transform: scale(1.05);
-  }
+}
 
-  .topnav {
+.search-bar {
+  width: 50%;
+  max-width: 700px;
+  height: 50px;
+  background: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 60px;
+  transition: width 0.3s ease-in-out;
+}
 
-    display: flex;
-    
-    align-items: center;
-    
-    justify-content: space-between;
-    
-    padding: 20px;
-    border-bottom: #000000;
-    
-    background-color: rgb(255, 255, 255);
-    
-    color: #000000;
-    
-    }
-    /* LOGO */ 
-    img{
-      height: 65px;
-      width: 300px;
-      padding: 0px;
-  }
+.search-bar:hover {
+  width: 800px;
+}
 
+.object-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.object {
+  width: 45%;
+  margin: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
 
-  .search-bar{
-    width:50%;
-    max-width: 700px;
-    height: 50px;
-    background: rgb(255, 255, 255);
-    display: flex;
-    align-items: center;
-    border-radius: 60px;
-    transition: width 0.3s ease-in-out;
-  }
-  
-  .search-bar:hover {
-    width: 800px;
-  }
+.object img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.object img:hover {
+  transform: scale(1.05);
+}
+
+.item-details {
+  padding: 10px;
+}
+
+.item-name,
+.item-price {
+  background-color: transparent;
+  margin: 5px 0;
+}
+/* Existing CSS code */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.show {
+  display: block;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #f1f1f1;
+}
+
+.doneFilteringButton{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 20px;
+}
