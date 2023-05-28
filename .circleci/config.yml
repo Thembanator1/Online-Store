@@ -1,38 +1,61 @@
 version: 2.1
-
-env:
-  SERVER_IP: 10.100.15.152
-
+orbs:
+  node: circleci/node@4.7
+  codecov: codecov/codecov@1.0.5
+  
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:latest
-    
-    environment:
-      CI: false
+      - image: cimg/node:16.10
+    steps:
+      - build-and-test
+      - store-coverage-data
+      - upload-coverage
+commands:
+  store-coverage-data:
+    steps:
+      - store_artifacts:
+          path: coverage
 
-    working_directory: ~/repo
-
+  upload-coverage:
+    steps:
+      - codecov/upload:
+          file: coverage/coverage-final.json
+          
+  build-and-test:
     steps:
       - checkout
-      - run: npm install
-      - run: npm install --save react-chartjs-2 chart.js
-
-      # run tests!
-      #- run: npm run build
+      - node/install-packages:
+          # If you are using yarn, change the line below from "npm" to "yarn"
+          pkg-manager: npm
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
-          name: Run Tests
-          command: npm test -- --coverage || true
-
+          name: install-dependancies
+          command: npm ci
+          
       - run:
-          name: Upload coverage report to Codecov
-          command: |
-            bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-
+          name: install react testing library
+          command: npm install @testing-library/react
       - run:
-          name: Install Firebase CLI
-          command: |
-            sudo npm install -g firebase-tools
-
-      
+          name: install jest-dom library for react testing
+          command: npm install @testing-library/jest-dom
+      - run:
+          name: install bcrypt
+          command: npm install bcryptjs
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - $HOME/.npm
+      - run:
+          name: Run tests
+          command: npm test
+          environment: 
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
