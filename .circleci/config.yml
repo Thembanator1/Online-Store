@@ -18,7 +18,6 @@ jobs:
       - checkout
       - run: npm install
       - run: npm install --save react-chartjs-2 chart.js
-      - run: ls build
 
       # run tests!
       #- run: npm run build
