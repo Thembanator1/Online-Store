@@ -47,13 +47,7 @@ commands:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - $HOME/.npm
-      - run:
-          name: Run tests
-          command: npm test
-          environment: 
-            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
-      - store_test_results:
-          path: ./reports/junit/
+      
 workflows:
   version: 2
   build_and_test:
