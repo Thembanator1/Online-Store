@@ -1,9 +1,6 @@
 {
   "name": "online-store",
   "version": "0.1.0",
-  "jest": {
-    "verbose": true
-  }
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@reduxjs/toolkit": "^1.9.3",
