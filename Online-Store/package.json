@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce-app",
+  "name": "online-store",
   "version": "0.1.0",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
