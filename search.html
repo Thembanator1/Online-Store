@@ -44,25 +44,8 @@
     <script src="./search.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
-    <script>
-        function toggleDropdown() {
-          var dropdownContent = document.getElementById("categoryDropdown");
-          var doneFilteringButton = document.getElementById("doneFilteringButton");
+   
 
-          dropdownContent.classList.toggle("show");
-
-          // Check if the dropdown is currently shown
-          if (dropdownContent.classList.contains("show")) {
-            doneFilteringButton.style.display = "block";
-          } else {
-            doneFilteringButton.style.display = "none";
-          }
-        }
-
-        function refreshPage() {
-          location.reload();
-        }
-    </script>
 </body>
 
 </html>

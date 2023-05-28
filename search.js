@@ -22,7 +22,7 @@ var imagesRef = firebase.database().ref("Products");
 // Retrieve all product items from the Firebase Realtime Database
 const productsRef = firebase.database().ref("Products");
  // document.getElementById("Onlinestore").addEventListener("submit", submitForm)r query="";
- var categoriesRef = firebase.database().ref("Products").orderByChild("category");
+ var categoriesRef = firebase.database().ref("Products");
 
 
 function searchObjects() {
@@ -64,6 +64,17 @@ function searchObjects() {
         objectName.innerHTML = product.name;
         price.innerHTML = "$" + product.price;
 
+        objectListItem.addEventListener(
+          "click",
+          (function(productId) {
+            return function() {
+              localStorage.setItem("id", productId);
+              window.location.assign("ProductPage.html");
+            };
+          })(key) // Use key (product ID) as the argument
+        );
+        
+        console.log(key);
         objectDetails.appendChild(objectName);
         objectDetails.appendChild(price);
 
@@ -81,32 +92,37 @@ function filterProducts(category) {
   // Retrieve all product items from the Firebase Realtime Database
   productsRef.once("value", function(snapshot) {
     var products = snapshot.val();
-    var filteredProducts = [];
-
+    var filteredProducts = {};
+  
     // Iterate over the products to filter by category
     for (var key in products) {
       if (products[key].category === category) {
-        filteredProducts.push(products[key]);
+        filteredProducts[key] = products[key];
       }
     }
-
     // Display the filtered products
     displayFilteredProducts(filteredProducts);
   });
 }
 
+
 function displayFilteredProducts(products) {
+  console.log(products);
   var objectList = document.querySelector(".object-list");
   objectList.innerHTML = "";
-  
-  // Iterate over the filtered products to create and append the HTML elements
-  products.forEach(function(product) {
+
+  for (var [key, product] of Object.entries(products)) {
     var objectDiv = document.createElement("div");
     objectDiv.className = "object";
     objectList.appendChild(objectDiv);
 
+    var objectListItem = document.createElement("div");
+    objectListItem.className = "item";
+    objectDiv.appendChild(objectListItem);
+
     var objectImageContainer = document.createElement("div");
     objectImageContainer.className = "item-image-container";
+    objectListItem.appendChild(objectImageContainer);
 
     var objectImage = document.createElement("img");
     objectImage.src = product.picture; // Assuming there's a URL property in the data
@@ -116,6 +132,7 @@ function displayFilteredProducts(products) {
 
     var objectDetails = document.createElement("div");
     objectDetails.className = "item-details";
+    objectListItem.appendChild(objectDetails);
 
     var objectName = document.createElement("p");
     var price = document.createElement("p");
@@ -124,13 +141,31 @@ function displayFilteredProducts(products) {
     objectName.innerHTML = product.name;
     price.innerHTML = "$" + product.price;
 
+    objectListItem.addEventListener(
+      "click",
+      (function(productId) {
+        return function() {
+          localStorage.setItem("id", productId);
+          window.location.assign("ProductPage.html");
+        };
+      })(key) // Use key (product ID) as the argument
+    );
+
     objectDetails.appendChild(objectName);
     objectDetails.appendChild(price);
-
-    objectDiv.appendChild(objectImageContainer);
-    objectDiv.appendChild(objectDetails);
-  });
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -173,12 +208,6 @@ function toggleDropdown() {
 
   dropdownContent.classList.toggle("show");
 
-  // Check if the dropdown is currently shown
-  if (dropdownContent.classList.contains("show")) {
-    doneFilteringButton.style.display = "block";
-  } else {
-    doneFilteringButton.style.display = "none";
-  }
 }
 
 // Close the dropdown if the user clicks outside of it
