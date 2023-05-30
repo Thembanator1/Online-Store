@@ -135,3 +135,24 @@ body {
   cursor: pointer;
   margin-left: 20px;
 }
+
+.discount-banner {
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  padding: 10px;
+}
+
+.discount-banner p {
+  margin: 0;
+  animation: moveBanner 10s linear infinite;
+}
+
+@keyframes moveBanner {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

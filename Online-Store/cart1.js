@@ -15,7 +15,7 @@ const firebaseConfig = {
   
   // Get a reference to the Firebase database
   const database = firebase.database();
-  
+  const couponRef=database.ref('Coupons');
   const customer_email = localStorage.getItem('user_email');
   // Get a reference to the product node in the database
   const cartRef = database.ref('Cart');
@@ -120,4 +120,57 @@ const firebaseConfig = {
         console.error('Error deleting item:', error);
       });
   }
+
+// Apply Coupon button functionality
+const applyCouponBtn = document.getElementById('apply-coupon');
+applyCouponBtn.addEventListener('click', function () {
+  // Get the discount code entered by the user
+  const discountCodeInput = document.getElementById('discount-code');
+  const discountCode = discountCodeInput.value.trim();
+
+  // Retrieve the discount percentage from the Coupons node in the database
+  couponRef.once('value', (snapshot) => {
+    const couponData = snapshot.val();
+
+    let isCouponValid = false;
+    snapshot.forEach((childSnapshot) => {
+      const couponItem = childSnapshot.val();
+      console.log(couponItem.code);
+
+      if (couponItem.code === discountCode) {
+        isCouponValid = true;
+
+        const discountPercentage = couponItem.percentage;
+        console.log(discountPercentage);
+
+        // Calculate the discounted price
+        const totalPrice = parseFloat(localStorage.getItem('price'));
+        const discountedPrice = totalPrice - (totalPrice * discountPercentage) / 100;
+        const rounded = discountedPrice.toFixed(2);
+
+        // Update the original cart sum to the discounted price
+        const sumElem = document.getElementById('cart-sum');
+        sumElem.textContent = "R " + rounded;
+        localStorage.setItem("price", rounded);
+
+        // Remove the second modal content
+        const couponHeader = document.querySelector('.coupon-header');
+        const couponContent = document.querySelector('.coupon-content');
+        couponHeader.remove();
+        couponContent.remove();
+
+        // Exit the loop since a valid coupon is found
+        return;
+      }
+    });
+
+    if (!isCouponValid) {
+      alert('Invalid coupon code. Please enter a valid code.');
+    }
+  });
+});
+
+
+
+
   

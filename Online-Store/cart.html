@@ -185,6 +185,51 @@
         .cart-summary button:hover {
             background-color: #c00;
         }
+        /* Coupon button styles */
+#coupon {
+  background-color: #c00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#coupon:hover {
+  background-color: #c00;
+}
+
+/* Apply coupon button styles */
+#apply-coupon {
+  background-color: #c00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#apply-coupon:hover {
+  background-color: #c00;
+}
+
+#discount-code {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+#discount-code::placeholder {
+  color: #999;
+}
+/* Discounted price styles */
+#discounted-price {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
         
 /* 2nd NavBar */
 .navbar {
@@ -230,6 +275,12 @@ color: #000000;
                     <th onclick="remove()">Actions</th> <!-- New column for product removal buttons -->
                 </tr>
             </table>
+            <h4 class="coupon-header">Coupon</h4>
+            <div class="coupon-content">
+                <input type="text" id="discount-code" placeholder="Enter discount code">
+                <button id="apply-coupon">Apply Coupon</button>
+                <p id="discounted-price"></p>
+            </div>
             <div class="cart-summary">
                 <h2>Cart Summary</h2>
                 <p id="cart-total"></p>
@@ -238,7 +289,7 @@ color: #000000;
             </div>
         </div>
     </div>
-
+ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 	<script src="cart1.js"></script>
 

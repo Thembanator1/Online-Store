@@ -102,6 +102,21 @@ function filterProducts(category) {
     }
     // Display the filtered products
     displayFilteredProducts(filteredProducts);
+    // Function to add the sale percentage tag to each image
+function addSalePercentageTag() {
+  var images = document.querySelectorAll(".item-image");
+  images.forEach(function (image) {
+      var salePercentage = generateRandomSalePercentage();
+      var saleTag = document.createElement("div");
+      saleTag.className = "sale-tag";
+      saleTag.textContent = salePercentage + "% off";
+      image.parentNode.insertBefore(saleTag, image.parentNode.firstChild);
+  });
+}
+
+// Call the addSalePercentageTag function after displaying the filtered products
+displayFilteredProducts(filteredProducts);
+addSalePercentageTag();
   });
 }
 
@@ -226,3 +241,49 @@ function refreshPage() {
   location.reload();
 }
 // Call the populateCategories function to populate the dropdown initially
+        // Function to generate a random sale percentage (10%, 15%, 20%)
+        function generateRandomSalePercentage() {
+          var percentages = [10, 15, 20];
+          var randomIndex = Math.floor(Math.random() * percentages.length);
+          return percentages[randomIndex];
+      }
+
+      // Function to add the sale percentage tag to each image
+// Function to add the sale percentage tag and display discounted prices
+function addSalePercentageTag() {
+  var images = document.querySelectorAll(".item-image");
+  images.forEach(function (image) {
+    var salePercentage = generateRandomSalePercentage();
+    var saleTag = document.createElement("div");
+    saleTag.className = "sale-tag";
+    saleTag.textContent = salePercentage + "% off";
+    image.parentNode.insertBefore(saleTag, image.parentNode.firstChild);
+
+    var originalPrice = parseFloat(image.getAttribute("data-price"));
+    var discountedPrice = calculateDiscountedPrice(originalPrice, salePercentage);
+
+    var priceContainer = document.createElement("div");
+    priceContainer.className = "price-container";
+
+    var originalPriceElement = document.createElement("p");
+    originalPriceElement.className = "original-price";
+    originalPriceElement.innerHTML = "$" + originalPrice.toFixed(2);
+    originalPriceElement.style.textDecoration = "line-through";
+
+    var discountedPriceElement = document.createElement("p");
+    discountedPriceElement.className = "discounted-price";
+    discountedPriceElement.innerHTML = "$" + discountedPrice.toFixed(2);
+
+    priceContainer.appendChild(originalPriceElement);
+    priceContainer.appendChild(discountedPriceElement);
+    image.parentNode.appendChild(priceContainer);
+  });
+}
+
+// Function to calculate discounted price based on original price and percentage off
+function calculateDiscountedPrice(originalPrice, percentageOff) {
+  var discount = (originalPrice * percentageOff) / 100;
+  return originalPrice - discount;
+}
+      // Call the addSalePercentageTag function after the objects are displayed
+ 
