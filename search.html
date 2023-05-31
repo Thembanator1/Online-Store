@@ -10,44 +10,42 @@
 </head>
 
 <body>
-<div>
-    <nav class="topnav">
-
-        <div class="logo">
-          <img src =  "./img/home/RunTime_logo.png"/>
-        </div>
-</div>
-
     <div>
-        <h1>SEARCH FOR PRODUCT </h1>
+        <nav class="topnav">
+            <div class="logo">
+                <img src="./img/home/RunTime_logo.png" />
+            </div>
+           
+        </nav>
     </div>
 
+    <div>
+        <h1>SEARCH FOR PRODUCT</h1>
+    </div>
+
+    <div>
+        <input type="search" class="search-bar" id="searchInput" onkeyup="searchObjects()" placeholder="Search here...">
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn" onclick="toggleDropdown()">Filter by Category</button>
+        <div class="dropdown-content" id="categoryDropdown">
+            <!-- Category options will be added dynamically -->
+        </div>
+    </div>
 	
-    <div>
-        <input type="search" class="search-bar"id="searchInput" onkeyup="searchObjects()" placeholder="Search for object..."><br><br>
+    <div class="object-list">
+        <!-- Object snapshots will be displayed here -->
     </div>
-	<div>
-        <div id="objectList">
-            <!-- Object snapshots will be displayed here -->
-        </div>
+    <ul id="objectList"></ul>
+        <!-- Object snapshots will be displayed here -->
+        <button class="doneFilteringButton" onclick="refreshPage()">Done Filtering</button>
 
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="./search.js"></script>
-    </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
-    </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
+   
+
 </body>
 
 </html>
-<style>
- 
-.objectList {
-  display: inline-block;
-  width: 48%;
-  margin-right: 2%;
-  vertical-align: top;
-}
-
-
-</style>

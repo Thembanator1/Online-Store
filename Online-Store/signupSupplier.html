@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			background: url(bg.jpg);
+			background-size: cover;
+			font-family: sans-serif;
+			overflow: scroll;
+		}
+		.login-box{
+			width: 320px;
+			background: rgba(0, 0, 0, 0.5);
+			color: #fff;
+			top: 50%;
+			left: 50%;
+			position: absolute;
+			transform: translate(-50%,-200px);
+			box-sizing: content-box;
+			padding: 70px 30px;
+		}
+		.avatar{
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			position: absolute;
+			top: -50px;
+			left: calc(50% - 50px);
+		}
+		h1{
+			margin: 0;
+			padding-top:-10px;
+			padding-bottom:-10px; 
+            padding-left:-10px; 
+            padding-right:-10px; 
+            font-size: 22px;
+			margin-bottom:10px;
+            text-align:center; 
+        }
+		h2{
+			margin: 0;
+			padding-top:-10px;
+			padding-bottom:-10px; 
+            padding-left:-10px; 
+            padding-right:-10px; 
+            font-size: 16px;
+			margin-bottom:10px;
+        }
+        .login-box p{
+        	margin-top:-10px; 
+        	margin-bottom:-10px; 
+        	padding-left:-10px; 
+        	padding-right:-10px; 
+        	font-weight:bold; 
+			margin-bottom:100px;
+        }
+        .login-box input{
+			margin-bottom:20px;
+        }
+        .login-box input[type="text"], input[type="password"]
+        {
+        	border:none; 
+        	border-bottom:
+        	1px solid #fff; 
+        	background-color:
+        	transperant; 
+        	outline:none; 
+        	height:40px; 
+        	color:#000000; 
+        	font-size:
+        	16px;  
+			width: 100%; 
+        }
+        .login-box input[type="submit"]
+        {
+            border:none;
+            outline:none;
+            height:
+            40px;
+            background:#1c8adb
+            ;
+            color:#fff
+            ;
+            font-size:
+            18px
+            ;
+            border-radius:
+            20px
+            ;
+			width: 100%; 
+			margin-top:20px;
+        }
+        .login-box input[type="submit"]:hover
+        {
+           cursor:pointer
+           ;
+           background:#39dc79
+           ;
+           color:#000
+           ;
+       }
+	   .login-box input[type="radio"]
+	   {
+		margin-left:20px;
+	   }
+       .login-box a{
+       		color:#fff;
+       		font-size:
+       		14px;
+       		font-weight:bold;
+       		text-decoration:none;
+       }
+    </style>
+</head>
+<body>
+<!-- This div contains the signup form --> 
+<div class="login-box">
+<img src="logo-shop.png" class="avatar">
+<form>
+<h1>Supplier Signup</h1><br>
+
+<!-- Input fields for the business owner details -->
+<h1>Business Owner</h1>
+<input type="text" name="" placeholder="Enter Name" id="name">
+<input type="text" name="" placeholder="Enter Surname" id="surname">
+<input type="text" name="" placeholder="Enter Email" id="email">
+<input type="password" name="" placeholder="Create Password" id="password">
+<input type="password" name="" placeholder="Confirm Password" id="confirmpassword">
+
+<!-- Input fields for the business details -->
+<h1>Business Information</h1>
+<input type="text" name="" placeholder="Company Name" id="companyName">
+<input type="text" name="" placeholder="Website(optional)" id="website">
+<input type="text" name="" placeholder="Email" id="companyEmail">
+<input type="text" name="" placeholder="Business Phone Number" id="phoneNumber">
+<input type="text" name="" placeholder="Business Registeration Number" id="registerationNumber">
+<h2>Are you VAT registered?</h2>
+<input type="radio" id="VATyes" name="VAT" value="VATyes">
+<label for="VATyes">Yes</label><br>
+<input type="radio" id="VATno" name="VAT" value="VATno">
+<label for="VATno">No</label><br>
+<h2>Monthly Revenue</h2>
+<input type="radio" id="lessR20k" name="Revenue" value="lessR20k">
+<label for="lessR20k">Less than R20k</label><br>
+<input type="radio" id="R20k-R50k" name="Revenue" value="R20k-R50k">
+<label for="R20k-R50k">R20k-R50k</label><br>
+<input type="radio" id="R50k-R100k" name="Revenue" value="R50k-R100k">
+<label for="R50k-R100k">R50k-R100k</label><br>
+<input type="radio" id="R100k-R500k" name="Revenue" value="R100k-R500k">
+<label for="R100k-R500k">R100k-R500k</label><br>
+<input type="radio" id="moreR500k" name="Revenue" value="moreR500k">
+<label for="moreR500k">More than R500k</label><br>
+
+<!-- Submit button for the form -->
+<input type="submit" name="" value="Sign in" id="validate">
+<!-- Link to the login page for users who already have an account -->
+<a href="loginSupplier.html">Already have an account?</a>
+</form>
+
+</div>
+<!-- Link to the Firebase JavaScript library and to a custom JavaScript file for handling form submission -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<!-- The following script tag includes the javascript file for the login functionality -->
+<script src="signup2Supplier.js"></script>
+
+</body>
+</html>

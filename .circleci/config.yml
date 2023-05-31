@@ -1,21 +1,55 @@
 version: 2.1
 orbs:
-  codecov: codecov/codecov@3
-
+  node: circleci/node@4.7
+  codecov: codecov/codecov@1.0.5
+  
 jobs:
   build:
     docker:
-      - image: cimg/node:current
+      - image: cimg/node:16.10
+    steps:
+      - build-and-test
+      - store-coverage-data
+      - upload-coverage
+commands:
+  store-coverage-data:
+    steps:
+      - store_artifacts:
+          path: coverage
+
+  upload-coverage:
+    steps:
+      - codecov/upload:
+          file: coverage/coverage-final.json
+          
+  build-and-test:
     steps:
       - checkout
+      - node/install-packages:
+          # If you are using yarn, change the line below from "npm" to "yarn"
+          pkg-manager: npm
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
-          name: Install dependencies
-          command: npm install
+          name: install-dependancies
+          command: npm ci
+          
+      - run:
+          name: install react testing library
+          command: npm install @testing-library/react
+      - run:
+          name: install jest-dom library for react testing
+          command: npm install @testing-library/jest-dom
+      - run:
+          name: install bcrypt
+          command: npm install bcryptjs
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - $HOME/.npm
       
-      - codecov/upload
-
-workflow:
-  version: 2.1
-  build-test:
+workflows:
+  version: 2
+  build_and_test:
     jobs:
       - build

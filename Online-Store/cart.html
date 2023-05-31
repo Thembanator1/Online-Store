@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* TOP-NAVBAR STYLING STARTS */
+        .topnav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-bottom: #000000;
+            background-color: rgb(239, 10, 10);
+            color: #000000;
+        }
+
+        /* LOGO */
+        img {
+            height: 65px;
+            width: 100%;
+            max-width: 300px;
+            padding: 0px;
+        }
+
+        /* Styling for the modal content */
+        .modal-content {
+            background-color: rgb(247, 243, 243);
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #ff0000;
+            width: 100%;
+            max-width: 1350px;
+            height: 80%;
+            overflow: auto;
+        }
+
+        /* Styling for the close button */
+        .close {
+            color: #0e0e0e;
+            float: right;
+            right: auto;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /*----Order Information-----*/
+        .products {
+            float: left;
+        }
+
+        .products + .total-price {
+            position: relative;
+        }
+
+        .cart-page {
+            margin: 5% auto;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table + table {
+            /* style for second table */
+            position: relative;
+            top: 20px;
+            /* move the second table 20px down from its normal position */
+        }
+
+        th {
+            text-align: left;
+            padding: 5px;
+            color: #fff;
+            background: #ff523b;
+            font-weight: normal;
+        }
+
+        th:nth-child(4) {
+            display: none;
+        }
+
+        td {
+            padding: 10px 5px;
+        }
+
+        td img {
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+        }
+
+        td input {
+            width: 40px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        td a {
+            color: #ff523b;
+            font-size: 12px;
+        }
+
+        .cart-info {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .total-price {
+            display: flex;
+            justify-content: left;
+            clear: both;
+        }
+
+        #totalPrice {
+            border-top: #ff523b 3px solid;
+            width: 100%;
+            max-width: 971px;
+        }
+
+        td:last-child {
+            text-align: left;
+            /*items on last column will...*/
+        }
+
+        th:last-child {
+            text-align: left;
+            /*header item on last column will...*/
+        }
+
+        #tag {
+            opacity: 0.5;
+        }
+
+        .cart-summary {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cart-summary h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .cart-summary h3 {
+            color: #f00;
+            font-size: 30px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .cart-summary button {
+            background-color: #f00;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart-summary button:hover {
+            background-color: #c00;
+        }
+        /* Coupon button styles */
+#coupon {
+  background-color: #c00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#coupon:hover {
+  background-color: #c00;
+}
+
+/* Apply coupon button styles */
+#apply-coupon {
+  background-color: #c00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#apply-coupon:hover {
+  background-color: #c00;
+}
+
+#discount-code {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+#discount-code::placeholder {
+  color: #999;
+}
+/* Discounted price styles */
+#discounted-price {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+        
+/* 2nd NavBar */
+.navbar {
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+padding: 20px;
+border-bottom: #000000;
+
+background-color: rgb(255, 0, 0);
+
+color: #000000;
+
+}
+    </style>
+</head>
+<body>
+    <div><!-- top-first navBar --->
+        <nav class="topnav">
+            <div class="logo">
+                <img src="./img/home/RunTime_logo.png" alt="Logo">
+            </div>
+        </nav>
+    </div>
+    <div> <!-- second navBar --->
+        <nav class="navbar"> 
+        </nav>
+      </div>
+
+    <!-- Modal window -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <table id="cart-table">
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th onclick="remove()">Actions</th> <!-- New column for product removal buttons -->
+                </tr>
+            </table>
+            <h4 class="coupon-header">Coupon</h4>
+            <div class="coupon-content">
+                <input type="text" id="discount-code" placeholder="Enter discount code">
+                <button id="apply-coupon">Apply Coupon</button>
+                <p id="discounted-price"></p>
+            </div>
+            <div class="cart-summary">
+                <h2>Cart Summary</h2>
+                <p id="cart-total"></p>
+                <h3 id="cart-sum">R</h3>
+                <button id="checkout">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<script src="cart1.js"></script>
+
+
+</body>
+</html>

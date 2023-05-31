@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{ /*page general properties */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: lightblue;
+  }
+  
+
+/* TOP-NAVBAR STYLING STARTS */
+
+.topnav {
+
+    display: flex;
+    
+    align-items: center;
+    
+    justify-content: space-between;
+    
+    padding: 20px;
+    border-bottom: #000000;
+    
+    background-color: rgb(255, 255, 255);
+    
+    color: #000000;
+    
+    }
+    /* LOGO */ 
+    img{
+      height: 65px;
+      width: 300px;
+      padding: 0px;
+  }
+
+/* 2nd NavBar */
+.navbar {
+
+        display: flex;
+        
+        align-items: center;
+        
+        justify-content: space-between;
+        
+        padding: 20px;
+        border-bottom: #000000;
+        
+        background-color: rgb(255, 0, 0);
+        
+        color: #000000;
+        
+    }
+
+    /* Menu listing is the same on both navs */
+    .nav-links a {
+    
+    color: #4400ff;
+    
+    }
+    .menu {
+    
+      display: flex;
+      
+      gap: 1em;
+      
+      font-size: 18px;
+      
+      }
+      
+      .menu li:hover {
+      
+      background-color: #4c9e9e;
+      
+      border-radius: 5px;
+      
+      transition: 0.3s ease;
+      
+      }
+      
+      .menu li {
+      
+      padding: 5px 14px;
+      
+      }
+    
+  
+           
+/*+++++++++++++++++++++++++++++++++++++++++++++*/
+/*-------------Done with NavBars----------------*/
+/*+++++++++++++++++++++++++++++++++++++++++++++*/
+
+.slider{        /* The slideshow section */
+  position: relative;
+  background: #000116;
+  width: 100%;
+  margin: 0px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.slider .slide{ /* come back to alter width/height */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(0% at 0 50%);
+}
+
+.slider .slide.active{
+  clip-path: circle(150% at 0 50%);
+  transition: 2s;
+}
+
+.slide img{
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.slide img{
+  aspect-ratio: 1/2;
+}
+
+.slider .slide .info{
+  position: absolute;
+  color: #222;
+  background: rgba(255, 255, 255, 0.3);
+  width: 75%;
+  margin-top: 50px;
+  margin-left: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 5%);
+}
+
+/*select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 330px;
+  position: absolute;
+  top: 31.5%;
+  left: 14.5%;
+  transform: translate(-50%, -50%);
+  
+}*/
+input[type="button"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 70px;
+
+  position: absolute;
+  top: 31.5%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+
+}
+
+
+.slider .slide .info h2{
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.slider .slide .info p{
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.navigation{
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slider:hover .navigation{
+  opacity: 1;
+}
+
+.prev-btn, .next-btn{
+  z-index: 999;
+  font-size: 2em;
+  color: #222;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev-btn{
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.next-btn{
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.navigation-visibility{
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-visibility .slide-icon{
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.5);
+  width: 20px;
+  height: 10px;
+  transform: translateY(-50px);
+  margin: 0 6px;
+  border-radius: 2px;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+}
+
+.navigation-visibility .slide-icon.active{ /*<!-- dots indicatating which slide/printAd we are on-->*/
+  background: #4285F4;
+  z-index: 1;
+}
+
+@media (max-width: 900px){
+  .slider{
+    width: 100%;
+  }
+
+  .slider .slide .info{
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 500px){
+  .slider .slide .info h2{
+    font-size: 1.8em;
+    line-height: 40px;
+  }
+
+  .slider .slide .info p{
+    font-size: 0.9em;
+  }
+}
+
+
+  /*- Category-Cards -*/
+  .card-row {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin: 20px;
+		}
+  .card {
+  display: inline-block;
+  margin: 20px;
+  width: 300px;
+  height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card a {
+  display: block;
+  text-align: center;
+  padding: 20px;
+}
+
+.card img {
+  width: 80%;
+  height: auto;
+  margin: 20px auto;
+}
+
+.card h3 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.scroll-view {
+  display: flex;
+  overflow-x: auto; /* use auto to only show scrollbar when needed */
+  margin: 2rem;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem; /* add some gap between images */
+}
+
+.image-container img {
+  width: 100%; /* adjust image width to fill the container */
+  height: auto; /* adjust height automatically */
+}
+
+.objectlist img {
+  width: 100%; /* adjust image width to fill the container */
+  height: auto; /* adjust height automatically */
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem; /* add margin to the right of each item */
+}
+
+.product-item:last-of-type {
+  margin-right: 0; /* remove margin from last item */
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem; /* add margin between name and price */
+}
+
+.product-name {
+  font-weight: bold;
+}
+
+.product-price {
+  color: #888;
+}
+
+.vertical-container {
+  overflow-y: auto;
+  margin: 2rem;
+  height: 100%; /* set the height to 100% to fill the remaining space */
+}
+
+.vertical-container .product-item {
+  display: inline-block;
+  margin-right: 0.5rem; /* add margin to the right of each item */
+  margin-bottom: 1rem; /* add margin to the bottom of each row */
+  width: calc(50% - 0.5rem); /* use calc() to calculate item width */
+  max-width: 100%; /* add max-width to avoid stretching of items */
+}
+
+.vertical-container img {
+  width: 100%; /* adjust image width to fill the container */
+  height: auto; /* adjust height automatically */
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 767px) {
+  .image-container img,
+  .objectlist img,
+  .vertical-container img {
+    width: 100%; /* adjust image width to fill the container */
+    height: auto; /* adjust height automatically */
+  }
+
+  .product-item:last-of-type {
+    margin-right: 1rem; /* add margin to the right of each item */
+  }
+
+  .vertical-container .product-item {
+    width: 100%; /* set item width to 100% for full width */
+    margin-right: 0; /* remove margin from last item */
+    margin-bottom: 1rem; /* add margin to the bottom of each row */
+  }
+}
+
+
+
+

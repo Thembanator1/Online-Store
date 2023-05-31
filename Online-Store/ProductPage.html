@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product Page</title>
+	<style  type="text/css" >
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+  }
+  /* TOP-NAVBAR STYLING STARTS */
+
+.topnav {
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+padding: 20px;
+border-bottom: #000000;
+
+background-color: rgb(255, 255, 255);
+
+color: #000000;
+
+}
+/* LOGO */ 
+img{
+  height: 65px;
+  width: 300px;
+  padding: 0px;
+}
+
+/* 2nd NavBar */
+.navbar {
+
+	display: flex;
+	
+	align-items: center;
+	
+	justify-content: space-between;
+	
+	padding: 20px;
+	border-bottom: #000000;
+	
+	background-color: rgb(255, 0, 0);
+	
+	color: #000000;
+	
+}
+
+/* Menu listing is the same on both navs */
+.nav-links a {
+
+color: #4400ff;
+
+}
+.menu {
+
+  display: flex;
+  
+  gap: 1em;
+  
+  font-size: 18px;
+  
+  }
+  
+  .menu li:hover {
+  
+  background-color: #4c9e9e;
+  
+  border-radius: 5px;
+  
+  transition: 0.3s ease;
+  
+  }
+  
+  .menu li {
+  
+  padding: 5px 14px;
+  
+  }
+
+
+	   
+/*+++++++++++++++++++++++++++++++++++++++++++++*/
+/*-------------Done with NavBars----------------*/
+/*+++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+nav ul {
+	display: flex;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	margin-right: 10px;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+}
+
+main {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+}
+
+section {
+	flex: 1;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+section:last-child {
+	margin-right: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+h1, h2, h3 {
+	margin-top: 0;
+}
+
+button {
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #666;
+}
+
+form {
+	margin-top: 20px;
+}
+
+form label, form input, form textarea {
+	display: block;
+	margin-bottom: 10px;
+}
+
+form textarea {
+	height: 100px;
+}
+
+form button {
+	margin-top: 10px;
+}
+#product-img {
+	width: 400px; /* increase image width */
+  height: auto; /* adjust height automatically */
+  /* add any additional styling you want here */
+}
+
+  </style>
+  <style>
+	/* Styling for the modal window */
+	.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		background-color: rgba(0,0,0,0.4);
+	}
+	
+	/* Styling for the modal content */
+	.modal-content {
+		background-color: white;
+		margin: 10% auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 1400px;
+		height: 80%;
+		overflow: auto;
+	}
+	
+	/* Styling for the close button */
+	.close {
+		color: #aaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+	
+	.close:hover,
+	.close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	
+	/*----Order Information-----*/
+	.products {
+		float: left;
+	}
+	.products + .total-price{
+		position: relative;
+	}
+
+	.cart-page{
+		margin: 80px auto;
+		width: 500px
+		}
+	table{
+		width : 80%;
+		border-collapse: collapse;
+		margin-bottom: 20px; /* add some space between the two tables */
+
+	}   
+	table + table {
+	/* style for second table */
+		position: relative;
+		top: 20px; /* move the second table 20px down from its normal position */
+	}
+	th{
+	text-align: left;
+	padding: 5px;
+	color: #fff;
+	background: #ff523b;
+	font-weight: normal;
+	}
+	th:nth-child(4) {
+		display: none;
+	}
+	td{
+	padding: 10px 5px;
+	}
+	td img{
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+	}
+	td input{
+	width: 40px;
+	height: 30px;
+	padding: 5px;
+	}
+	td a{
+	color: #ff523b;
+	font-size: 12px;
+	}
+	.cart-info{
+	display: flex;
+	flex-wrap: wrap;
+	}
+	.total-price{
+	display: flex;
+	justify-content: left;
+	clear: both;
+	}
+	#totalPrice{
+	border-top: #ff523b 3px solid;
+	width: 100%;
+	max-width: 971px;
+	}
+
+	td:last-child{
+	text-align: left; /*items on last column will...*/
+	}
+	th:last-child{
+	text-align: left;/*header item on last column will...*/
+	}
+
+	#tag{
+	opacity: 0.5;
+	}
+	#Arating{
+		height: 25px;
+		padding-top: 20px;
+	}
+	#reviewsContainer{
+		height: 200px;
+		overflow-y: auto; /* Enable vertical scrolling */
+  		scrollbar-width: none; /* Set the width of the scrollbar */
+		border: 1px solid black;
+		border-radius: 40px;
+		padding: 11px;
+		border: none;
+	}
+	#reviewsContainer::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+#reviewsContainer::-webkit-scrollbar-thumb {
+  background: none;
+
+}
+.review {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+	box-sizing: border-box;
+	height: auto;
+  line-height: 1.5;
+}
+.review h3 {
+  height: auto;
+  line-height: 1.2;
+}
+	#ratingContainer{
+		display: flex;
+	}
+	.starsrating a{
+		font-size: 24px;
+	}
+
+	.cart-summary {
+background-color: #f5f5f5;
+border: 1px solid #ddd;
+border-radius: 5px;
+padding: 20px;
+text-align: center;
+margin-top: 20px;
+}
+
+.cart-summary h2 {
+font-size: 24px;
+margin-bottom: 10px;
+}
+
+.cart-summary h3 {
+color: #f00;
+font-size: 30px;
+margin-top: 10px;
+margin-bottom: 20px;
+}
+
+.cart-summary button {
+background-color: #f00;
+border: none;
+color: #fff;
+font-size: 16px;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.cart-summary button:hover {
+background-color: #c00;
+}
+
+</style>
+<style>
+.stars{
+	display: flex;
+}
+.stars a{
+	opacity : 50%;
+	cursor: pointer;
+	padding: 3px;
+}
+.stars:hover a{
+	opacity: 100%;
+}
+.stars a:hover{
+	opacity:100;
+}
+.stars a:hover ~a{
+	opacity: 50%;
+}
+.stars a.active{
+	opacity: 100%;
+}
+
+.stars.disabled{
+	pointer-events: none;
+}
+
+.scroll-view {
+  display: flex;
+  overflow-x: auto; /* use auto to only show scrollbar when needed */
+  margin: 2rem;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem; /* add some gap between images */
+}
+.image-container img {
+  width: 400px; /* increase image width */
+  height: auto; /* adjust height automatically */
+}
+.objectlist img {
+  width: 400px; /* increase image width */
+  height: auto; /* adjust height automatically */
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem; /* add margin to the right of each item */
+}
+
+.product-item:last-of-type {
+  margin-right: 0; /* remove margin from last item */
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem; /* add margin between name and price */
+}
+
+.product-name {
+  font-weight: bold;
+}
+
+.product-price {
+  color: #888;
+}
+
+.vertical-container {
+  overflow-y: auto;
+  margin: 2rem;
+  height: 100%; /* set the height to 100% to fill the remaining space */
+}
+
+.vertical-container .product-item {
+  display: inline-block;
+  margin-right: 0.5rem; /* add margin to the right of each item */
+  margin-bottom: 1rem; /* add margin to the bottom of each row */
+  width: calc(50% - 0.5rem); /* use calc() to calculate item width */
+  max-width: 400px; /* add max-width to avoid stretching of items */
+}
+.vertical-container img {
+  width: 400px; /* increase image width */
+  height: auto; /* adjust height automatically */
+}
+
+.discount-banner {
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  padding: 10px;
+}
+
+.discount-banner p {
+  margin: 0;
+  animation: moveBanner 10s linear infinite;
+}
+
+@keyframes moveBanner {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.review-container.animate-scale {
+  animation: scaleAnimation 0.3s ease-in-out;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.review-container.hover-scale {
+  transition: transform 0.3s ease-in-out;
+}
+
+.review-container.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.review-container {
+  background-color: #dbdbdb;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+}
+.review-container p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #888;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.review-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.review-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.review-details {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.review-rating {
+  margin-top: 5px;
+}
+
+.review-text {
+  margin-top: 10px;
+}
+
+.starsrating {
+  font-size: 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.starsrating a {
+  color: gold;
+  font-size: 20px;
+  width: 25px;
+  height: 25px;
+}
+.review-container + .review-container {
+  margin-top: 10px;
+}
+#Arating {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#Arating h7 {
+  font-weight: bold;
+}
+.review-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+</style>
+
+</head>
+<body>	
+	<div class="discount-banner">
+		<p>Discount available on valid coupon code</p>
+	  </div>
+	<!-- Modal window -->
+	<div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class = "close" > &times;</span>
+            
+                <table id = "cart-table">
+                    <tr>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Subtotal</th>
+                      <th>Actions</th> <!-- New column for product removal buttons -->
+                    </tr>
+                  </table>
+                  
+
+                <div class="cart-summary">
+                    <h2>Cart Summary</h2>
+                    <p id = "cart-total"></p>
+                    <h3 id = "cart-sum"></h3>
+                    <button id="checkout">Proceed to Checkout</button>
+                </div>     
+          </div>
+	    </div>
+    
+    <div><!-- top-first navBar --->
+      <nav class="topnav">
+
+        <div class="logo">
+          <img src =  "./img/home/RunTime_logo.png"/>
+        </div>
+        
+        <ul class="nav-links">
+          
+          <div class="menu">
+            <li><a href="homepage.html">Home</a></li>
+            
+            <li><a href="/">About</a></li>
+            
+            <li><a href="account.html" id="account">Account</a></li>
+            
+            <li><a href="cart.html" id="cartLink">Cart</a></li>
+          </div>
+        
+        </ul>
+      </nav>
+    </div>
+
+    <div> <!-- second navBar --->
+      <nav class="navbar"> 
+        <ul class="nav-links">
+      
+          
+          <div class="menu">
+            <li><a href="homepage.html">Home</a></li>
+            
+            <li><a href="/">About</a></li>
+            
+            <li><a href="/">Pricing</a></li>
+            
+            <li><a href="/">Contact</a></li>
+        
+          </div>
+            
+        </ul>
+      </nav>
+    </div>
+
+	<main>
+		<section>
+			<img id="product-img" alt="Product Image">
+			<h4>Description</h4>
+			<h2 id="product-desc">Product Description</h2>
+			<p id="product-price">Price: $ </p>
+			<button id = "add-to-cart"  onclick="addToCart()"> Add to Cart</button>
+		  </section>
+		  
+
+		<section>
+			<h2>Reviews</h2>
+			<div id="reviewsContainer"></div>
+			<div id ="Arating">
+				<h7>Average Rating:</h7>
+			</div>
+			
+			<div id ="ratingContainer"></div>
+			<p>  out of 5 ★</p>
+			
+				<button id="write-review-btn" >Write a review</button>
+			
+			  
+			  <!-- Review dialog -->
+			  <div id="review-dialog" class="modal">
+				<div class="modal-content">
+				  <span class="close">&times;</span>
+				  <h2>Write a Review</h2>
+				  <form>
+					<label for="name">Review Title:</label>
+					<input type="text" id="Review Title" name="Review Title" placeholder="Good, bad ,excellent..."><br>
+			  
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" placeholder="will auto fill if logged in" readonly><br>
+					
+					<label for="date">Date:</label>
+					<input type="text" id="date" name="date" readonly><br>
+
+					<label for="rating">Rating:</label>
+					<div class="stars">
+						<a>★</a>
+						<a>★</a>
+						<a>★</a>
+						<a>★</a>
+						<a>★</a>
+					</div>
+			  
+					<label for="review">Review:</label>
+					<textarea id="review" name="review"></textarea><br>
+			  
+					<button type="submit">Submit</button>
+				  </form>
+				</div>
+			  </div>
+		  
+			</div>
+		</section>
+	</main>
+
+	
+	<section class="gallery">
+		<h2>Related Products</h2>
+		<!-- Scroll view for the images -->
+		<div class="scroll-view">
+		  <div class="image-container"></div>
+		</div>
+	  </section>
+	  <footer>
+		<p>&copy; 2023 Runtime Shopping inc.</p>
+	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<script src="product.js"></script>
+	<!-- JavaScript to display and hide the modal window -->
+	<script>
+		var cartLink = document.getElementById("cartLink");
+		var modal = document.getElementById("myModal");
+		var close = document.getElementsByClassName("close")[0];
+		var account =document.getElementById("account");
+		cartLink.onclick = function() {
+			
+			localStorage.setItem('page','prodpage');
+			window.location.assign("cart.html"); 
+		}
+        account.onclick=function(){
+			window.location.assign("account.html"); 
+		}
+		close.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+
+			//checkout button
+		var button = document.getElementById("checkout");
+		button.addEventListener("click", function(event) {
+			window.location.assign("./checkout/delivery.html");
+		});
+	</script>
+	
+	<script>//Cart script
+
+		const customer_email = localStorage.getItem('user_email');
+		// Get a reference to the product node in the database
+		const cartRef = database.ref('Cart');
+
+		// Retrieve the product data from the database
+		cartRef.once("value", (snapshot) => {
+		const cartData = snapshot.val();
+		for (const productId in cartData) {
+			const cartItem = cartData[productId];
+			// Display the cart item on the cart page
+			//console.log(cartItem)
+			if(cartItem.customer_email == customer_email){
+			//console.log(cartItem)
+			// Set the image source attribute
+			const productId = cartItem.product_id;
+			const productImage = cartItem.product_image;
+
+			// Set the product description
+			const description = cartItem.description;
+			const productName = cartItem.product_name;
+
+			// Set the product price
+			const productPrice = cartItem.product_price;
+			//const customer_email = "abc123@gmail.com";
+
+			/*saveMessages(
+				productId,
+				productName,
+				productPrice,
+				description,
+				productImage,
+				customer_email
+			);*/
+
+			//++++++++++------ADDING to the CART table on html by add to cart button---++++++++++++++//
+			// Get a reference to the table element
+			const cartTable = document.querySelector("#cart-table");
+
+			// Create a new table row and cells
+			const newRow = document.createElement("tr");
+			const productCell = document.createElement("td");
+			const quantityCell = document.createElement("td");
+			const subtotalCell = document.createElement("td");
+			const actionsCell = document.createElement("td");
+
+			// Populate the cells with product information
+			productCell.innerHTML = `
+				<div class="cart-info">
+				<img src="${productImage}">
+				<div>
+					<p>${productName}</p>
+					<small>Price: ${productPrice}</small>
+				</div>
+				</div>
+			`;
+			quantityCell.innerHTML = '<input type="number" value="1">';
+			subtotalCell.textContent = productPrice;
+			actionsCell.innerHTML = '<button class="remove-product">Remove</button>';
+
+			// Append the cells to the new row
+			newRow.appendChild(productCell);
+			newRow.appendChild(quantityCell);
+			newRow.appendChild(subtotalCell);
+			newRow.appendChild(actionsCell);
+
+			// Append the new row to the table
+			cartTable.appendChild(newRow);
+
+			// Calculate and update the total price
+			let sum = 0;
+			const rows = document.querySelectorAll('table tr');
+			for (let i = 1; i < rows.length; i++) { 
+				const subtotalStr = rows[i].querySelector('td:nth-child(3)').textContent;
+				const subtotalNum = parseFloat(subtotalStr.replace(/[^\d.-]+/g,""));
+				sum += subtotalNum;
+			}
+			const totalElem = document.getElementById('cart-total');
+			totalElem.textContent = `TOTAL: (${rows.length - 1} items)`;
+			const sumElem = document.getElementById('cart-sum');
+			sumElem.textContent = "R " + sum;
+			}
+		}
+		
+		});//end of cartRef
+
+		
+	</script>
+	  <script>
+		const ids = localStorage.getItem('id');
+		//  Get the write review button element
+		const writeReviewBtn = document.getElementById("write-review-btn");
+	  
+		// Get the dialog element
+		const dialog = document.getElementById("review-dialog");
+	  
+		// Get the close button element inside the dialog
+		const closeBtn = dialog.querySelector(".close");
+	
+		// Get the current date and format it as yyyy-mm-dd
+		const currentDate = new Date().toISOString().slice(0, 10);
+
+		// Set the value of the date input to the current date
+		 const date=document.getElementById("date").value = currentDate;
+		//set email value to user email by default
+
+		localStorage.setItem('id', ids);
+
+		const emailreview=document.getElementById("email").value=user;
+
+
+		 // Get the submit button element inside the dialog
+		 const submitBtn = dialog.querySelector("button[type='submit']");
+
+		// Add a click event listener to the write review button
+		writeReviewBtn.addEventListener("click", () => {
+		  // Display the dialog
+		  window.location.assign("orders.html");
+		});
+	  
+		// Add a click event listener to the close button inside the dialog
+		closeBtn.addEventListener("click", () => {
+		  // Hide the dialog
+		  dialog.style.display = "none";
+		});
+		
+		const supplir_emailRef = firebase.database().ref('Products/' + ids + '/suppliers_email');
+		let ratings=0;
+		
+		var contactFormDB1 = firebase.database().ref('Reviews');
+		const starWrapper=document.querySelector(".stars");
+		const stars=document.querySelectorAll(".stars a");
+		stars.forEach((star, clickedIdx) => {
+  		star.addEventListener("click", () => {
+    	starWrapper.classList.add("disabled");
+    	stars.forEach((otherStar, otherIdx) => {
+      	if (otherIdx <= clickedIdx) {
+        	otherStar.classList.add("active");
+      	}
+    	});
+		 rating=clickedIdx+1;
+		supplir_emailRef.once('value')
+  		.then(snapshot => {
+    	supplierEmail = snapshot.val();
+		submitBtn.addEventListener("click", (event) => {
+    	event.preventDefault(); // prevent default form submission behavior
+		
+		// Get the values of all fields
+		const reviewTitle = document.getElementById("Review Title").value;
+		const customerEmail = emailreview;
+		const reviewDate = date;
+		const numStars = rating;
+		const reviewText = document.getElementById("review").value;
+		const se=supplierEmail;
+		const product= ids; // set product id value
+		console.log(ids);//produdct id
+		console.log(se);//supplier email
+		console.log(rating)//num stars
+		console.log(customerEmail)//user email
+		console.log(reviewTitle)//review title
+		console.log(reviewText)// review textbox
+		console.log(reviewDate)//date
+		// Push the data to Firebase
+		if (!reviewTitle || !reviewText) {
+ 				 alert("Please fill in all the required fields.");
+				} else if (numStars == 0) {
+  			alert("Please select a rating.");
+			} else {
+  // Push the data to Firebase
+ 		 pushMessages(customerEmail, reviewDate, numStars, reviewText, reviewTitle, se, product);
+		}
+		// Reset the form fields
+		document.getElementById("Review Title").value = "";
+		emailreview.value = user;
+		date.value = currentDate;
+		stars.forEach((star) => {
+		star.classList.remove("active");
+		});
+		starWrapper.classList.remove("disabled");
+		rating = 0;
+		document.getElementById("review").value = "";
+
+		// Hide the dialog
+		dialog.style.display = "none";
+	});
+			})
+			});
+		});
+			// Add a click event listener to the submit button inside the dialog
+
+		const pushMessages = (emailreview, date, rating, reviewText, reviewTitle, supplierEmail, product) => {
+		const newContactForm = contactFormDB1.push();
+		newContactForm.set({
+			customer_email: emailreview,
+			date: date,
+			num_of_stars: rating,
+			product_id: product,
+			review: reviewText,
+			review_title: reviewTitle,
+			supplier_email: supplierEmail
+		});
+		};
+	  </script>
+	
+</body>
+</html>

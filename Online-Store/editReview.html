@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+    <header>
+        <h1>Edit Review</h1>
+        
+    </header>
+    
+</header>
+
+<head>
+    <h1>Updating Review</h1>
+</head>
+ 
+<body>
+    <label for="number_of_stars">Choose a Rating</label>
+    <div>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+    <form class="rating">
+        <label>
+          <input type="radio" name="stars" value="1" />
+          <span class="fa fa-star icon"></span>
+        </label>
+        <label>
+          <input type="radio" name="stars" value="2" />
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+        </label>
+        <label>
+          <input type="radio" name="stars" value="3" />
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>   
+        </label>
+        <label>
+          <input type="radio" name="stars" value="4" />
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+        </label>
+        <label>
+          <input type="radio" name="stars" value="5" />
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+          <span class="fa fa-star icon"></span>
+        </label>
+      </form>
+    </div>
+    <div>
+        <label for="product-name">Review Title</label>
+        <input type="text" id="review_title" name="product-name" placeholder="Enter The Title" required>
+    </div>
+    <div>
+        <label for="product-description">Your Review:</label>
+        <textarea id="description" name="product-description" placeholder="Enter Review" required></textarea>
+    </div>
+    <div>
+      
+     <button onclick="editUser()" >Submit Changes</button>
+      <button onclick="deleteUser()" id="del">Delete Review</button>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+      <script src="edtReview.js"></script>
+    
+    </body>
+</html>
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(194, 188, 188);
+    }
+    
+    header {
+        background-color: red;
+        color:rgb(194, 188, 188);;
+        padding: 20px;
+    }
+   
+    #del{
+        text-align: center;
+        position: absolute;
+        left: 50%;
+    }
+    
+    h1 {
+        margin: 0;
+        text-align: center;
+        background-color: rgb(194, 188, 188);;
+        color: red;
+        padding: 20px;
+    }
+    h3 {
+       
+        background-color: rgb(194, 188, 188);;
+        color: red;
+        
+    }
+    body button {
+        text-align: center;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    form div {
+        flex-basis: 100%;
+        margin-bottom: 10px;
+    }
+    
+    label, input, textarea {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="number"], textarea {
+        width: 100%;
+    }
+    
+    button[type="submit"] {
+        background-color: #f90;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        position: absolute;
+        text-align: center;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #e8800f;
+    }
+
+    img{
+      height: 60px;
+      width: 300px;
+      padding: 0px;
+      position: absolute;
+      top:6%;
+      left:3.5%;
+    }
+    .rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 25px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: #fff;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #ffa904;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #dbd3d3;
+  text-shadow: 0 0 5px #ffa904;
+}
+</style>
+     

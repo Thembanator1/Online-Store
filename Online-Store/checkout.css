@@ -1,0 +1,246 @@
+/* TOP-NAVBAR STYLING STARTS */
+
+.topnav {
+
+    display: flex;
+    
+    align-items: center;
+    
+    justify-content: space-between;
+    
+    padding: 20px;
+    
+    background-color: rgb(255, 255, 255);
+    border-bottom:2px solid rgb(200, 207, 200);
+    
+    color: #000000;
+    
+    }
+    /* LOGO */ 
+    img{
+      height: 65px;
+      width: 300px;
+      padding: 0px;
+  }
+
+    /* Menu listing is the same on both navs */
+    .nav-links a {
+    
+    color: #4400ff;
+    
+    }
+    .menu {
+    
+      display: flex;
+      
+      gap: 1em;
+      
+      font-size: 18px;
+      
+      }
+      
+      .menu li:hover {
+      
+      background-color: #4c9e9e;
+      
+      border-radius: 5px;
+      
+      transition: 0.3s ease;
+      
+      }
+      
+      .menu li {
+      
+      padding: 5px 14px;
+      
+      }
+    
+  
+           
+/*+++++++++++++++++++++++++++++++++++++++++++++*/
+/*-------------Done with NavBars----------------*/
+/*+++++++++++++++++++++++++++++++++++++++++++++*/
+
+#out-box {
+  /* styling for login box */
+  width: 650px;
+	height: 800px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	top: 50%;
+	left: 30%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+#out-box input{
+  width: 100%;
+  margin-bottom:20px; 
+}
+
+.nextTo {
+  display: flex;
+  justify-content: space-between;
+}
+.nextTo input {
+  width: 48%;
+}
+
+#out-box input[type="text"], input[type="password"]
+{
+  border:none; 
+  border-bottom:
+  1px solid #fff; 
+  background-color:
+  antiquewhite; /*background ---transparent*/
+  outline:none; 
+  height:40px; 
+  color:#000000; 
+  font-size:
+  16px;  
+}
+
+.hide {
+  display: none;
+}
+
+#next-button {
+  /* styling for next button */
+  position: right;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(800%);
+}
+#done {
+  /* styling for next button */
+  position: right;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(800%);
+}
+
+#prev-button {
+  /* styling for next button */
+  position: left;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*----Order Information-----*/
+.products {
+  float: right;
+}
+
+.cart-page{
+  margin: 80px auto;
+  width: 500px
+}
+table{
+  width : 500px;
+  border-collapse: collapse;
+}   
+th{
+  text-align: left;
+  padding: 5px;
+  color: #fff;
+  background: #ff523b;
+  font-weight: normal;
+}
+td{
+  padding: 10px 5px;
+}
+td img{
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+td input{
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+td a{
+  color: #ff523b;
+  font-size: 12px;
+}
+.cart-info{
+  display: flex;
+  flex-wrap: wrap;
+}
+.total-price{
+  display: flex;
+  justify-content: flex-end;
+  clear: both;
+}
+.total-price table{
+  border-top: #ff523b 3px solid;
+  width: 100%;
+  max-width: 500px;
+}
+
+td:last-child{
+  text-align: right; /*items on last column will...*/
+}
+th:last-child{
+  text-align: right;/*header item on last column will...*/
+}
+
+#country {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 8px;
+  background-color: antiquewhite;
+}
+
+/* Style for the country label */
+label[for="country"] {
+  display: block;
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#tag{
+  opacity: 0.5;
+}
+/* Style the radio buttons */
+input[type="radio"] {
+  margin-right: 10px;
+}
+#popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(22, 14, 14);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#counter {
+  font-size: 50px;
+  font-weight: bold;
+}
+#pay-button {
+  /* styling for next button */
+  position: right;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(800%);
+}
+

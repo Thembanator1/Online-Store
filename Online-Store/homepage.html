@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="homepage.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      /* Styling for the modal window */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(46, 40, 40, 0.5);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+      }
+  
+      /* Styling for the modal content */
+      .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #ff0000;
+        width: 1350px;
+        height: 80%;
+        overflow: auto;
+      }
+      
+      /* Styling for the close button */
+      .close {
+        color: #0e0e0e;
+        float: right;
+        right: auto;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      
+  
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      
+      /*----Order Information-----*/
+      .products {
+          float: left;
+      }
+      .products + .total-price{
+          position: relative;
+      }
+
+      .cart-page{
+          margin: 80px auto;
+          width: 500px
+          }
+      table{
+          width : 80%;
+          border-collapse: collapse;
+          margin-bottom: 20px; /* add some space between the two tables */
+
+      }   
+      table + table {
+      /* style for second table */
+          position: relative;
+          top: 20px; /* move the second table 20px down from its normal position */
+      }
+      th{
+      text-align: left;
+      padding: 5px;
+      color: #fff;
+      background: #ff523b;
+      font-weight: normal;
+      }
+      th:nth-child(4) {
+          display: none;
+      }
+      td{
+      padding: 10px 5px;
+      }
+      td img{
+      width: 80px;
+      height: 80px;
+      margin-right: 10px;
+      }
+      td input{
+      width: 40px;
+      height: 30px;
+      padding: 5px;
+      }
+      td a{
+      color: #ff523b;
+      font-size: 12px;
+      }
+      .cart-info{
+      display: flex;
+      flex-wrap: wrap;
+      }
+      .total-price{
+      display: flex;
+      justify-content: left;
+      clear: both;
+      }
+      #totalPrice{
+      border-top: #ff523b 3px solid;
+      width: 100%;
+      max-width: 971px;
+      }
+
+      td:last-child{
+      text-align: left; /*items on last column will...*/
+      }
+      th:last-child{
+      text-align: left;/*header item on last column will...*/
+      }
+
+      #tag{
+      opacity: 0.5;
+      }
+
+
+      .cart-summary {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .cart-summary h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .cart-summary h3 {
+        color: #f00;
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+
+      .cart-summary button {
+        background-color: #f00;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .cart-summary button:hover {
+        background-color: #c00;
+      }
+
+  </style>
+ <style>
+  body{
+      background-color: #f5f5f5b6;
+  }
+
+  .top-nav,
+  .header {
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+  }
+  .header{
+      background-color:  rgb(199, 51, 51);
+  }
+
+  .logo {
+      float: left;
+      max-width: 375px;
+      height: 100px;
+     
+  }
+   
+  .nav-links {
+      margin-left: auto;
+      margin-right: 1%;
+  }
+  .nav-links a {
+      color: #4400ff;
+  }
+  .menu {  
+      display: flex; 
+      gap: 1em;   
+      font-size: 18px;   
+     
+  }
+      
+  .menu li:hover { 
+      background-color: #4c9e9e;
+      border-radius: 5px;  
+      transition: 0.3s ease;  
+  }
+      
+  .menu li {   
+      padding: 3px 10px;  
+  }
+  
+
+
+  .search-container {
+      width: 975px;
+      margin: 0 auto;
+      display: flex;
+      /*margin: 25px 0px 25px 0px;*/
+      padding: 20px;
+  }
+
+  .search-container input[type="text"] {
+      flex: 1;
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+  }
+
+  .search-container button[type="submit"] {
+      width: 8%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 0px 15px 15px 0px
+  }
+
+  .left-element{
+      display: flex;
+      float:left;
+      align-items: center;
+  }
+
+  #select {
+      margin-right: 10px; /* Adjust the margin as needed */
+      order: -1; /* Moves the dropdown to the left */
+      width:175px;
+      border-radius: 15px 0px 0px 15px
+  }
+  #objectList {
+  display: inline-block;
+  width: 48%;
+  margin-right: 2%;
+  vertical-align: top;
+}
+.discount-banner {
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  padding: 10px;
+}
+
+.discount-banner p {
+  margin: 0;
+  animation: moveBanner 10s linear infinite;
+}
+
+@keyframes moveBanner {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.nav-links i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+                 /* Replace with the desired background color */
+  color: #000000; /* Replace with the desired icon color */
+  font-size: 18px;
+  text-align: center;
+  line-height: 24px;
+  cursor: pointer;
+  padding-right: 50px;
+  padding-top: 5px;
+}
+
+</style>
+  </head>
+
+  <body>
+
+    <div class="discount-banner">
+      <p>Discount available on valid coupon code</p>
+    </div>
+    <!-- Modal window -->
+	<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class = "close" > &times;</span>
+        
+            <table id = "cart-table">
+                <tr>
+                  <th>Product</th>
+                  <th>Quantity</th>
+                  <th>Subtotal</th>
+                  <th>Actions</th> <!-- New column for product removal buttons -->
+                </tr>
+              </table>
+              
+
+            <div class="cart-summary">
+                <h2>Cart Summary</h2>
+                <p id = "cart-total"></p>
+                <h3 id = "cart-sum">R</h3>
+                <button id="checkout">Proceed to Checkout</button>
+            </div>     
+      </div>
+  </div>
+    
+  <div class="top-nav">
+    <img class="logo" src="../img/RunTime Shopping4x.png" alt="Logo">
+
+    <ul class="nav-links">
+        <div class="menu">
+          <div>
+            <i class="fas fa-search" onclick="performSearch()"></i>
+          </div>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/">About</a></li>
+          
+          <li><a href="account.html">Account</a></li>
+          
+          <li><a href="cart.html" id="cartLink">Cart</a></li>
+          
+        </div>
+    </ul>
+</div>
+
+<div class="header">
+    
+    <div class="search-container">
+        
+    </div>
+</div>
+
+    
+    <!-- The PrintAds Slideshow background --->
+    <div class="slider">
+      <div class="slide active">
+        <img src="./img/home/slide1.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="./img/home/slide2.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="./img/home/slide3.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="./img/home/slide4.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="./img/home/slide5.jpg" alt="">
+      </div>
+	  
+      <div class="navigation">
+        <i class="fas fa-chevron-left prev-btn"></i>
+        <i class="fas fa-chevron-right next-btn"></i>
+      </div>
+      <div class="navigation-visibility">
+        <div class="slide-icon active"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+        <div class="slide-icon"></div>
+      </div>
+      
+      <div class="card-row"> <!-- first row-->
+        <div class="card">
+          <a href="#">
+            <img src="./img/home/cCare.jpg" alt="Category Name 1">
+            <h3> Health & Personal Care </h3>
+          </a>
+        </div>
+      
+        <div class="card">
+          <a href="#">
+            <img src="./img/home/cLaptops.jpg" alt="Category Name 2">
+            <h3>Shop Laptops & Computers</h3>
+          </a>
+        </div>
+      
+        <div class="card">
+          <a href="#">
+            <img src="./img/home/cBeauty.jpg" alt="Category Name 3">
+            <h3>Beauty picks</h3>
+          </a>
+        </div>
+      
+        
+      </div>
+      
+      <div class="card-row"> <!-- second row-->
+        <div class="card">
+          <a href="#">
+            <img src="./img/home/cFitness.jpg" alt="Category Name 5">
+            <h3>Fitness Needs</h3>
+          </a>
+        </div>
+      
+        <div class="card">
+          <a href="#">
+            <img src="./img/home/cToys.jpg" alt="Category Name 6">
+            <h3>Shop new Toys</h3>
+          </a>
+        </div>
+      
+        <div class="card">
+          <a href="#">
+            <img src="./img/home/cHome.jpg" alt="Category Name 7">
+            <h3>Style your Home</h3>
+          </a>
+        </div>
+      
+        
+      </div>
+
+    </div>       
+    <!-- <div class="card-row"> 
+      <div class="card">
+        <a href="#">
+          <img src="./img/home/cSmartwatches.jpg" alt="Category Name 8">
+          <h3>Shop Smatwatches</h3>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+          <img src="./img/home/cDresses.jpg" alt="Category Name 4">
+          <h3>Dresses</h3>
+        </a>
+      </div>
+    </div> -->
+    <!-- slideshow section DONE -->
+      
+	 <!-- Gallery section -->
+   <section class="gallery">
+    <h2>Recommended For You</h2>
+    <!-- Scroll view for the images -->
+    <div class="scroll-view">
+      <div class="image-container"></div>
+    </div>
+    <h3>Products In Store</h3>
+    <div class="scroll-view">
+      <div class="vertical-container"></div>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<script src="homepage.js"></script>    
+  <!-- JavaScript to display and hide the modal window -->
+	<script>
+		var cartLink = document.getElementById("cartLink");
+		var modal = document.getElementById("myModal");
+		var close = document.getElementsByClassName("close")[0];
+
+		cartLink.onclick = function() {
+			localStorage.setItem('page','homepage');
+			window.location.assign("cart.html"); 
+		}
+
+		close.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+
+
+        let sum = 0;
+        const rows = document.querySelectorAll('table tr');
+        for (let i = 1; i < rows.length; i++) { 
+            const subtotalStr = rows[i].querySelector('td:nth-child(3)').textContent;
+            const subtotalNum = parseFloat(subtotalStr.replace(/[^\d.-]+/g,""));
+            sum += subtotalNum;
+        }
+        const totalElem = document.getElementById('cart-total');
+        totalElem.textContent = `TOTAL: (${rows.length - 1} items)`;
+        const sumElem = document.getElementById('cart-sum');
+        sumElem.textContent += sum;
+        console.log(sum);
+
+
+	</script>
+  <script>
+    var button = document.getElementById("checkout");
+    button.addEventListener("click", function(event) {
+      window.location.assign("./checkout/delivery.html");
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+  <script src="./search.js"></script>
+  </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
+  </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
+</body>
+</html>
