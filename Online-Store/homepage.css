@@ -290,7 +290,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 .scroll-view {
   display: flex;
   overflow-x: auto; /* use auto to only show scrollbar when needed */
@@ -302,12 +301,14 @@ body {
   flex-wrap: nowrap;
   gap: 1rem; /* add some gap between images */
 }
+
 .image-container img {
-  width: 400px; /* increase image width */
+  width: 100%; /* adjust image width to fill the container */
   height: auto; /* adjust height automatically */
 }
+
 .objectlist img {
-  width: 400px; /* increase image width */
+  width: 100%; /* adjust image width to fill the container */
   height: auto; /* adjust height automatically */
 }
 
@@ -348,11 +349,32 @@ body {
   margin-right: 0.5rem; /* add margin to the right of each item */
   margin-bottom: 1rem; /* add margin to the bottom of each row */
   width: calc(50% - 0.5rem); /* use calc() to calculate item width */
-  max-width: 400px; /* add max-width to avoid stretching of items */
+  max-width: 100%; /* add max-width to avoid stretching of items */
 }
+
 .vertical-container img {
-  width: 400px; /* increase image width */
+  width: 100%; /* adjust image width to fill the container */
   height: auto; /* adjust height automatically */
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 767px) {
+  .image-container img,
+  .objectlist img,
+  .vertical-container img {
+    width: 100%; /* adjust image width to fill the container */
+    height: auto; /* adjust height automatically */
+  }
+
+  .product-item:last-of-type {
+    margin-right: 1rem; /* add margin to the right of each item */
+  }
+
+  .vertical-container .product-item {
+    width: 100%; /* set item width to 100% for full width */
+    margin-right: 0; /* remove margin from last item */
+    margin-bottom: 1rem; /* add margin to the bottom of each row */
+  }
 }
 
 
