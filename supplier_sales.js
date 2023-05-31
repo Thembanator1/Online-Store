@@ -37,8 +37,8 @@ var firebaseConfig = {
   var ypurchase;
 
   function start(){
-    //email = sessionStorage.getItem("user_email");
-    email = "irene@gmail.com";
+    email = localStorage.getItem('supplier_email');
+    //email = "irene@gmail.com";
     const d = new Date();
     const month = d.getMonth();
     const year = d.getFullYear();
