@@ -6,11 +6,8 @@
         <h1>Supplier Home Page</h1>
         <nav>
             <ul>
-                <li><a href="#orders">Orders</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#tracking">Order Tracking</a></li>
+                <li><a href="Supplier_homepage.html">Home</a></li>
                 <li><a href="Supplier_Products.html">Products</a></li>
-                <li><a href="Supplier_sales.html">Sales Analysis</a></li>
 
             </ul>
         </nav>
@@ -23,48 +20,61 @@
   <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
   <!-- Firebase Storage SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <img src =  "./img/home/RunTime_logo.png"/>
 </head>
 
-<body>
-    <h1>Upload Product to be Sold</h1>
+<body onload="start()">
+    <h1>Sales Revenue For The Past Year</h1>
+    <h2>The details of the past year</h2>
     <div>
-        <label for="product-name">Product Name:</label>
-        <input type="text" id="product-name" name="product-name" required>
+        <p for="total-revenue" id="ytotal"></p>
     </div>
     <div>
-        <label for="product-description">Product Description:</label>
-        <textarea id="product-description" name="product-description" required></textarea>
+        <p for="total-units" id="yunits"></p>
     </div>
     <div>
-        <label for="product-price">Product Price:</label>
-        <input type="number" id="product-price" name="product-price" required>
+        <p for="total-purchases" id="ypurchase"></p>
     </div>
     <div>
-        <label for="product-category">Product Category:</label>
+        <canvas id="myBar" style="width:100%;max-width:1000px"></canvas>
+    </div>
+    <h1 id="headd"></h1>
+    <h2>The details of the selected month</h2>
+    <div>
+        <label for="product-month">Select A Month:</label>
         <select>
-            <option value="">Select category:</option>
-            <option value="Daily Deals">Daily Deals</option>
-            <option value="Automotive & DIY">Automotive & DIY</option>
-            <option value="Baby & Toddler">Baby & Toddler</option>
-            <option value="Beauty">Beauty</option>
-            <option value="Books & Course">Books & Course</option>
-            <option value="Camping & Outdoor">Camping & Outdoor</option>
-            <option value="Cellphones & Smartwatches">Cellphones & Smartwatches</option>
-            <option value="Computer & Electronics">Computer & Electronics</option>
-            <option value="Fashion & Luggage">Fashion & Luggage</option>
-            <option value="Gaming">Gaming</option>
-            <option value="Garden,Pool & Patio">Garden,Pool & Patio</option>
+            <option id="position0" value="0"></option>
+            <option id="position1" value="1"></option>
+            <option id="position2" value="2"></option>
+            <option id="position3" value="3"></option>
+            <option id="position4" value="4"></option>
+            <option id="position5" value="5"></option>
+            <option id="position6" value="6"></option>
+            <option id="position7" value="7"></option>
+            <option id="position8" value="8"></option>
+            <option id="position9" value="9"></option>
+            <option id="position10" value="10"></option>
+            <option id="position11" value="11"></option>
           </select>
+        <button onclick="selected()">display</button>
     </div>
-     
-      <input type="file" id="image-upload">
-      <button onclick="uploadImage()">Upload Product</button>
-    
+    <div>
+        <p for="total-revenue" id="total"></p>
+    </div>
+    <div>
+        <p for="total-units" id="units"></p>
+    </div>
+    <div>
+        <p for="total-purchases" id="purchase"></p>
+    </div>
+    <div>
+        <canvas id="myLine" style="width:100%;max-width:1000px"></canvas>
+    </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-      <script src="supplier_homepage.js"></script>
+      <script src="supplier_sales.js"></script>
     
     </body>
 </html>
@@ -93,7 +103,15 @@
         background-color: white;
 	    color: red;
 	    padding: 20px;
+        margin-bottom: 20px;
 
+    }
+
+    h2 {
+        margin-left: 5px;
+    }
+    p {
+        margin-left: 15px;
     }
     
     .container {
@@ -113,12 +131,21 @@
     }
     
     label, input, textarea {
-        display: block;
+        margin-right: 10px;
         margin-bottom: 5px;
     }
     
     input[type="number"], textarea {
         width: 100%;
+    }
+
+    label {
+        margin-top: 50px;
+        margin-left: 10px;
+    }
+
+    button {
+        margin-left: 10px;
     }
     
     button[type="submit"] {
@@ -135,6 +162,12 @@
         background-color: #e8800f;
     }
 
+    canvas {
+        margin-top: 50px;
+        margin-left: 50px;
+        margin-bottom: 50px;
+    }
+
     img{
       height: 60px;
       width: 300px;
@@ -143,5 +176,6 @@
       top:6%;
       left:3.5%;
   }
+
     
     </style>
