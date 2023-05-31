@@ -622,7 +622,8 @@ background-color: #c00;
 		var close = document.getElementsByClassName("close")[0];
 		var account =document.getElementById("account");
 		cartLink.onclick = function() {
-			modal.style.display = "block";
+			localStorage.setItem('page','prodpage');
+			window.location.assign("cart.html"); 
 		}
         account.onclick=function(){
 			window.location.assign("account.html"); 

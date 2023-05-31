@@ -170,6 +170,16 @@ applyCouponBtn.addEventListener('click', function () {
   });
 });
 
+document.querySelector('.close').addEventListener('click', function() {
+  const page=localStorage.getItem('page');
+  if(page==="prodpage"){
+    window.location.href = 'productPage.html';
+  }
+  else if(page==='homepage'){
+    window.location.href = 'homepage.html';
+  }
+  
+});
 
 
 
