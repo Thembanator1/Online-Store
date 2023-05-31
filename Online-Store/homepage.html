@@ -473,7 +473,8 @@
 		var close = document.getElementsByClassName("close")[0];
 
 		cartLink.onclick = function() {
-			modal.style.display = "block";
+			localStorage.setItem('page','homepage');
+			window.location.assign("cart.html"); 
 		}
 
 		close.onclick = function() {
