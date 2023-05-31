@@ -291,70 +291,7 @@ body {
   padding: 0;
 }
 
-.scroll-view {
-  display: flex;
-  overflow-x: auto; /* use auto to only show scrollbar when needed */
-  margin: 2rem;
-}
-
-.image-container {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem; /* add some gap between images */
-}
-.image-container img {
-  width: 400px; /* increase image width */
-  height: auto; /* adjust height automatically */
-}
-.objectlist img {
-  width: 400px; /* increase image width */
-  height: auto; /* adjust height automatically */
-}
-
-.product-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 1rem; /* add margin to the right of each item */
-}
-
-.product-item:last-of-type {
-  margin-right: 0; /* remove margin from last item */
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0.5rem; /* add margin between name and price */
-}
-
-.product-name {
-  font-weight: bold;
-}
-
-.product-price {
-  color: #888;
-}
-
-.vertical-container {
-  overflow-y: auto;
-  margin: 2rem;
-  height: 100%; /* set the height to 100% to fill the remaining space */
-}
-
-.vertical-container .product-item {
-  display: inline-block;
-  margin-right: 0.5rem; /* add margin to the right of each item */
-  margin-bottom: 1rem; /* add margin to the bottom of each row */
-  width: calc(50% - 0.5rem); /* use calc() to calculate item width */
-  max-width: 400px; /* add max-width to avoid stretching of items */
-}
-.vertical-container img {
-  width: 400px; /* increase image width */
-  height: auto; /* adjust height automatically */
-}
-
+  /*- Done + Category-Cards -*/
 
 
 

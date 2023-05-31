@@ -19,26 +19,20 @@
         </nav>
     </div>
 
-    <div>
-        <h1>SEARCH FOR PRODUCT</h1>
-    </div>
-
-    <div>
-        <input type="search" class="search-bar" id="searchInput" onkeyup="searchObjects()" placeholder="Search here...">
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn" onclick="toggleDropdown()">Filter by Category</button>
-        <div class="dropdown-content" id="categoryDropdown">
-            <!-- Category options will be added dynamically -->
+    <div class="search-container">
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown()">Filter by Category</button>
+            <div class="dropdown-content" id="categoryDropdown">
+                <!-- Category options will be added dynamically -->
+            </div>
         </div>
+        <input type="search" class="search-bar" id="searchInput" onkeyup="searchObjects()" placeholder="Search here...">
+        <button type="submit">Search</button>
     </div>
 	
     <div class="object-list">
         <!-- Object snapshots will be displayed here -->
     </div>
-    <ul id="objectList"></ul>
-        <!-- Object snapshots will be displayed here -->
-        <button class="doneFilteringButton" onclick="refreshPage()">Done Filtering</button>
 
      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="./search.js"></script>

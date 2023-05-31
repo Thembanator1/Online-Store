@@ -1,86 +1,7 @@
-const firebaseConfig = {
-  // Add your Firebase config information here
-    apiKey: "AIzaSyBiQr7aHxdYxk8sCkHxMebkVyBEgXCnknU",
-    authDomain: "online-store-b90ca.firebaseapp.com",
-    databaseURL: "https://online-store-b90ca-default-rtdb.firebaseio.com",
-    projectId: "online-store-b90ca",
-    storageBucket: "online-store-b90ca.appspot.com",
-    messagingSenderId: "160581372978",
-    appId: "1:160581372978:web:b507d7ac5f14c9e4ff002b",
-    measurementId: "G-PH4QNCPP2J"
-};
+import { db, db_firestore } from './firebase.js';
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 var id="none";
- localStorage.setItem('item_key', id);
-
-var imagesRef = firebase.database().ref("Products");
-
-const productsList = document.querySelector(".image-container");
-
-// Clear any existing product items from the list
-productsList.innerHTML = "";
-
-// Retrieve all product items from the Firebase Realtime Database
-const productsRef = firebase.database().ref("Products");
-productsRef.once("value", snapshot => {
-  const products = snapshot.val();
-
-  // Shuffle the products randomly using Fisher-Yates algorithm
-  const shuffledProducts = Object.entries(products);
-  for (let i = shuffledProducts.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledProducts[i], shuffledProducts[j]] = [shuffledProducts[j], shuffledProducts[i]];
-  }
-
-  // Loop through only 60% of the shuffled products
-  const numProducts = Math.floor(shuffledProducts.length * 0.6);
-  for (const [key, product] of shuffledProducts.slice(0, numProducts)) {
-    // Create a new list item for each product item
-    const listItem = document.createElement("div");
-    listItem.className = "product-item";
-
-    // Create an image element to display the product image
-    const image = document.createElement("img");
-    image.src = product.picture;
-    image.alt = product.name;
-    listItem.appendChild(image);
-
-    // Create a div element to hold the product name and price
-    const infoDiv = document.createElement("div");
-    infoDiv.className = "product-info";
-    listItem.appendChild(infoDiv);
-
-    // Create a span element to display the product name
-    const nameSpan = document.createElement("span");
-    nameSpan.className = "product-name";
-    nameSpan.textContent = product.name;
-    infoDiv.appendChild(nameSpan);
-
-    // Create a span element to display the product price
-    const priceSpan = document.createElement("span");
-    priceSpan.className = "product-price";
-    priceSpan.textContent = "$" + product.price;
-    infoDiv.appendChild(priceSpan);
-
-    // Add an event listener to the list item
-  listItem.addEventListener("click", () => {
-     localStorage.setItem('id',key);
-     localStorage.setItem("category",product.category);
-           // redirect to login page
-   window.location.assign("ProductPage.html");
-//       // Print the key of the clicked item
-   });
-
-    // Add the list item to the products list
-    productsList.appendChild(listItem);
-  }
-});
-
-
-  
-
+localStorage.setItem('item_key', id);
 
 const slider = document.querySelector(".slider");
 const nextBtn = document.querySelector(".next-btn");
@@ -128,70 +49,6 @@ slides[slideNumber].classList.add("active");
 slideIcons[slideNumber].classList.add("active");
 });
 
-const verticalContainer = document.querySelector('.vertical-container');
-
-// Retrieve all product items from the Firebase Realtime Database
-//const productsRef = firebase.database().ref('Products');
-productsRef.on('value', snapshot => {
-  // Clear any existing product items from the container
-  verticalContainer.innerHTML = '';
-
-  const products = snapshot.val();
-
-  // Create a container for each two products
-  let productContainer;
-  let count = 0;
-
-  for (const [key, product] of Object.entries(products)) {
-    // Create a new container for every two products
-    if (count % 2 === 0) {
-      productContainer = document.createElement('div');
-      productContainer.className = 'product-container';
-      verticalContainer.appendChild(productContainer);
-    }
-
-    // Create a new list item for the product
-    const listItem = document.createElement('div');
-    listItem.className = 'product-item';
-
-    // Create an image element to display the product image
-    const image = document.createElement('img');
-    image.src = product.picture;
-    image.alt = product.name;
-    listItem.appendChild(image);
-
-    // Create a div element to hold the product name and price
-    const infoDiv = document.createElement('div');
-    infoDiv.className = 'product-info';
-    listItem.appendChild(infoDiv);
-
-    // Create a span element to display the product name
-    const nameSpan = document.createElement('span');
-    nameSpan.className = 'product-name';
-    nameSpan.textContent = product.name;
-    infoDiv.appendChild(nameSpan);
-
-    // Create a span element to display the product price
-    const priceSpan = document.createElement('span');
-    priceSpan.className = 'product-price';
-    priceSpan.textContent = '$' + product.price;
-    infoDiv.appendChild(priceSpan);
-
-    // Add an event listener to the list item
-    listItem.addEventListener("click", () => {
-      localStorage.setItem('id',key);
-      localStorage.setItem("category",product.category);
-       // redirect to login page
-window.location.assign("ProductPage.html");
-        // Print the key of the clicked item
-      });
-    // Add the list item to the product container
-    productContainer.appendChild(listItem);
-
-    count++;
-  }
-});
-
 //image slider autoplay
 var playSlider;
 
@@ -225,6 +82,142 @@ clearInterval(playSlider);
 slider.addEventListener("mouseout", () => {
 repeater();
 });
+
+/**
+ * =========Done with background Slides===========
+ **/
+
+
+const productsList = document.querySelector(".foryou-container");
+productsList.innerHTML = "";
+// Retrieve all product items from the Firebase Realtime Database
+const productsRef = db.ref("Products");
+productsRef.once("value", snapshot => {
+const products = snapshot.val();
+
+// Shuffle the products randomly using Fisher-Yates algorithm
+const shuffledProducts = Object.entries(products);
+for (let i = shuffledProducts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledProducts[i], shuffledProducts[j]] = [shuffledProducts[j], shuffledProducts[i]];
+}
+
+// Loop through only 60% of the shuffled products
+const numProducts = Math.floor(shuffledProducts.length * 0.6);
+for (const [key, product] of shuffledProducts.slice(0, numProducts)) {
+    // Create a new list item for each product item
+    const listItem = document.createElement("div");
+    listItem.className = "product-item";
+
+    // Create an image element to display the product image
+    const image = document.createElement("img");
+    image.src = product.picture;
+    image.alt = product.name;
+    listItem.appendChild(image);
+
+    // Create a div element to hold the product name and price
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "details";
+    listItem.appendChild(infoDiv);
+
+    // Create a h3 element to display the product name
+    const nameSpan = document.createElement("h3");
+    nameSpan.textContent = product.name;
+    infoDiv.appendChild(nameSpan);
+
+    // Create a h4 element to display the product category
+    const categorySpan = document.createElement("h4");
+    categorySpan.textContent = product.category;
+    infoDiv.appendChild(categorySpan);
+
+    // Create a h2 element to display the product price
+    const priceSpan = document.createElement("h2");
+    priceSpan.textContent = "R " + product.price;
+    infoDiv.appendChild(priceSpan);
+
+// Add an event listener to the list item
+listItem.addEventListener("click", () => {
+    localStorage.setItem('id',key);
+    localStorage.setItem("category",product.category);
+            // redirect to login page
+    window.location.assign("ProductPage.html");
+    // Print the key of the clicked item
+});
+
+// Add the list item to the products list
+    productsList.appendChild(listItem);
+}
+});
+
+
+const instoreList = document.querySelector(".instore-container");
+
+// Clear any existing product items from the list
+instoreList.innerHTML = "";
+
+// Retrieve all product items from the Firebase Realtime Database
+productsRef.once("value", snapshot => {
+const products = snapshot.val();
+
+// Shuffle the products randomly using Fisher-Yates algorithm
+const shuffledProducts = Object.entries(products);
+for (let i = shuffledProducts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledProducts[i], shuffledProducts[j]] = [shuffledProducts[j], shuffledProducts[i]];
+}
+
+// Loop through only 100% of the shuffled products
+const numProducts = Math.floor(shuffledProducts.length * 1);
+for (const [key, product] of shuffledProducts.slice(0, numProducts)) {
+    // Create a new list item for each product item
+    const listItem = document.createElement("div");
+    listItem.className = "product-item";
+
+    // Create an image element to display the product image
+    const image = document.createElement("img");
+    image.src = product.picture;
+    image.alt = product.name;
+    listItem.appendChild(image);
+
+    // Create a div element to hold the product name and price
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "details";
+    listItem.appendChild(infoDiv);
+
+    // Create a h3 element to display the product name
+    const nameSpan = document.createElement("h3");
+    nameSpan.textContent = product.name;
+    infoDiv.appendChild(nameSpan);
+
+    // Create a h4 element to display the product category
+    const categorySpan = document.createElement("h4");
+    categorySpan.textContent = product.category;
+    infoDiv.appendChild(categorySpan);
+
+    // Create a h2 element to display the product price
+    const priceSpan = document.createElement("h2");
+    priceSpan.textContent = "R " + product.price;
+    infoDiv.appendChild(priceSpan);
+
+// Add an event listener to the list item
+listItem.addEventListener("click", () => {
+    localStorage.setItem('id',key);
+    localStorage.setItem("category",product.category);
+            // redirect to login page
+    window.location.assign("ProductPage.html");
+    // Print the key of the clicked item
+});
+
+// Add the list item to the products list
+    instoreList.appendChild(listItem);
+}
+});
+
+
+
+/**
+ * +-+-+-+--JavaScript for the Cart from here--+-+-+-+-+
+ **/
 const cartTable = document.getElementById('cart-table');
 const cartTotalElement = document.getElementById('cart-total');
 const customer_email = localStorage.getItem('user_email');

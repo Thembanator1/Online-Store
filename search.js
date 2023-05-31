@@ -27,23 +27,22 @@ const productsRef = firebase.database().ref("Products");
 
 function searchObjects() {
   var query = document.getElementById("searchInput").value.toLowerCase();
-  var objectList = document.querySelector(".object-list");
-  objectList.innerHTML = "";
+  var resultsContainer = document.querySelector(".object-list");
+  resultsContainer.innerHTML = "";
+
+  // Check if the search query is empty
+  if (query.trim() === "") {
+    return; // If empty, exit the function without displaying any results
+  }
+
   productsRef.once("value", function(snapshot) {
     var products = snapshot.val();
     console.log(products);
-    var count = 0;
-    var objectDiv = null;
+    
     for (var [key, product] of Object.entries(products)) {
       if (query === "" || product.name.toLowerCase().indexOf(query) !== -1) {
-        if (count % 2 === 0) {
-          objectDiv = document.createElement("div");
-          objectDiv.className = "object";
-          objectList.appendChild(objectDiv);
-        }
-
-        var objectListItem = document.createElement("div");
-        objectListItem.className = "item";
+        var listItem = document.createElement("div");
+        listItem.className = "item";
 
         var objectImageContainer = document.createElement("div");
         objectImageContainer.className = "item-image-container";
@@ -64,7 +63,7 @@ function searchObjects() {
         objectName.innerHTML = product.name;
         price.innerHTML = "$" + product.price;
 
-        objectListItem.addEventListener(
+        listItem.addEventListener(
           "click",
           (function(productId) {
             return function() {
@@ -78,11 +77,12 @@ function searchObjects() {
         objectDetails.appendChild(objectName);
         objectDetails.appendChild(price);
 
-        objectListItem.appendChild(objectImageContainer);
-        objectListItem.appendChild(objectDetails);
-        objectDiv.appendChild(objectListItem);
+        listItem.appendChild(objectImageContainer);
+        listItem.appendChild(objectDetails);
 
-        count++;
+        resultsContainer.appendChild(listItem);
+
+       
       }
     }
   });
@@ -108,21 +108,17 @@ function filterProducts(category) {
 
 function displayFilteredProducts(products) {
   console.log(products);
-  var objectList = document.querySelector(".object-list");
-  objectList.innerHTML = "";
+  var resultsContainer = document.querySelector(".object-list");
+  resultsContainer.innerHTML = "";
 
   for (var [key, product] of Object.entries(products)) {
-    var objectDiv = document.createElement("div");
-    objectDiv.className = "object";
-    objectList.appendChild(objectDiv);
-
-    var objectListItem = document.createElement("div");
-    objectListItem.className = "item";
-    objectDiv.appendChild(objectListItem);
+    var listItem = document.createElement("div");
+    listItem.className = "item";
+    resultsContainer.appendChild(listItem);
 
     var objectImageContainer = document.createElement("div");
     objectImageContainer.className = "item-image-container";
-    objectListItem.appendChild(objectImageContainer);
+    listItem.appendChild(objectImageContainer);
 
     var objectImage = document.createElement("img");
     objectImage.src = product.picture; // Assuming there's a URL property in the data
@@ -132,7 +128,7 @@ function displayFilteredProducts(products) {
 
     var objectDetails = document.createElement("div");
     objectDetails.className = "item-details";
-    objectListItem.appendChild(objectDetails);
+    listItem.appendChild(objectDetails);
 
     var objectName = document.createElement("p");
     var price = document.createElement("p");
@@ -141,7 +137,10 @@ function displayFilteredProducts(products) {
     objectName.innerHTML = product.name;
     price.innerHTML = "$" + product.price;
 
-    objectListItem.addEventListener(
+    objectDetails.appendChild(objectName);
+    objectDetails.appendChild(price);
+
+    listItem.addEventListener(
       "click",
       (function(productId) {
         return function() {
@@ -150,9 +149,6 @@ function displayFilteredProducts(products) {
         };
       })(key) // Use key (product ID) as the argument
     );
-
-    objectDetails.appendChild(objectName);
-    objectDetails.appendChild(price);
   }
 }
 
