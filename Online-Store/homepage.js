@@ -332,6 +332,9 @@ cartTable.addEventListener('click', event => {
   sumElem.textContent = "R " + sum;
   }
 });
-
+function performSearch() {
+  // Redirect to search.html
+  window.location.href = 'search.html';
+}
 
 

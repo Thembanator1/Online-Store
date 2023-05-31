@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="homepage.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
       /* Styling for the modal window */
@@ -279,6 +280,19 @@
     transform: translateX(-100%);
   }
 }
+.nav-links i {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+                 /* Replace with the desired background color */
+  color: #000000; /* Replace with the desired icon color */
+  font-size: 18px;
+  text-align: center;
+  line-height: 24px;
+  cursor: pointer;
+  padding-right: 50px;
+  padding-top: 5px;
+}
 
 </style>
   </head>
@@ -317,6 +331,10 @@
 
     <ul class="nav-links">
         <div class="menu">
+          <div>
+            <i class="fas fa-search" onclick="performSearch()"></i>
+          </div>
+          
           <li><a href="/">Home</a></li>
           
           <li><a href="/">About</a></li>
@@ -324,6 +342,7 @@
           <li><a href="account.html">Account</a></li>
           
           <li><a href="cart.html" id="cartLink">Cart</a></li>
+          
         </div>
     </ul>
 </div>
@@ -331,22 +350,7 @@
 <div class="header">
     
     <div class="search-container">
-        <select id = "select">
-            <option value="">Select category:</option>
-            <option value="option1">Daily Deals</option>
-            <option value="option2">Automotive & DIY</option>
-            <option value="option3">Baby & Toddler</option>
-            <option value="option4">Beauty</option>
-            <option value="option5">Books & Course</option>
-            <option value="option6">Camping & Outdoor</option>
-            <option value="option6">Cellphones & Smartwatches</option>
-            <option value="option7">Computer & Electronics</option>
-            <option value="option8">Fashion & Luggage</option>
-            <option value="option9">Gaming</option>
-            <option value="option10">Garden,Pool & Patio</option>  
-        </select>
-        <input type="text" onkeyup="searchObjects()" placeholder="Search for products, brands...">
-        <button type="submit">Search</button>
+        
     </div>
 </div>
 
