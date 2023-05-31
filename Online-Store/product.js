@@ -93,81 +93,104 @@ reviewsRef.once('value', (snapshot) => {
   let totalStars = 0;
   let numReviews = 0;
   for (const key in reviewsnode) {
-    if(id==reviewsnode[key].product_id){
-    const review = reviewsnode[key].review;
-    const reviewTitle = reviewsnode[key].review_title;
-    const customerEmail = reviewsnode[key].customer_email;
-    const reviewDate = reviewsnode[key].date;
-    const numStars = reviewsnode[key].num_of_stars;
-    console.log(review);
-    console.log(reviewTitle);
-    console.log(reviewDate);
-    console.log(customerEmail);
-    console.log(numStars);
-    totalStars += numStars;
-    numReviews++;
-    const reviewDiv = document.createElement("div");
-    reviewDiv.classList.add("review");
+    if (id == reviewsnode[key].product_id) {
+      const review = reviewsnode[key].review;
+      const reviewTitle = reviewsnode[key].review_title;
+      const customerEmail = reviewsnode[key].customer_email;
+      const reviewDate = reviewsnode[key].date;
+      const numStars = reviewsnode[key].num_of_stars;
+      console.log(review);
+      console.log(reviewTitle);
+      console.log(reviewDate);
+      console.log(customerEmail);
+      console.log(numStars);
+      totalStars += numStars;
+      numReviews++;
 
-    const title = document.createElement("h3");
-    title.textContent = reviewTitle;
-
-    const stars = document.createElement("div");
-    stars.classList.add("stars");
-    for (let i = 0; i < numStars; i++) {
-      const star = document.createElement("span");
-      star.textContent = "★";
-      stars.appendChild(star);
-    }
-
-    const email = document.createElement("p");
-    email.textContent = customerEmail;
-
-    const date = document.createElement("p");
-    date.textContent = reviewDate;
-
-    const comment = document.createElement("p");
-    comment.textContent = review;
-
-    reviewDiv.appendChild(title);
-    reviewDiv.appendChild(stars);
-    reviewDiv.appendChild(email);
-    reviewDiv.appendChild(comment);
-    reviewDiv.appendChild(date);
-
-    reviewsContainer.appendChild(reviewDiv);
-  
-    if (numReviews > 0) {
-      const averageRating = Math.min(5, Math.max(0, Math.round((totalStars / numReviews) * 2) / 2));
-      console.log(averageRating);
-      const ratingStars = document.createElement("div");
-      ratingStars.classList.add("starsrating");
-      for (let i = 0; i < Math.floor(averageRating); i++) {
-        const star = document.createElement("a");
-        star.textContent = "★";
-        ratingStars.appendChild(star);
-      }
-      if (averageRating % 1 !== 0) {
-        const halfStar = document.createElement("a");
-        halfStar.textContent = "★";
-        halfStar.style = "clip-path: polygon(0% 0%, 60% 0%, 60% 60%, 0% 60%)";
-        ratingStars.appendChild(halfStar);
-      }
-      const ratingContainer = document.getElementById("ratingContainer");
-      ratingContainer.innerHTML = "";
-      ratingContainer.appendChild(ratingStars);
-    } else {
-      const noReviews = document.createElement("p");
-      noReviews.textContent = "No reviews for this product yet.";
-      const ratingContainer = document.getElementById("ratingContainer");
-      ratingContainer.innerHTML = "";
-      ratingContainer.appendChild(noReviews);
-    }
-
-    }
-  }
+      // Create the review container
+      const reviewDiv = document.createElement("div");
+      reviewDiv.classList.add("review-container");
+      reviewDiv.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+      reviewDiv.classList.add("review-container");
+      reviewDiv.classList.add("animate-scale");
+      // Apply hover animation when mouse enters the review container
+reviewDiv.addEventListener("mouseenter", function() {
+  this.classList.add("hover-scale");
 });
 
+// Remove hover animation when mouse leaves the review container
+reviewDiv.addEventListener("mouseleave", function() {
+  this.classList.remove("hover-scale");
+});
+
+      // Create review title
+      const title = document.createElement("h3");
+      title.textContent = reviewTitle;
+      title.classList.add("review-title");
+
+      // Create review stars
+      const stars = document.createElement("div");
+      stars.classList.add("review-rating");
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement("span");
+        star.textContent = "★";
+        stars.appendChild(star);
+      }
+
+      // Create customer email
+      const email = document.createElement("p");
+      email.textContent = customerEmail;
+      email.classList.add("review-details");
+
+      // Create review comment
+      const comment = document.createElement("p");
+      comment.textContent = review;
+      comment.classList.add("review-text");
+
+      // Create review date
+      const date = document.createElement("p");
+      date.textContent = reviewDate;
+      date.classList.add("review-details");
+
+      // Append review elements to the container
+      reviewDiv.appendChild(title);
+      reviewDiv.appendChild(stars);
+      reviewDiv.appendChild(email);
+      reviewDiv.appendChild(comment);
+      reviewDiv.appendChild(date);
+
+      // Append the review container to the reviews container
+      reviewsContainer.appendChild(reviewDiv);
+    }
+  }
+
+  if (numReviews > 0) {
+    const averageRating = Math.min(5, Math.max(0, Math.round((totalStars / numReviews) * 2) / 2));
+    console.log(averageRating);
+    const ratingStars = document.createElement("div");
+    ratingStars.classList.add("starsrating");
+    for (let i = 0; i < Math.floor(averageRating); i++) {
+      const star = document.createElement("a");
+      star.textContent = "★";
+      ratingStars.appendChild(star);
+    }
+    if (averageRating % 1 !== 0) {
+      const halfStar = document.createElement("a");
+      halfStar.textContent = "★";
+      halfStar.style = "clip-path: polygon(0% 0%, 60% 0%, 60% 60%, 0% 60%)";
+      ratingStars.appendChild(halfStar);
+    }
+    const ratingContainer = document.getElementById("ratingContainer");
+    ratingContainer.innerHTML = "";
+    ratingContainer.appendChild(ratingStars);
+  } else {
+    const noReviews = document.createElement("p");
+    noReviews.textContent = "No reviews for this product yet.";
+    const ratingContainer = document.getElementById("ratingContainer");
+    ratingContainer.innerHTML = "";
+    ratingContainer.appendChild(noReviews);
+  }
+});
 // Get a reference to the Firebase database
 const database = firebase.database();
 
