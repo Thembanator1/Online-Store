@@ -57,7 +57,8 @@ else {
     alert('Please fill in all the required fields.');
   }
   }
-  var email  = sessionStorage.getItem("user_email");
+  var email  = localStorage.getItem("supplier_email");
+  
   // function to save user data to the database
 const saveMessages = (productName , productDescription , productPrice , productCategory,link) => {
     var newContactForm = contactFormDB.push();
