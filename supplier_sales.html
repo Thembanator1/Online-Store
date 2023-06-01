@@ -28,21 +28,6 @@
 
 <body onload="start()">
     <h1>Sales Revenue For The Past Year</h1>
-    <h2>The details of the past year</h2>
-    <div>
-        <p for="total-revenue" id="ytotal"></p>
-    </div>
-    <div>
-        <p for="total-units" id="yunits"></p>
-    </div>
-    <div>
-        <p for="total-purchases" id="ypurchase"></p>
-    </div>
-    <div>
-        <canvas id="myBar" style="width:100%;max-width:1000px"></canvas>
-    </div>
-    <h1 id="headd"></h1>
-    <h2>The details of the selected month</h2>
     <div>
         <label for="product-month">Select A Month:</label>
         <select>
@@ -61,6 +46,7 @@
           </select>
         <button onclick="selected()">display</button>
     </div>
+    <h2 id="headd"></h2>
     <div>
         <p for="total-revenue" id="total"></p>
     </div>
