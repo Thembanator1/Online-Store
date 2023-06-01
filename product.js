@@ -1,89 +1,89 @@
-const firebaseConfig = {
-    //   copy your firebase config informations
-    apiKey: "AIzaSyBiQr7aHxdYxk8sCkHxMebkVyBEgXCnknU",
-    authDomain: "online-store-b90ca.firebaseapp.com",
-    databaseURL: "https://online-store-b90ca-default-rtdb.firebaseio.com",
-    projectId: "online-store-b90ca",
-    storageBucket: "online-store-b90ca.appspot.com",
-    messagingSenderId: "160581372978",
-    appId: "1:160581372978:web:b507d7ac5f14c9e4ff002b",
-    measurementId: "G-PH4QNCPP2J"
-};
-// initialize firebase
-firebase.initializeApp(firebaseConfig);
+import { db, db_firestore } from './firebase.js';
+
 // get reference to the Firebase database
-var contactFormDB = firebase.database().ref("Cart");
+var contactFormDB = db.ref("Cart");
 var user = localStorage.getItem('user_email');
-var reviewsRef = firebase.database().ref('Reviews');
+var reviewsRef = db.ref('Reviews');
 const id = localStorage.getItem('id');
 const categories=localStorage.getItem('category');
 
-var imagesRef = firebase.database().ref("Products");
 
-const productsList = document.querySelector(".image-container");
 
-// Clear any existing product items from the list
-productsList.innerHTML = "";
+// Get a reference to the product that was clicked to get here
+const clickedProd = db.ref('Products/' + id);
 
+// Retrieve the product data from the database
+clickedProd.once('value', (snapshot) => {
+  const productData = snapshot.val();
+
+  // Set the image source attribute
+  const img = document.getElementById('product-img');
+  img.src = productData.picture;
+
+  // Set the product description
+  const desc = document.getElementById('product-desc');
+  desc.textContent = productData.description;
+
+  // Set the product price
+  const price = document.getElementById('product-price');
+  price.textContent += ' ' + productData.price;
+});//end of prodRef
+
+
+const productsList = document.querySelector(".instore-container");
 // Retrieve all product items from the Firebase Realtime Database
-const productsRef = firebase.database().ref("Products");
+const productsRef = db.ref("Products");
 productsRef.once("value", snapshot => {
+  productsList.innerHTML = ""; // Clear any existing product items from the list
   const products = snapshot.val();
 
   // Shuffle the products randomly using Fisher-Yates algorithm
-  const shuffledProducts = Object.entries(products);
+  const shuffledProducts = Object.entries(products)
+    .map(([key, product]) => ({ key, ...product }));
   for (let i = shuffledProducts.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffledProducts[i], shuffledProducts[j]] = [shuffledProducts[j], shuffledProducts[i]];
   }
 
   // Loop through only 100% of the shuffled products
-const numProducts = Math.floor(shuffledProducts.length * 1);
-for (const [key, product] of shuffledProducts.slice(0, numProducts)) {
-  // Check if the product belongs to the "Cellphones & Smartwatches" category
-  if (product.category === categories && key!==id ) {
-    // Create a new list item for each product item
-    const listItem = document.createElement("div");
-    listItem.className = "product-item";
+  const numProducts = Math.floor(shuffledProducts.length * 0.6);
+  for (const { key, ...product } of shuffledProducts.slice(0, numProducts)) {
+    if (product.category === categories && key !== id) {
+      const listItem = document.createElement("div");
+      listItem.className = "product-item";
 
-    // Create an image element to display the product image
-    const image = document.createElement("img");
-    image.src = product.picture;
-    image.alt = product.name;
-    listItem.appendChild(image);
+      const image = document.createElement("img");
+      image.src = product.picture;
+      image.alt = product.name;
+      listItem.appendChild(image);
 
-    // Create a div element to hold the product name and price
-    const infoDiv = document.createElement("div");
-    infoDiv.className = "product-info";
-    listItem.appendChild(infoDiv);
+      const infoDiv = document.createElement("div");
+      infoDiv.className = "details";
+      listItem.appendChild(infoDiv);
 
-    // Create a span element to display the product name
-    const nameSpan = document.createElement("span");
-    nameSpan.className = "product-name";
-    nameSpan.textContent = product.name;
-    infoDiv.appendChild(nameSpan);
+      const nameSpan = document.createElement("h3");
+      nameSpan.textContent = product.name;
+      infoDiv.appendChild(nameSpan);
 
-    // Create a span element to display the product price
-    const priceSpan = document.createElement("span");
-    priceSpan.className = "product-price";
-    priceSpan.textContent = "$" + product.price;
-    infoDiv.appendChild(priceSpan);
+      const categorySpan = document.createElement("h4");
+      categorySpan.textContent = product.category;
+      infoDiv.appendChild(categorySpan);
 
-    // Add an event listener to the list item
-    listItem.addEventListener("click", () => {
-      localStorage.setItem('id', key);
-      localStorage.setItem("category",product.category);
-      // Redirect to login page
-      window.location.assign("ProductPage.html");
-      // Print the key of the clicked item
-    });
+      const priceSpan = document.createElement("h2");
+      priceSpan.textContent = "R " + product.price;
+      infoDiv.appendChild(priceSpan);
 
-    // Add the list item to the products list
-    productsList.appendChild(listItem);
+      listItem.addEventListener("click", () => {
+        localStorage.setItem('id', key);
+        localStorage.setItem('category', product.category);
+        window.location.assign("ProductPage.html");
+      });
+
+      productsList.appendChild(listItem);
+    }
   }
-}
-
 });
+
 
 
 reviewsRef.once('value', (snapshot) => {
@@ -168,33 +168,10 @@ reviewsRef.once('value', (snapshot) => {
   }
 });
 
-// Get a reference to the Firebase database
-const database = firebase.database();
-
-
-// Get a reference to the product node in the database
-const productRef = database.ref('Products/' + id);
-
-// Retrieve the product data from the database
-productRef.once('value', (snapshot) => {
-  const productData = snapshot.val();
-
-  // Set the image source attribute
-  const img = document.getElementById('product-img');
-  img.src = productData.picture;
-
-  // Set the product description
-  const desc = document.getElementById('product-desc');
-  desc.textContent = productData.description;
-
-  // Set the product price
-  const price = document.getElementById('product-price');
-  price.textContent += ' ' + productData.price;
-});//end of prodRef
 
 function addToCart() {
   // Get a reference to the product node in the database
-  const database = firebase.database();
+  const database = db;
   const id = localStorage.getItem('id');
   const productRef = database.ref('Products/' + id);
 

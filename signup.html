@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login Form</title>
+	<title>Signup Form</title>
 	<style type="text/css">
 		body{
 			margin: 0;
 			padding: 0;
-			background: url(bg.jpg);
 			background-size: cover;
 			font-family: sans-serif;
 		}
@@ -116,16 +115,17 @@
 			<input type="password" name="" placeholder="Enter Password" id="password">
 			<input type="password" name="" placeholder="Confirm Password" id="confirmpassword">
 			<!-- Submit button for the form -->
-			<input type="submit" name="" value="Sign in" id="validate">
+			<input type="submit" name="" value="Sign up" id="validate">
 			<!-- Link to the login page for users who already have an account -->
 			<a href="login.html">Already have an account?</a>
 		</form>
 	</div>
 	
-	<!-- Link to the Firebase JavaScript library and to a custom JavaScript file for handling form submission -->
+	<script src="sign.js" type = "module"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-firestore.js"></script>
 	<!-- The following script tag includes the javascript file for the login functionality -->
-	<script src="signup2.js"></script>
+	
 	
 	</body>
 	

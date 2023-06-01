@@ -1,0 +1,92 @@
+body{
+    background-color: #f5f5f5b6;
+}
+
+.top-nav,
+.header {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+.header{
+    background-color:  rgb(199, 51, 51);
+    justify-content: center;
+}
+
+.logo {
+    float: left;
+    max-width: 375px;
+    height: 100px;
+   
+}
+ 
+.nav-links {
+    margin-left: auto;
+    margin-right: 1%;
+}
+.nav-links a {
+    color: #4400ff;
+}
+.menu {  
+    display: flex; 
+    gap: 1em;   
+    font-size: 18px;   
+   
+}
+    
+.menu li:hover { 
+    background-color: #4c9e9e;
+    border-radius: 5px;  
+    transition: 0.3s ease;  
+}
+    
+.menu li {   
+    padding: 3px 10px;  
+}
+
+.card-container{
+    display:flex;
+    position: relative;
+}
+
+    .supply-card,
+    .preview-card {
+        height: 86%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-left: 22px;
+        margin-top: 5%;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+.supply-card{
+    width: 48%;
+    display: block;
+}
+.preview-card{
+    width: 40%;
+    display: none;
+}
+
+  .card-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+input[type="text"],
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Upload Image to Firebase</title>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+  <!-- Firebase Storage SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="supplier.css">
+  <!-- <style>
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: inline-block;
+        width: 150px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+        width: 300px;
+        padding: 5px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 5px 10px;
+    }
+</style> -->
+
+</head>
+
+<body>
+    <div class="top-nav">
+        <img class="logo" src="../img/RunTime Shopping4x.png" alt="Logo">
+        <ul class="nav-links">
+            <div class="menu">
+                <li><a href="#orders">Orders</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#tracking">Order Tracking</a></li>
+                <li><a href="Supplier_Products.html">Products</a></li>
+            </div>
+        </ul>
+    </div>
+    
+    <div class="header">
+        <h1 style="font-family: Arial, sans-serif; font-size: 32px; font-weight: bold;color: #333;">Supplier Homepage</h1>
+    </div>
+
+    <div class="card-container">
+        <div class="supply-card">
+            <h2 class="card-title">Upload Product to be Sold</h2>
+            <form>
+                <div class="form-group">
+                    <label for="product-name">Product Name:</label>
+                    <input type="text" id="product-name" name="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Product Description:</label>
+                    <textarea id="product-description" name="product-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Product Price:</label>
+                    <input type="number" id="product-price" name="product-price" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-category">Product Category:</label>
+                    <select>
+                        <option value="">Select category:</option>
+                        <option value="Daily Deals">Daily Deals</option>
+                        <option value="Automotive & DIY">Automotive & DIY</option>
+                        <option value="Baby & Toddler">Baby & Toddler</option>
+                        <option value="Beauty">Beauty</option>
+                        <option value="Books & Course">Books & Course</option>
+                        <option value="Camping & Outdoor">Camping & Outdoor</option>
+                        <option value="Cellphones & Smartwatches">Cellphones & Smartwatches</option>
+                        <option value="Computer & Electronics">Computer & Electronics</option>
+                        <option value="Fashion & Luggage">Fashion & Luggage</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Garden,Pool & Patio">Garden,Pool & Patio</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="image-upload">Product Image:</label>
+                    <input type="file" id="image-upload" accept="image/*" onchange="previewImage(event)">
+
+                    <button onclick="uploadImage()" style="float:right; top:0;">Upload Product</button>
+                </div>
+                
+            </form>
+        </div>   
+        <div class="preview-card" id = "img-preview">
+            <div id="image-preview"></div>
+        </div>  
+    </div>
+
+
+    
+
+
+    <style>
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+
+        #image-preview {
+            display: none;
+            width: 98%;
+        }
+
+        #image-preview img {
+            width: 100%;
+            /* max-width: 300px; */
+        }
+    </style>
+
+    <script>
+        function previewImage(event) {
+            var previewCard= document.getElementById('img-preview');
+            previewCard.style.display = 'block';
+            var input = event.target;
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                var imgElement = document.createElement("img");
+                imgElement.src = reader.result;
+
+                var previewContainer = document.getElementById("image-preview");
+                previewContainer.innerHTML = "";
+                previewContainer.appendChild(imgElement);
+                previewContainer.style.display = "block";
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+      <script src="supplier_homepage.js"></script>
+    
+    </body>
+</html>
+
+
+
+

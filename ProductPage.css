@@ -1,0 +1,422 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5b6;
+}
+/* TOP-NAVBAR STYLING STARTS */
+
+.topnav {
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+padding: 20px;
+border-bottom: #000000;
+
+background-color: rgb(255, 255, 255);
+
+color: #000000;
+
+}
+/* LOGO */ 
+img{
+height: 65px;
+width: 300px;
+padding: 0px;
+}
+
+/* 2nd NavBar */
+.navbar {
+
+  display: flex;
+  
+  align-items: center;
+  
+  justify-content: space-between;
+  
+  padding: 20px;
+  border-bottom: #000000;
+  
+  background-color: rgb(255, 0, 0);
+  
+  color: #000000;
+  
+}
+
+/* Menu listing is the same on both navs */
+.nav-links a {
+
+color: #4400ff;
+
+}
+.menu {
+
+display: flex;
+
+gap: 1em;
+
+font-size: 18px;
+
+}
+
+.menu li:hover {
+
+background-color: #4c9e9e;
+
+border-radius: 5px;
+
+transition: 0.3s ease;
+
+}
+
+.menu li {
+
+padding: 5px 14px;
+
+}
+
+
+     
+/*+++++++++++++++++++++++++++++++++++++++++++++*/
+/*-------------Done with NavBars----------------*/
+/*+++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-right: 10px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+section {
+  flex: 1;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+section:last-child {
+  margin-right: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form label, form input, form textarea {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form textarea {
+  height: 100px;
+}
+
+form button {
+  margin-top: 10px;
+}
+#product-img {
+  width: 400px; /* increase image width */
+height: auto; /* adjust height automatically */
+/* add any additional styling you want here */
+}
+
+
+  /* Styling for the modal window */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+  
+  /* Styling for the modal content */
+  .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 1400px;
+      height: 80%;
+      overflow: auto;
+  }
+  
+  /* Styling for the close button */
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+  
+  /*----Order Information-----*/
+  .products {
+      float: left;
+  }
+  .products + .total-price{
+      position: relative;
+  }
+
+  .cart-page{
+      margin: 80px auto;
+      width: 500px
+      }
+  table{
+      width : 80%;
+      border-collapse: collapse;
+      margin-bottom: 20px; /* add some space between the two tables */
+
+  }   
+  table + table {
+  /* style for second table */
+      position: relative;
+      top: 20px; /* move the second table 20px down from its normal position */
+  }
+  th{
+  text-align: left;
+  padding: 5px;
+  color: #fff;
+  background: #ff523b;
+  font-weight: normal;
+  }
+  th:nth-child(4) {
+      display: none;
+  }
+  td{
+  padding: 10px 5px;
+  }
+  td img{
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  }
+  td input{
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+  }
+  td a{
+  color: #ff523b;
+  font-size: 12px;
+  }
+  .cart-info{
+  display: flex;
+  flex-wrap: wrap;
+  }
+  .total-price{
+  display: flex;
+  justify-content: left;
+  clear: both;
+  }
+  #totalPrice{
+  border-top: #ff523b 3px solid;
+  width: 100%;
+  max-width: 971px;
+  }
+
+  td:last-child{
+  text-align: left; /*items on last column will...*/
+  }
+  th:last-child{
+  text-align: left;/*header item on last column will...*/
+  }
+
+
+  .cart-summary {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    }
+    
+    .cart-summary h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    }
+    
+    .cart-summary h3 {
+    color: #f00;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    }
+    
+    .cart-summary button {
+    background-color: #f00;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+    
+    .cart-summary button:hover {
+    background-color: #c00;
+    }
+
+
+  #tag{
+  opacity: 0.5;
+  }
+  #Arating{
+      height: 25px;
+      padding-top: 20px;
+  }
+  #reviewsContainer{
+      height: 200px;
+      overflow-y: auto; /* Enable vertical scrolling */
+        scrollbar-width: none; /* Set the width of the scrollbar */
+      border: 1px solid black;
+      border-radius: 40px;
+      padding: 11px;
+  }
+  #reviewsContainer::-webkit-scrollbar {
+width: 5px;
+height: 5px;
+}
+
+#reviewsContainer::-webkit-scrollbar-thumb {
+background: none;
+
+}
+.review {
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  height: auto;
+line-height: 1.5;
+}
+.review h3 {
+height: auto;
+line-height: 1.2;
+}
+  #ratingContainer{
+      display: flex;
+  }
+  .starsrating a{
+      font-size: 24px;
+  }
+
+
+.stars{
+  display: flex;
+}
+.stars a{
+  opacity : 50%;
+  cursor: pointer;
+  padding: 3px;
+}
+.stars:hover a{
+  opacity: 100%;
+}
+.stars a:hover{
+  opacity:100;
+}
+.stars a:hover ~a{
+  opacity: 50%;
+}
+.stars a.active{
+  opacity: 100%;
+}
+
+.stars.disabled{
+  pointer-events: none;
+}
+/*===End of reviews===*/
+
+
+#clickedProduct .product-item{
+    width: 695px;
+}
+#clickedProduct .product-item h2 {
+    margin-left: 2px;
+    padding-top: 2%;
+}
+#clickedProduct .product-item h3 {
+    padding-top: 0;
+}
+#add-to-cart {
+    position: relative;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    background: rgb(3, 94, 94) url("https://img.icons8.com/material/24/shopping-cart--v1.png") no-repeat 10px center;
+    background-size: 30px;
+    padding-left: 50px;
+}
+.add-to-cart-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1%;
+  }
+  
+  .add-to-cart-container button {
+    margin-right: 2px;
+  }
+  
+  .additional-info {
+    margin-left: 2px;
+  }
+

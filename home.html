@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+<!-- Modal window -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class = "close" > &times;</span>
+    
+        <table id = "cart-table">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Actions</th> <!-- New column for product removal buttons -->
+            </tr>
+            </table>
+            
+
+        <div class="cart-summary">
+            <h2>Cart Summary</h2>
+            <p id = "cart-total"></p>
+            <h3 id = "cart-sum">R</h3>
+            <button id="checkout">Proceed to Checkout</button>
+        </div>     
+    </div>
+</div>
+    
+<div class="top-nav">
+    <img class="logo" src="../img/RunTime Shopping4x.png" alt="Logo">
+
+    <ul class="nav-links">
+        <div class="menu">
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/">About</a></li>
+          
+          <li><a href="account.html">Account</a></li>
+          
+          <li><a href="#" id="cartLink">Cart</a></li>
+        </div>
+    </ul>
+</div>
+
+<div class="header">
+    
+    <div class="search-container">
+        <select id = "select">
+            <option value="">Select category:</option>
+            <option value="option1">Daily Deals</option>
+            <option value="option2">Automotive & DIY</option>
+            <option value="option3">Baby & Toddler</option>
+            <option value="option4">Beauty</option>
+            <option value="option5">Books & Course</option>
+            <option value="option6">Camping & Outdoor</option>
+            <option value="option6">Cellphones & Smartwatches</option>
+            <option value="option7">Computer & Electronics</option>
+            <option value="option8">Fashion & Luggage</option>
+            <option value="option9">Gaming</option>
+            <option value="option10">Garden,Pool & Patio</option>  
+        </select>
+        <input type="text" onkeyup="searchObjects()" placeholder="Search for products, brands...">
+        <button type="submit">Search</button>
+    </div>
+</div>
+
+    
+<!-- The PrintAds Slideshow background --->
+<div class="slider">
+    <div class="slide active">
+    <img src="./img/home/slide1.jpg" alt="">
+    </div>
+    <div class="slide">
+    <img src="./img/home/slide2.jpg" alt="">
+    </div>
+    <div class="slide">
+    <img src="./img/home/slide3.jpg" alt="">
+    </div>
+    <div class="slide">
+    <img src="./img/home/slide4.jpg" alt="">
+    </div>
+    <div class="slide">
+    <img src="./img/home/slide5.jpg" alt="">
+    </div>
+    
+    <div class="navigation">
+    <i class="fas fa-chevron-left prev-btn"></i>
+    <i class="fas fa-chevron-right next-btn"></i>
+    </div>
+    <div class="navigation-visibility">
+    <div class="slide-icon active"></div>
+    <div class="slide-icon"></div>
+    <div class="slide-icon"></div>
+    <div class="slide-icon"></div>
+    <div class="slide-icon"></div>
+    </div>
+    
+    <div class="card-row"> <!-- first row-->
+    <div class="card">
+        <a href="#">
+        <img src="./img/home/cCare.jpg" alt="Category Name 1">
+        <h3> Health & Personal Care </h3>
+        </a>
+    </div>
+    
+    <div class="card">
+        <a href="#">
+        <img src="./img/home/cLaptops.jpg" alt="Category Name 2">
+        <h3>Shop Laptops & Computers</h3>
+        </a>
+    </div>
+    
+    <div class="card">
+        <a href="#">
+        <img src="./img/home/cBeauty.jpg" alt="Category Name 3">
+        <h3>Beauty picks</h3>
+        </a>
+    </div>
+    
+    
+    </div>
+    
+    <div class="card-row"> <!-- second row-->
+    <div class="card">
+        <a href="#">
+        <img src="./img/home/cFitness.jpg" alt="Category Name 5">
+        <h3>Fitness Needs</h3>
+        </a>
+    </div>
+    
+    <div class="card">
+        <a href="#">
+        <img src="./img/home/cToys.jpg" alt="Category Name 6">
+        <h3>Shop new Toys</h3>
+        </a>
+    </div>
+    
+    <div class="card">
+        <a href="#">
+        <img src="./img/home/cHome.jpg" alt="Category Name 7">
+        <h3>Style your Home</h3>
+        </a>
+    </div>
+    
+    
+    </div>
+
+</div>       
+<!-- slideshow section DONE -->
+      
+<!-- Gallerysection -->
+<section class="gallery">
+<h2>Recommended For You</h2>
+<!-- Scroll view for the images -->
+<div class="product-item">
+    <img src="https://firebasestorage.googleapis.com/v0/b/online-store-b90ca.appspot.com/o/images%2Fsamsung.webp?alt=media&amp;token=6b284134-4f90-4645-be1d-1a1c28e57c06" alt="Samsung Galaxy A03s, 32GB, Black - Smartphone">
+    <div class="product-info">
+    <span class="product-name">Samsung Galaxy card</span>
+    <span class="product-price">$89.90</span>
+    </div>
+</div>
+<div class="scroll-view">
+    <div class="recommendations-container"></div>
+</div>
+<h3>Products In Store</h3>
+<div class="scroll-view">
+    <div class="instore-container"></div>
+</div>
+</section>
+
+    <script src="home.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-firestore.js"></script> 
+    
+
+</body>
+</html>

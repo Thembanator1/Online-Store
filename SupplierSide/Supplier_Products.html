@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Supplier Home Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .scroll-view {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* center the items horizontally */
+            align-items: center; /* center the items vertically */
+            gap: 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            margin: 0 auto; /* add margin:auto to center the container */
+            border-radius: 10px;
+            box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
+            width: 75%;
+            height: auto;
+        }
+        .scrollContainer{
+            position:relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* center the items horizontally */
+            margin-top: 3%;
+        }
+    </style>
+    <link rel="stylesheet" href="supplier.css">
+    <link rel="stylesheet" href="../cardz.css">
+</head>
+
+<body>
+    <div class="top-nav">
+        <img class="logo" src="../img/RunTime Shopping4x.png" alt="Logo">
+        <ul class="nav-links">
+            <div class="menu">
+                <li><a href="#orders">Orders</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#tracking">Order Tracking</a></li>
+                <li><a href="supplier_homepage.html">Home</a></li>
+            </div>
+        </ul>
+    </div>
+    
+    <div class="header">
+        <h1 style="font-family: Arial, sans-serif; font-size: 32px; font-weight: bold;color: #333;">Uploaded Products</h1>
+    </div>
+    
+    <div class = "scrollContainer">
+        
+            <div class="scroll-view" id="image-container"></div>
+       
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="supplier_products.js"></script>
+</body>
+
+</html>

@@ -261,6 +261,7 @@
 }
 
 </style>
+<link rel="stylesheet" href="cardz.css">
   </head>
 
   <body>
@@ -425,64 +426,28 @@
     <!-- slideshow section DONE -->
       
 	 <!-- Gallery section -->
-   <section class="gallery">
-    <h2>Recommended For You</h2>
-    <!-- Scroll view for the images -->
-    <div class="scroll-view">
-      <div class="image-container"></div>
-    </div>
-    <h3>Products In Store</h3>
-    <div class="scroll-view">
-      <div class="vertical-container"></div>
-    </div>
+  <section class="gallery">
+      <h2>Recommended For You</h2>
+      <!-- Scroll view for the images -->
+      <div class="scroll-view">
+        <div class="foryou-container"></div>
+      </div>
+      <h2>Products In Store</h2>
+      <div class="scroll-view">
+        <div class="instore-container"></div>
+      </div>
   </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-	<script src="homepage.js"></script>    
-  <!-- JavaScript to display and hide the modal window -->
-	<script>
-		var cartLink = document.getElementById("cartLink");
-		var modal = document.getElementById("myModal");
-		var close = document.getElementsByClassName("close")[0];
-
-		cartLink.onclick = function() {
-			modal.style.display = "block";
-		}
-
-		close.onclick = function() {
-			modal.style.display = "none";
-		}
-
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
+  <footer>
+		<p>&copy; 2023 Runtime Shopping inc.</p>
+	</footer>
 
 
-        let sum = 0;
-        const rows = document.querySelectorAll('table tr');
-        for (let i = 1; i < rows.length; i++) { 
-            const subtotalStr = rows[i].querySelector('td:nth-child(3)').textContent;
-            const subtotalNum = parseFloat(subtotalStr.replace(/[^\d.-]+/g,""));
-            sum += subtotalNum;
-        }
-        const totalElem = document.getElementById('cart-total');
-        totalElem.textContent = `TOTAL: (${rows.length - 1} items)`;
-        const sumElem = document.getElementById('cart-sum');
-        sumElem.textContent += sum;
-        console.log(sum);
 
 
-	</script>
-  <script>
-    var button = document.getElementById("checkout");
-    button.addEventListener("click", function(event) {
-      window.location.assign("./checkout/delivery.html");
-    });
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-  <script src="./search.js"></script>
-  </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
-  </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+      </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-storage.js"></script>
+      </script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
+      <script src="./search.js"></script>
+      <script src="homepage.js" type="module"></script>
 </body>
 </html>
