@@ -30,8 +30,8 @@ var firebaseConfig = {
   var purchase;
 
   function start(){
-    //email = localStorage.getItem('supplier_email');
-    email = "irene@gmail.com";
+    email = localStorage.getItem('supplier_email');
+    //email = "irene@gmail.com";
     const d = new Date();
     const month = d.getMonth();
     const year = d.getFullYear();
