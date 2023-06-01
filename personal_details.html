@@ -75,39 +75,110 @@
         }
         
         </style>
-            <div> <!-- second navBar --->
-                <nav class="navbar"> 
-                  <ul class="nav-links">
-                    <div class="menu">
-                      <li><a href="homepage.html">Home</a></li>
-                      <li><a href="/">Cart</a></li>
-                    </div>
-                      
-                  </ul>
-                </nav>
-              </div>
+        <style>
+          body{
+            background-color: #f5f5f5b6;
+          }
+          .header {
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content:left;
+          }
+
+          .logo {
+            float: left;
+            max-width: 375px;
+            height: 100px;
+            margin-left: 2%;
+          }
+
+          .header-content {
+            text-align: right;
+            float: right;
+          }
+.card-container{
+    display:flex;
+    position: relative;
+    justify-content: center;
+}
+
+    .supply-card,
+    .preview-card {
+        height: 86%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-left: 22px;
+        margin-top: 5%;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+.supply-card{
+    width: 48%;
+    display: block;
+}
+.preview-card{
+    width: 40%;
+    display: none;
+}
+
+  .card-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+input[type="text"],
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+        </style>
+
+        <div class="header">
+          <img class="logo" src="../img/RunTime Shopping4x.png" alt="Logo">
+          <div class="header-content">
+            <p>.</p>
+            <p>.</p>
+          </div>
+        </div><!--end of header-->
           
             <title>My Account</title>
 </head>
 <!-- The following code creates a login form with input fields for email and password -->
 <body onload="start()">
-	<div> 
-	<h1>Edit Personal Details</h1>
-	<form>
+  <div class="card-container">
+    <div class="supply-card">
+        <h1 class="card-title">Personal Details</h1>
+        <form>
+          <a>Email:</a><br>
+          <b id="Email"></b><br>
+    
+          <a>Name:</a><br>
+          <b id="Name"></b><br>
+    
+          <a>Surname:</a><br>
+          <b id="Surname"></b><br>
+          <!-- Submit button for the form -->
+          <input type="submit" name="" value="Edit Profile" id="validate">
 
-    <a>Email:</a><br>
-    <b id="Email"></b><br>
+        </form>
+    </div>  
+  </div>
 
-    <a>Name:</a><br>
-	  <b id="Name"></b><br>
 
-    <a>Surname:</a><br>
-	  <b id="Surname"></b><br>
-
-	<!-- Submit button for the form -->
-	<input type="submit" name="" value="Edit Profile" id="validate">
-	</form>
-	</div>
 	<!-- The following script tag includes the Firebase SDK library -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 	<!-- The following script tag includes the javascript file for the login functionality -->
