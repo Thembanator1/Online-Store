@@ -112,7 +112,7 @@ var firebaseConfig = {
 
         document.getElementById("total").innerHTML = "Total Revenue:  R" + total;
         document.getElementById("units").innerHTML = "Units Sold:  " + units+" units";
-        document.getElementById("purchase").innerHTML = "Number of Purchases:  " + purchase;
+        document.getElementById("purchase").innerHTML = "Total Orders:  " + purchase;
     });
   } 
 
