@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<header>
-    <header>
-        <h1>Supplier Home Page</h1>
-        <nav>
-            <ul>
-                <li><a href="Supplier_homepage.html">Home</a></li>
-                <li><a href="Supplier_Products.html">Products</a></li>
-
-            </ul>
-        </nav>
-    </header>
-</header>
-
 <head>
   <title>Upload Image to Firebase</title>
   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -23,145 +10,115 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <img src =  "./img/home/RunTime_logo.png"/>
-</head>
+  <link rel="stylesheet" href="supplier.css">
+</head> 
 
 <body onload="start()">
-    <h1>Sales Revenue For The Past Year</h1>
-    <div>
-        <label for="product-month">Select A Month:</label>
-        <select>
-            <option id="position0" value="0"></option>
-            <option id="position1" value="1"></option>
-            <option id="position2" value="2"></option>
-            <option id="position3" value="3"></option>
-            <option id="position4" value="4"></option>
-            <option id="position5" value="5"></option>
-            <option id="position6" value="6"></option>
-            <option id="position7" value="7"></option>
-            <option id="position8" value="8"></option>
-            <option id="position9" value="9"></option>
-            <option id="position10" value="10"></option>
-            <option id="position11" value="11"></option>
-          </select>
-        <button onclick="selected()">display</button>
+
+    <div class="top-nav">
+        <img class="logo" src="../img/RunTime Shopping4x.png" alt="Logo">
+        <ul class="nav-links">
+            <div class="menu">
+                <li><a href="Supplier_Products.html">Products</a></li>
+                <li><a href="Supplier_homepage.html">Home</a></li>
+            </div>
+        </ul>
     </div>
-    <h2 id="headd"></h2>
-    <div>
-        <p for="total-revenue" id="total"></p>
+
+    <div class="header">
+        <h1 style="font-family: Arial, sans-serif; font-size: 32px; font-weight: bold;color: #333;">Sales Analysis</h1>
     </div>
+
     <div>
-        <p for="total-units" id="units"></p>
+        <label for="product-month">Select A Day From The Month You Want To Analyse:</label>
+        <input type="date" name="" placeholder="date" id="date">
+        <button onclick="select()">display</button>
     </div>
-    <div>
-        <p for="total-purchases" id="purchase"></p>
+
+    <h1 id="headd"></h1><br>
+    <div class="card-container">
+        <div class="sup-card">
+            <h2 class="card-title">Total Revenue</h2>
+            <p for="total-revenue" id="total">0 rands</p>
+        </div>
+        <div class="sup-card">
+            <h2 class="card-title">Unit Sold</h2>
+            <p for="total-units" id="units">0 units</p>
+        </div>
+        <div class="sup-card">
+            <h2 class="card-title">Total Order</h2>
+            <p for="total-purchases" id="purchase">0 orders</p>
+        </div>
     </div>
-    <div>
+
+    <div class="gra-card">
         <canvas id="myLine" style="width:100%;max-width:1000px"></canvas>
     </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
-      <script src="supplier_sales.js"></script>
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="supplier_sales.js"></script>
     </body>
 </html>
 
-
-
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    
-    header {
-
-	background-color: red;
-	color:white;
-	padding: 20px;
-
-    }
-   
-    
     h1 {
-        margin: 0;
-        text-align: center;
-        background-color: white;
-	    color: red;
-	    padding: 20px;
-        margin-bottom: 20px;
-
-    }
-
-    h2 {
-        margin-left: 5px;
-    }
-    p {
-        margin-left: 15px;
-    }
-    
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    
-    form {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    
-    form div {
-        flex-basis: 100%;
-        margin-bottom: 10px;
-    }
-    
-    label, input, textarea {
-        margin-right: 10px;
-        margin-bottom: 5px;
-    }
-    
-    input[type="number"], textarea {
-        width: 100%;
+        margin-left: 20px;
     }
 
     label {
-        margin-top: 50px;
-        margin-left: 10px;
+        margin-top: 35px;
+        margin-left: 20px;
+        font-size: 20px;
+    }
+
+    input {
+        margin-left: 50px;
+        margin-right: 5px;
+        height: 20px;
     }
 
     button {
-        margin-left: 10px;
-    }
-    
-    button[type="submit"] {
-        background-color: #f90;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        position: absolute;
-        text-align: center;
-    }
-    
-    button[type="submit"]:hover {
-        background-color: #e8800f;
+        margin-left: 5px;
+        height: 25px;
     }
 
-    canvas {
-        margin-top: 50px;
-        margin-left: 50px;
-        margin-bottom: 50px;
+    .sup-card {
+        height: fit-content;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 30px;
+        margin-top: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
 
-    img{
-      height: 60px;
-      width: 300px;
-      padding: 0px;
-      position: absolute;
-      top:6%;
-      left:3.5%;
-  }
+    .sup-card{
+        width: fit-content;
+        display: block;
+    }
 
-    
-    </style>
+    .gra-card {
+        height: 86%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-left: 22px;
+        margin-top: 5%;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .gra-card{
+        width: 60%;
+        display: block;
+    }
+
+    p {
+        font-size: 22px;
+        align-items: center;
+    }
+</style>
+
+

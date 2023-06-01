@@ -19,8 +19,9 @@ var contactFormDB = firebase.database().ref("Shipping");
 const months = 
 ["January","February","March","April","May","June",
 "July","August","September","October","November","December"];
-var position;
+
 var email;
+var myLineChart;
 
 var xsales;
 var ysales;
@@ -35,7 +36,6 @@ function start(){
   const month = d.getMonth();
   const year = d.getFullYear();
 
-  orderMonth(month, year);
   monthDays(month+1, year);
 
   document.getElementById("headd").innerHTML = "Details of the Sales made in "+months[month]+" "+year;
@@ -43,37 +43,22 @@ function start(){
   getDetails(email, month+1, year);
 }
 
-function selected(){
-  var select = document.querySelector('select');
-  var pos = select.value;
+function select(){
+  var d = document.getElementById("date").value;
+  if (d==""){
+    alert("Enter Date");
+    return;
+  }
+  const date = new Date(d);
 
-  month = position[pos][0];
-  year = position[pos][1];
+  var year = date.getFullYear();
+  var month = date.getMonth();
 
   document.getElementById("headd").innerHTML = "Details of the Sales made in "+months[month]+" "+year;
 
   monthDays(month+1, year);
+  myLineChart.destroy();
   getDetails(email, month+1, year);
-}
-
-function orderMonth(month, year){
-  var pos;
-  position = [];
-  var j = 0;
-
-  for (let i=month; i>=0; i--){
-    pos = "position" + String(j);
-    document.getElementById(pos).innerHTML = months[i]+" "+year;
-    position[j] = [i, year];
-    j++;
-  }
-
-  for (let i=11; i>month; i--){
-    pos = "position" + String(j);
-    document.getElementById(pos).innerHTML = months[i]+" "+(year-1);
-    position[j] = [i, year-1];
-    j++;
-  }
 }
 
 function monthDays(month, year){
@@ -85,8 +70,8 @@ function monthDays(month, year){
   units = 0;
   purchase = 0;
 
-  for (let i=0; i<days; i++){
-    xsales[i] = i+1;
+  for (let i=0; i<Math.ceil(days/7); i++){
+    xsales[i] = "week " + parseInt(i+1);
     ysales[i] = 0;
   }
 }
@@ -102,7 +87,7 @@ function getDetails(email, month, year){
           var dat = date.split("/");
 
           if (month==parseInt(dat[1]) && year==parseInt(dat[2])){
-            ysales[parseInt(dat[0])-1] = ysales[parseInt(dat[0])-1] + parseInt(childSnapshot.val().price);
+            ysales[Math.floor((parseInt(dat[0])-1)/7)] = ysales[Math.floor((parseInt(dat[0])-1)/7)] + parseInt(childSnapshot.val().price);
             total = total + parseInt(childSnapshot.val().price);
             units = units + parseInt(childSnapshot.val().quantity);
             purchase = purchase + 1;
@@ -110,15 +95,15 @@ function getDetails(email, month, year){
       });
       makeLine(month, year);
 
-      document.getElementById("total").innerHTML = "Total Revenue:  R" + total;
-      document.getElementById("units").innerHTML = "Units Sold:  " + units+" units";
-      document.getElementById("purchase").innerHTML = "Number of Purchases:  " + purchase;
+      document.getElementById("total").innerHTML = total + " rands";
+      document.getElementById("units").innerHTML = units + " units";
+      document.getElementById("purchase").innerHTML = purchase + " orders";
   });
 } 
 
 function makeLine(month, year){
-  new Chart("myLine", {
-    type: "line",
+  myLineChart = new Chart("myLine", {
+    type: "bar",
     data: {
       labels: xsales,
       datasets: [{
@@ -133,8 +118,8 @@ function makeLine(month, year){
       legend: {display: false},
       scales: {
         yAxes: [{ticks: {min: 0}, 
-        scaleLabel:{display: true, labelString:"Revenue"}}],
-        xAxes: [{scaleLabel:{display: true, labelString:"Days"}}],
+        scaleLabel:{display: true, labelString:"Revenue", fontSize: 15}}],
+        xAxes: [{scaleLabel:{display: true, labelString:"Weeks", fontSize: 15}}],
       },
       title: {
         display: true,
