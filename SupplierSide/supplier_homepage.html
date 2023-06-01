@@ -4,9 +4,7 @@
 <head>
   <title>Upload Image to Firebase</title>
   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
-  <!-- Firebase Storage SDK -->
-  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+ 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="supplier.css">
@@ -45,6 +43,7 @@
                 <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#tracking">Order Tracking</a></li>
                 <li><a href="Supplier_Products.html">Products</a></li>
+                <li><a href="Supplier_sales.html">Sales Analysis</a></li>
             </div>
         </ul>
     </div>
@@ -91,7 +90,8 @@
                     <label for="image-upload">Product Image:</label>
                     <input type="file" id="image-upload" accept="image/*" onchange="previewImage(event)">
 
-                    <button onclick="uploadImage()" style="float:right; top:0;">Upload Product</button>
+                    <button type="button" onclick="uploadImage()" style="float:right; top:0;">Upload Product</button>
+
                 </div>
                 
             </form>

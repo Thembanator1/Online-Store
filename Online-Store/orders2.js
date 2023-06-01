@@ -49,7 +49,8 @@ contactFormDB.orderByChild('customer_email').equalTo(email).once('value', functi
             var deliv = childSnapshot.val().Delivery_Method;
             var paym = childSnapshot.val().Payment_Method;
             var status = childSnapshot.val().status;
-
+            var product=childSnapshot.val().product_id;
+            console.log(product);
             // console.log("look at",childSnapshot.key);
            
             // Create a new div element for the product
@@ -107,6 +108,7 @@ contactFormDB.orderByChild('customer_email').equalTo(email).once('value', functi
               localStorage.setItem('deliv',deliv);
               localStorage.setItem('paym',paym);
               localStorage.setItem('shipping',childSnapshot.key);
+              localStorage.setItem('id',product);
               // redirect to edit/delete page
               window.location.assign("order_details.html");
             });

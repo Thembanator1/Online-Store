@@ -17,6 +17,7 @@ var firebaseConfig = {
   var contactFormDB = firebase.database().ref("Products");
   // Get a reference to the database service
   var database = firebase.database();
+  var email  = localStorage.getItem("supplier_email");
   
   // Function to upload image to Firebase Storage
   function uploadImage() {
@@ -57,7 +58,6 @@ else {
     alert('Please fill in all the required fields.');
   }
   }
-  var email  = sessionStorage.getItem("user_email");
   // function to save user data to the database
 const saveMessages = (productName , productDescription , productPrice , productCategory,link) => {
     var newContactForm = contactFormDB.push();
@@ -75,7 +75,7 @@ const saveMessages = (productName , productDescription , productPrice , productC
     // redirect to login page
     alert('Image uploaded successfully!');
     };
-    function moveNow(){
-     
-      window.location.assign('supplier_sales.html');
+    function moveNow() {
+      window.location.href = "supplier_sales.html";
     }
+    

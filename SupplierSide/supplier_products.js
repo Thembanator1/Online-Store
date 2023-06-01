@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 // Get a reference to the "Products" node in the database
-var email  = sessionStorage.getItem("user_email");
+var email  = localStorage.getItem("supplier_email");
 var productRef = database.ref('Products');
 productRef.orderByChild('suppliers_email').equalTo(email).once('value', function(snapshot) {
   var data = snapshot.val();

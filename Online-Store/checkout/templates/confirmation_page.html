@@ -86,7 +86,7 @@
 </head>
 <body>
     <div class="header">
-        <img class="logo" src="{{ url_for('static', filename='img/RunTime Shopping4x.png') }}" alt="Logo" onclick="goToHomepage()">
+        <img class="logo" src="back.png" alt="Logo" onclick="goToHomepage()">
         <div class="header-content">
         <p>Some header content here...</p>
         <p>Some header content here...</p>
@@ -186,9 +186,12 @@
             }
         });
 
+
         function goToHomepage() {
-            window.location.href = "../homepage.html";
+            window.location.href = "/homepage.html";
         }
+
     </script>
+     <script src="confirmation_page.js"></script>
 </body>
 </html>

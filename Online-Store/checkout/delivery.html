@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="order-summary">
           <h2 class="order-summary-title">Order Summary</h2>
           <div class="order-item">
-            <span class="item-count">1 Item</span>
+            <span class="item-count">Items</span>
             <span class="item-price">R 519</span>
           </div>
           <div class="delivery">
@@ -413,7 +413,9 @@ document.addEventListener('DOMContentLoaded', function() {
          
         </div>
 
-
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+  <script src="checkout.js"></script>
   <script>
     function hideCollect() {
       document.getElementById('deliveryContainer').style.display = 'none';
@@ -426,6 +428,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function hideAddress() {
       document.getElementById('editAdress').style.display = 'none';
       document.getElementById('delivery-options').style.display = 'block';
+     
     }
 
     function gotoPayment() {
