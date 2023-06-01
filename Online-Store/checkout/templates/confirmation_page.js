@@ -35,7 +35,7 @@ cartRef.once("value", (snapshot) => {
 
           if (productId2 == productId) {
             suppliers_email = cartItem2.suppliers_email;
-            alert("only supplier email is not found");
+            
 
             saveMessages(
               DeliveryMethod,
@@ -57,7 +57,7 @@ cartRef.once("value", (snapshot) => {
     }
   }
 });
-alert('Your Order has been placed');
+
 
 // function to save user data to the database
 const saveMessages = (DeliveryMethod, PaymentMethod, customer_email, suppliers_email, my_date, description, productName, productPrice, quantity, status, productId, link) => {
