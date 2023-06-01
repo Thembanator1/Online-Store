@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 // Get a reference to the "Products" node in the database
-var email  = sessionStorage.getItem("user_email");
+var email  = localStorage.getItem("supplier_email");
 var productRef = database.ref('Products');
 productRef.orderByChild('suppliers_email').equalTo(email).once('value', function(snapshot) {
   var data = snapshot.val();
@@ -26,7 +26,7 @@ productRef.orderByChild('suppliers_email').equalTo(email).once('value', function
       
       // Add CSS styles to the imageContainer element
       imageContainer.style.overflowY = "scroll"; // Make it scrollable
-      imageContainer.style.maxHeight = "300px"; // Limit the height
+      imageContainer.style.maxHeight = "400px"; // Limit the height
       
       snapshot.forEach(function(childSnapshot) {
          
@@ -35,40 +35,54 @@ productRef.orderByChild('suppliers_email').equalTo(email).once('value', function
           var price = childSnapshot.val().price;
           var desc = childSnapshot.val().description;
           var name = childSnapshot.val().name;
-          var category = childSnapshot.val.category;
+          var category = childSnapshot.val().category;
+          console.log(category);
 
-          // Create a new div element for the product
-          var productDiv = document.createElement('div');
-          productDiv.style.display = 'flex';
-          productDiv.style.flexDirection = 'column';
-          productDiv.style.marginBottom = '20px'; // Add margin to the bottom for spacing
+          // Create a new list item for each product item
+          const listItem = document.createElement("div");
+          listItem.className = "product-item";
 
-          // Create a new image element and set its source to the imageURL
-          var imageElement = document.createElement('img');
-          imageElement.src = imageURL;
-          imageElement.alt = "A description of the image";
-          productDiv.appendChild(imageElement);
+          // Create an image element to display the product image
+          const image = document.createElement("img");
+          image.src = imageURL;
+          image.alt = "product-image";
+          listItem.appendChild(image);
 
-          var nameElement = document.createElement('label');
-          nameElement.innerText ="Name :"+ name;
-          productDiv.appendChild(nameElement);
+          // Create a div element to hold the product name and price
+          const infoDiv = document.createElement("div");
+          infoDiv.className = "details";
+          listItem.appendChild(infoDiv);
 
-          var priceElement = document.createElement('label');
-          priceElement.innerText ="Price :R"+ price;
-          productDiv.appendChild(priceElement);
+          // Create a h3 element to display the product name
+          const nameSpan = document.createElement("h3");
+          nameSpan.textContent = name;
+          infoDiv.appendChild(nameSpan);
 
-          imageContainer.addEventListener("click", () => {
-            localStorage.setItem('name',name);
-            localStorage.setItem('category',category);
-            localStorage.setItem('price',price);
-            localStorage.setItem('image',imageURL);
-            localStorage.setItem('description',desc );
-                   // redirect to login page
-    window.location.assign("edit_del.html");
-          // Print the key of the clicked item
-        }) 
-          // Add the product div to the container
-          imageContainer.appendChild(productDiv);
+          // Create a h4 element to display the product category
+          const categorySpan = document.createElement("h4");
+          categorySpan.textContent = category;
+          infoDiv.appendChild(categorySpan);
+
+          // Create a h2 element to display the product price
+          const priceSpan = document.createElement("h2");
+          priceSpan.textContent = "R " + price;
+          infoDiv.appendChild(priceSpan);
+
+          // Add the click event listener to the listItem
+          listItem.addEventListener("click", () => {
+            localStorage.setItem('name', name);
+            localStorage.setItem('category', category);
+            localStorage.setItem('price', price);
+            localStorage.setItem('image', imageURL);
+            localStorage.setItem('description', desc);
+            // Redirect to the next page
+            window.location.assign("edit_del.html");
+        });
+
+        // Add the product div to the container
+        imageContainer.appendChild(listItem);
+          
+          
       });
   } else {
       alert(" No products in store found");

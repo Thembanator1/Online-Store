@@ -181,6 +181,12 @@ document.querySelector('.close').addEventListener('click', function() {
   }
   
 });
+function Checkout() {
+  window.location.assign('checkout/delivery.html');
+  alert("Checkout button clicked!");
+  // Perform other operations or redirect to the checkout page
+}
+
 
 
 

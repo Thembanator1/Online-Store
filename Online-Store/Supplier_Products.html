@@ -6,80 +6,54 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        header {
-            background-color: red;
-            color: white;
-            padding: 20px;
-        }
-        h1 {
-            margin: 0;
-            text-align: center;
-            background-color: white;
-            color: red;
-            padding: 20px;
-        }
-        img {
-            height: 60px;
-            width: 300px;
-            padding: 0px;
-            position: absolute;
-            top: 5.5%;
-            left: 3.5%;
-        }
         .scroll-view {
             display: flex;
-            flex-direction: column; /* change the direction to column */
-            overflow-y: auto; /* change to y-axis scrolling */
-            margin: 5rem;
-            height: calc(100vh - 210px); /* adjust the height to fit the remaining space */
+            flex-wrap: wrap;
+            justify-content: center; /* center the items horizontally */
+            align-items: center; /* center the items vertically */
+            gap: 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            margin: 0 auto; /* add margin:auto to center the container */
+            border-radius: 10px;
+            box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
+            width: 75%;
+            height: auto;
         }
-        .scroll-view img {
-            position: relative;
-            height: 20px;
-            width: 30px;
-            padding: 0px;
-            margin-bottom: 1rem; /* add margin to the bottom of each image */
-        }
-        .scroll-view label {
-            position: relative;
-        }
-        .image-container {
-            margin: 2rem;
-            height: 100%; /* set the height to 100% to fill the remaining space */
-        }
-        .image-container .product-item {
-            display: inline-block;
-            margin-right: 0.8rem; /* add margin to the right of each item */
-            margin-bottom: 1rem; /* add margin to the bottom of each row */
-            width: calc(50% - 0.5rem); /* use calc() to calculate item width */
-            max-width: 400px; /* add max-width to avoid stretching of items */
-        }
-        .image-container img {
-            width: 400px; /* increase image width */
-            height: auto; /* adjust height automatically */
+        .scrollContainer{
+            position:relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* center the items horizontally */
+            margin-top: 3%;
         }
     </style>
+    <link rel="stylesheet" href="supplier.css">
+    <link rel="stylesheet" href="../cardz.css">
 </head>
 
 <body>
-    <header>
-        <h1>Supplier Home Page</h1>
-        <nav>
-            <ul>
+    <div class="top-nav">
+        <img class="logo" src="../img/RunTime Shopping4x.png" alt="Logo">
+        <ul class="nav-links">
+            <div class="menu">
                 <li><a href="#orders">Orders</a></li>
                 <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#tracking">Order Tracking</a></li>
                 <li><a href="supplier_homepage.html">Home</a></li>
-            </ul>
-        </nav>
-    </header>
-    <img src="./img/home/RunTime_logo.png" alt="RunTime Logo">
-    <h1>Uploaded Products</h1>
-    <main>
-        <div class="image-container">
+            </div>
+        </ul>
+    </div>
+    
+    <div class="header">
+        <h1 style="font-family: Arial, sans-serif; font-size: 32px; font-weight: bold;color: #333;">Uploaded Products</h1>
+    </div>
+    
+    <div class = "scrollContainer">
+        
             <div class="scroll-view" id="image-container"></div>
-        </div>
-    </main>
+       
+    </div>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
