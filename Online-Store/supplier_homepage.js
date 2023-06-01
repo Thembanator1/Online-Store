@@ -75,5 +75,7 @@ const saveMessages = (productName , productDescription , productPrice , productC
     // redirect to login page
     alert('Image uploaded successfully!');
     };
-
- 
+    function moveNow() {
+      window.location.href = "supplier_sales.html";
+    }
+    

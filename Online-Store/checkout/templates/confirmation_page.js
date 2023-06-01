@@ -75,7 +75,7 @@ const saveMessages = (DeliveryMethod, PaymentMethod, customer_email, suppliers_e
     quantity: quantity,
     picture: link,
     product_id: productId,
-    suppliers_email: suppliers_email
+    supplier_email: suppliers_email
   });
 
   // redirect to login page
