@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .card-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.supply-card {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.image-section {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.details-section {
+  flex: 1 1 auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+h3 {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="supply-card">
+          <section class="image-section">
+            <img id="product-img" alt="Product Image">
+          </section>
+      
+          <section class="details-section">
+            <h2>Order Details</h2>
+            <ul>
+              <li>
+                <h3>Product Name:</h3>
+                <p id="product-name">Wits Flowers</p>
+              </li>
+              <li>
+                <h3>Product Price:</h3>
+                <p id="product-price">R25 000</p>
+              </li>
+              <li>
+                <h3>Date of Purchase:</h3>
+                <p id="product-date">14/05/2023</p>
+              </li>
+              <li>
+                <h3>Payment Type:</h3>
+                <p id="product-pay-type">Card payment</p>
+              </li>
+              <li>
+                <h3>Product Description:</h3>
+                <p id="product-desc">Fast phone</p>
+              </li>
+              <li>
+                <h3>Product Quantity:</h3>
+                <p id="product-quantity">10</p>
+              </li>
+              <li>
+                <h3>Product Delivery Type:</h3>
+                <p id="product-delivery">Shipping</p>
+              </li>
+            </ul>
+            <button id="write-review-btn">Write a Review</button>
+          </section>
+        </div>
+      </div>
+      
+</body>
+</html>
