@@ -26,6 +26,7 @@ var deliv = localStorage.getItem("deliv");
 var desc = localStorage.getItem("description");
 var quantity = localStorage.getItem("quantity");
 var i=localStorage.getItem("id");
+console.log(i);
 const img = document.getElementById('product-img');
 img.src = imageUrl;
 
