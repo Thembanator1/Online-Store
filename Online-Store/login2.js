@@ -60,3 +60,7 @@ document.querySelector("#validate").addEventListener("click", e => {
     });
 });
 
+const goBackButton = document.querySelector('.go-back');
+goBackButton.addEventListener('click', () => {
+    window.location.assign("index.html");
+});

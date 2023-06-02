@@ -131,3 +131,7 @@ Revenue: Revenue
 window.location.assign("loginSupplier.html");
 };
 
+const goBackButton = document.querySelector('.go-back');
+goBackButton.addEventListener('click', () => {
+    window.location.assign("loginSupplier.html");
+});

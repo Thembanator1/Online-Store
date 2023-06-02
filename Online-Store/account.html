@@ -87,6 +87,23 @@ padding: 5px 14px;
       <p>View and edit your product reviews.</p>
       <button><a href="reviews.html">View Reviews</a></button>
     </div>
+    <div>
     
+      <p>Do you want to logout?</p>
+      <button><a href="login.html" onclick="logout(event)">logout</a></button>
+    </div>
+    
+<script>
+  function logout(event) {
+    event.preventDefault(); // Prevents the default link behavior
+  
+    // Ask for confirmation and handle the user's choice
+    var confirmed = confirm("Are you sure you want to logout?");
+    if (confirmed) {
+      window.location.href = "login.html"; // Proceed to the login page
+    }
+    // If not confirmed, do nothing and stay on the current page
+  }
+  </script>
   </body>
 </html>

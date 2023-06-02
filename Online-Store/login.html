@@ -6,7 +6,7 @@
 		body{
 			margin: 0;
 			padding: 0;
-			background: url(bg.jpg);
+			background: rgb(108, 42, 42);
 			background-size: cover;
 			font-family: sans-serif;
 		}
@@ -96,13 +96,33 @@
        		font-weight:bold;
        		text-decoration:none;
        }
+	  
+    
+    .go-back {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 70px;
+      height: 100px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      color: #e8e0e0;
+    }
     </style>
 </head>
 <!-- The following code creates a login form with input fields for email and password -->
 <body>
+	<div class="container">
+		<div class="go-back">&times;</div>
+	  </div>
 	<div class="login-box">
 	<img src="logo-shop.png" class="avatar">
 	<h1>Login Here</h1>
+	<div class="arrow"></div>
+
 	<form>
 	<input type="text" name="" placeholder="Enter Email" id="Email">
 	<input type="password" name="" placeholder="Enter Password" id="Password">

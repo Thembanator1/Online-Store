@@ -80,3 +80,7 @@ password:password
 window.location.assign("login.html");
 };
 
+const goBackButton = document.querySelector('.go-back');
+goBackButton.addEventListener('click', () => {
+    window.location.assign("login.html");
+});
