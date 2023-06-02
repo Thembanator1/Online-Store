@@ -44,6 +44,7 @@
                 <li><a href="#tracking">Order Tracking</a></li>
                 <li><a href="Supplier_Products.html">Products</a></li>
                 <li><a href="supplier_sales.html" onclick="moveNow()">Sales Analysis</a></li>
+                <li><a href="login.html" onclick="logout(event)">logout</a></li>
             </div>
         </ul>
     </div>
@@ -101,7 +102,18 @@
         </div>  
     </div>
 
-
+    <script>
+        function logout(event) {
+          event.preventDefault(); // Prevents the default link behavior
+        
+          // Ask for confirmation and handle the user's choice
+          var confirmed = confirm("Are you sure you want to logout?");
+          if (confirmed) {
+            window.location.href = "loginSupplier.html"; // Proceed to the login page
+          }
+          // If not confirmed, do nothing and stay on the current page
+        }
+        </script>
     
 
 
